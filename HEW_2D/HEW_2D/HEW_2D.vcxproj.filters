@@ -1,0 +1,402 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="リソース ファイル">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="フレームワーク">
+      <UniqueIdentifier>{741e99e2-d922-47b1-a7ed-ce183f73de1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="フレームワーク\入力管理">
+      <UniqueIdentifier>{c812db62-3724-4852-a1c3-7cb761320727}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="フレームワーク\画像読み込み">
+      <UniqueIdentifier>{3049bf7e-8268-4d88-b705-a2ae2991f89e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ゲーム">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="フレームワーク\サウンド">
+      <UniqueIdentifier>{6aea1f95-ca80-4270-9b35-c8e37059f90b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="フレームワーク\DirectX3D11管理">
+      <UniqueIdentifier>{921e64a0-82db-4014-ab84-571ea61e2c97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="フレームワーク\注意点">
+      <UniqueIdentifier>{e840742c-0025-4a90-85b3-a1f4957628af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ゲーム\オブジェクト">
+      <UniqueIdentifier>{73efc6ce-7906-49a0-a135-42a3ec82dab9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="フレームワーク\シーン系">
+      <UniqueIdentifier>{bb884ea1-67de-491c-8028-366c6b61d50c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="フレームワーク\シーン系\シーン">
+      <UniqueIdentifier>{45911435-0c0f-4964-888a-ddb38ea69b9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="フレームワーク\コンポーネント">
+      <UniqueIdentifier>{f18084a7-8232-4e9e-93b8-65fa56d75992}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="フレームワーク\コンポーネント\Transform">
+      <UniqueIdentifier>{0f697584-a89c-4169-a972-57306499fd6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="フレームワーク\コンポーネント\基本コンポーネント">
+      <UniqueIdentifier>{626bc03d-b55a-45e1-956a-800780101596}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="フレームワーク\コンポーネント\Physic（物理）">
+      <UniqueIdentifier>{e5865c91-7b67-4588-bc48-6f00e9770a55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="フレームワーク\ImGui">
+      <UniqueIdentifier>{14696ced-9345-41dc-8e38-de4cefa9f34c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="フレームワーク\Texture">
+      <UniqueIdentifier>{7ccad534-fab1-4564-97bd-1c80764cff69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="フレームワーク\ウィンドウ">
+      <UniqueIdentifier>{bb3b72fc-e6c5-4df3-8470-371f3acafc99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ゲーム\シーン管理">
+      <UniqueIdentifier>{588c322f-cbe3-47bb-9100-8218c7678e21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ゲーム\オブジェクト管理">
+      <UniqueIdentifier>{07c8d67a-cea0-4a65-96e3-8ed9f2f42def}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ゲーム\シーン">
+      <UniqueIdentifier>{51a8fd47-76e4-4a73-bb5b-b922a6648df4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ゲーム\エントリーポイント">
+      <UniqueIdentifier>{5e081019-3e0b-4969-b8f2-5b8dcb7848ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ゲーム\Core（ゲーム処理）">
+      <UniqueIdentifier>{8e8e67e4-b785-4afc-9ee5-2dd8dedccf2d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ゲーム\Core（ゲーム処理）\Application">
+      <UniqueIdentifier>{043852c1-793a-4072-b0db-2b63d86963fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ゲーム\Core（ゲーム処理）\Game">
+      <UniqueIdentifier>{e7ee6291-f1e8-4734-a14b-bd46e7054751}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ゲーム\オブジェクト\プレイヤー">
+      <UniqueIdentifier>{e097f8b7-0409-496b-b5d6-e7bf979e8a8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ゲーム\オブジェクト\基本オブジェクト">
+      <UniqueIdentifier>{056cce67-35d6-42f5-8973-a138ddc79e16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ゲーム\オブジェクト\擬音銃">
+      <UniqueIdentifier>{7db3bf99-2a35-4519-8172-dfd0fd50a071}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ゲーム\オブジェクト\擬音銃\マガジン">
+      <UniqueIdentifier>{27527f46-8533-49f5-b5db-9b61dc785ecc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="フレームワーク\コンポーネント管理">
+      <UniqueIdentifier>{b4e7f271-71d4-4d49-9abd-b17ea461da9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ゲーム\オブジェクト\擬音銃\擬音">
+      <UniqueIdentifier>{dc2d3711-01fb-462f-ba0a-049a94b3abfd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ゲーム\オブジェクト\擬音銃\擬音\基本擬音クラス">
+      <UniqueIdentifier>{5673c0d2-0b04-40f8-86e2-2dc9708979b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ゲーム\オブジェクト\擬音銃\擬音\ポヨン">
+      <UniqueIdentifier>{ef4fc5cd-6a03-43bc-b125-6bab8ace3898}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ゲーム\オブジェクト\擬音銃\擬音\ドォン">
+      <UniqueIdentifier>{3dc2c768-24b1-4e71-ad15-3db2f4565808}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ゲーム\オブジェクト\キャラクター基本クラス">
+      <UniqueIdentifier>{595fa64f-c829-4f2a-81a4-d8aeb957e436}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="フレームワーク\コンポーネント\BoxCollider2D">
+      <UniqueIdentifier>{45a0e2f6-9eb8-4a7e-96fc-932c997a35e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ゲーム\オブジェクト\カメラ">
+      <UniqueIdentifier>{59d1b71c-8ad4-4bb9-941a-c324b57185d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ゲーム\オブジェクト\スライム">
+      <UniqueIdentifier>{1f4dc30c-4199-4bea-822b-0146243f095b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ゲーム\オブジェクト\擬音銃\擬音\パタパタ">
+      <UniqueIdentifier>{80768643-32d9-4c7f-b210-7ab391e3fb8f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ゲーム\オブジェクト\擬音銃\擬音\ビリビリ">
+      <UniqueIdentifier>{1b8fd550-b846-46eb-8733-29c38851acd3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ゲーム\オブジェクト\擬音銃\クロスヘア">
+      <UniqueIdentifier>{1db5a356-7c78-48f7-93e6-613fa54940fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ゲーム\シーン\未使用">
+      <UniqueIdentifier>{946576d4-ac01-42ea-a3ba-b09711da7f45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ゲーム\シーン\タイトル">
+      <UniqueIdentifier>{f3799e0d-952b-493e-95c2-f51f68b66217}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ゲーム\シーン\リザルト">
+      <UniqueIdentifier>{bd59bc0b-86d0-40d2-b0a4-a9077ec48564}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ゲーム\シーン\ステージ2">
+      <UniqueIdentifier>{bbbab618-a5f0-4d99-afc8-a24e7ad2a266}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ゲーム\シーン\ステージ選択">
+      <UniqueIdentifier>{74ea2a15-f381-43c9-bead-be897bc554f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ゲーム\シーン\テストシーン">
+      <UniqueIdentifier>{930f698a-bf31-40a7-ab6b-2f64f63ca385}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ゲーム\シーン\ステージ1">
+      <UniqueIdentifier>{a94b0768-b83e-48ac-98ed-a75a52eb0b2c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Framework\Input\Input.cpp">
+      <Filter>フレームワーク\入力管理</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\D3D11\D3D11.cpp">
+      <Filter>フレームワーク\DirectX3D11管理</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\WICTextureLoader\WICTextureLoader.cpp">
+      <Filter>フレームワーク\画像読み込み</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Scene\IScene.cpp">
+      <Filter>フレームワーク\シーン系\シーン</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Component\TransForm\Transform.cpp">
+      <Filter>フレームワーク\コンポーネント\Transform</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Component\IComponent\IComponent.cpp">
+      <Filter>フレームワーク\コンポーネント\基本コンポーネント</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\ComponentManager\ComponentManager.cpp">
+      <Filter>フレームワーク\コンポーネント管理</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Texture\Texture.cpp">
+      <Filter>フレームワーク\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Window\Window.cpp">
+      <Filter>フレームワーク\ウィンドウ</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\SceneManager\SceneManager.cpp">
+      <Filter>ゲーム\シーン管理</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\ObjectManager\ObjectManager.cpp">
+      <Filter>ゲーム\オブジェクト管理</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\EntryPoint\main.cpp">
+      <Filter>ゲーム\エントリーポイント</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Core\Game\Game.cpp">
+      <Filter>ゲーム\Core（ゲーム処理）\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Core\Application\Application.cpp">
+      <Filter>ゲーム\Core（ゲーム処理）\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Objcet\BaseObject\GameObject.cpp">
+      <Filter>ゲーム\オブジェクト\基本オブジェクト</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Objcet\Player\Player.cpp">
+      <Filter>ゲーム\オブジェクト\プレイヤー</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Objcet\SoundGun\SoundGun.cpp">
+      <Filter>ゲーム\オブジェクト\擬音銃</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Component\RigitBody\RigitBody2D.cpp">
+      <Filter>フレームワーク\コンポーネント\Physic（物理）</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Objcet\SoundGun\Magazine.cpp">
+      <Filter>ゲーム\オブジェクト\擬音銃\マガジン</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Objcet\BaseObject\Object.cpp">
+      <Filter>ゲーム\オブジェクト\基本オブジェクト</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Objcet\Onomatopeia\IOnomatopoeia\IOnomatopoeia.cpp">
+      <Filter>ゲーム\オブジェクト\擬音銃\擬音\基本擬音クラス</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Objcet\Character\Character.cpp">
+      <Filter>ゲーム\オブジェクト\キャラクター基本クラス</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Component\Collider\BoxCollider2D\Collider.cpp">
+      <Filter>フレームワーク\コンポーネント\BoxCollider2D</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Component\RigitBody\Gravity.cpp">
+      <Filter>フレームワーク\コンポーネント\Physic（物理）</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Objcet\Camera\Camera.cpp">
+      <Filter>ゲーム\オブジェクト\カメラ</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Objcet\Enemy\Enemy.cpp">
+      <Filter>ゲーム\オブジェクト\スライム</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Objcet\Onomatopeia\BiriBiri\BiriBiri.cpp">
+      <Filter>ゲーム\オブジェクト\擬音銃\擬音\ビリビリ</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Objcet\Onomatopeia\PataPata\PataPata.cpp">
+      <Filter>ゲーム\オブジェクト\擬音銃\擬音\パタパタ</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Objcet\Onomatopeia\Poyon\Poyon.cpp">
+      <Filter>ゲーム\オブジェクト\擬音銃\擬音\ポヨン</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Objcet\SoundGun\CrossHair.cpp">
+      <Filter>ゲーム\オブジェクト\擬音銃\クロスヘア</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Sound\sound.cpp">
+      <Filter>フレームワーク\サウンド</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Scene\GameScene.cpp">
+      <Filter>ゲーム\シーン\未使用</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Scene\TitleScene.cpp">
+      <Filter>ゲーム\シーン\タイトル</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Scene\ResultScene.cpp">
+      <Filter>ゲーム\シーン\リザルト</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Scene\Stage2Scene.cpp">
+      <Filter>ゲーム\シーン\ステージ2</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Scene\StageSelectScene.cpp">
+      <Filter>ゲーム\シーン\ステージ選択</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Scene\TestScene.cpp">
+      <Filter>ゲーム\シーン\テストシーン</Filter>
+    </ClCompile>
+    <ClCompile Include="Game\Scene\Stage1Scene.cpp">
+      <Filter>ゲーム\シーン\ステージ1</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Component\Transform\TransformComponent.cpp">
+      <Filter>フレームワーク\コンポーネント\Transform</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Framework\D3D11\D3D11.h">
+      <Filter>フレームワーク\DirectX3D11管理</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Input\Input.h">
+      <Filter>フレームワーク\入力管理</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\WICTextureLoader\WICTextureLoader.h">
+      <Filter>フレームワーク\画像読み込み</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Sound\sound.h">
+      <Filter>フレームワーク\サウンド</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Scene\IScene.h">
+      <Filter>フレームワーク\シーン系\シーン</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Component\TransForm\Transform.h">
+      <Filter>フレームワーク\コンポーネント\Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Component\IComponent\IComponent.h">
+      <Filter>フレームワーク\コンポーネント\基本コンポーネント</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Component\Transform\TransformComponent.h">
+      <Filter>フレームワーク\コンポーネント\Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\ComponentManager\ComponentManager.h">
+      <Filter>フレームワーク\コンポーネント管理</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Texture\Texture.h">
+      <Filter>フレームワーク\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Window\Window.h">
+      <Filter>フレームワーク\ウィンドウ</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\SceneManager\SceneManager.h">
+      <Filter>ゲーム\シーン管理</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\ObjectManager\ObjectManager.h">
+      <Filter>ゲーム\オブジェクト管理</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Core\Game\Game.h">
+      <Filter>ゲーム\Core（ゲーム処理）\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Core\Application\Application.h">
+      <Filter>ゲーム\Core（ゲーム処理）\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Objcet\BaseObject\GameObject.h">
+      <Filter>ゲーム\オブジェクト\基本オブジェクト</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Objcet\Player\Player.h">
+      <Filter>ゲーム\オブジェクト\プレイヤー</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Objcet\SoundGun\SoundGun.h">
+      <Filter>ゲーム\オブジェクト\擬音銃</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Component\RigitBody\RigitBody2D.h">
+      <Filter>フレームワーク\コンポーネント\Physic（物理）</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Objcet\SoundGun\Magazine.h">
+      <Filter>ゲーム\オブジェクト\擬音銃\マガジン</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Objcet\BaseObject\Object.h">
+      <Filter>ゲーム\オブジェクト\基本オブジェクト</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Objcet\Onomatopeia\IOnomatopoeia\IOnomatopoeia.h">
+      <Filter>ゲーム\オブジェクト\擬音銃\擬音\基本擬音クラス</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Objcet\Character\Character.h">
+      <Filter>ゲーム\オブジェクト\キャラクター基本クラス</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\EntryPoint\main.h">
+      <Filter>ゲーム\エントリーポイント</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Component\Collider\BoxCollider2D\Collider.h">
+      <Filter>フレームワーク\コンポーネント\BoxCollider2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Component\RigitBody\Gravity.h">
+      <Filter>フレームワーク\コンポーネント\Physic（物理）</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Objcet\Camera\Camera.h">
+      <Filter>ゲーム\オブジェクト\カメラ</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Objcet\Enemy\Enemy.h">
+      <Filter>ゲーム\オブジェクト\スライム</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Objcet\Onomatopeia\BiriBiri\BiriBiri.h">
+      <Filter>ゲーム\オブジェクト\擬音銃\擬音\ビリビリ</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Objcet\Onomatopeia\PataPata\PataPata.h">
+      <Filter>ゲーム\オブジェクト\擬音銃\擬音\パタパタ</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Objcet\Onomatopeia\Poyon\Poyon.h">
+      <Filter>ゲーム\オブジェクト\擬音銃\擬音\ポヨン</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Objcet\SoundGun\CrossHair.h">
+      <Filter>ゲーム\オブジェクト\擬音銃\クロスヘア</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Scene\GameScene.h">
+      <Filter>ゲーム\シーン\未使用</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Scene\TitleScene.h">
+      <Filter>ゲーム\シーン\タイトル</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Scene\ResultScene.h">
+      <Filter>ゲーム\シーン\リザルト</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Scene\Stage2Scene.h">
+      <Filter>ゲーム\シーン\ステージ2</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Scene\StageSelectScene.h">
+      <Filter>ゲーム\シーン\ステージ選択</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Scene\TestScene.h">
+      <Filter>ゲーム\シーン\テストシーン</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\Scene\Stage1Scene.h">
+      <Filter>ゲーム\シーン\ステージ1</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Framework\注意点\注意点・解説.txt">
+      <Filter>フレームワーク\注意点</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="Shader\PixelShader.hlsl">
+      <Filter>リソース ファイル</Filter>
+    </FxCompile>
+    <FxCompile Include="Shader\VertexShader.hlsl">
+      <Filter>リソース ファイル</Filter>
+    </FxCompile>
+  </ItemGroup>
+</Project>
