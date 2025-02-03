@@ -12,7 +12,7 @@ class GameObject;
 class IComponent :public std::enable_shared_from_this<IComponent>
 {
 public:
-	IComponent();
+	IComponent(GameObject* _owner) :m_pOwner(_owner) {};
 	virtual ~IComponent();
 
 	virtual void Init(void) = 0;		// ‰Šú‰»

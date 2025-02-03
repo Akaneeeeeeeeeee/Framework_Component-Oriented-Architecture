@@ -30,20 +30,38 @@ public:
 	 * @return コンポーネントのweak_ptr→返した側でlock()関数を使わないとポインタを使えない
 	*/
 	template <class T>
-	std::weak_ptr<T> AddComponent(void)
+	std::shared_ptr<T> AddComponent(void)
 	{
-		//! コンポーネントのポインタを生成
-		auto component = std::make_shared<T>();
-		//! 取りつけたいコンポーネントが既に存在していれば
-		if (m_Components.find(std::type_index(typeid(T))) != m_Components.end())
-		{
+		////! コンポーネントのポインタを生成
+		//auto component = std::make_shared<T>();
+		////! 取りつけたいコンポーネントが既に存在していれば
+		//if (m_Components.find(std::type_index(typeid(T))) != m_Components.end())
+		//{
+		//	throw std::runtime_error("同一コンポーネントが既に存在しています");
+		//}
+		////! なければコンポーネントに追加
+		//component->Init();
+		//m_Components.emplace(std::type_index(typeid(T)), component);
+		////! コンポーネントのポインタを返す
+		//return std::weak_ptr<T>(component);
+
+
+		// コンポーネントの型を取得
+		std::type_index type = typeid(T);
+
+		// 既に同じ型のコンポーネントが存在する場合、エラーを投げる
+		if (m_Components.find(type) != m_Components.end()) {
 			throw std::runtime_error("同一コンポーネントが既に存在しています");
 		}
-		//! なければコンポーネントに追加
+
+		// コンポーネントを生成し、所有する
+		auto component = std::make_shared<T>(this);
 		component->Init();
-		m_Components.emplace(std::type_index(typeid(T)), component);
-		//! コンポーネントのポインタを返す
-		return std::weak_ptr<T>(component);
+
+		// コンポーネントを登録
+		m_Components.emplace(type, component);
+
+		return component;
 	}
 
 
@@ -55,19 +73,26 @@ public:
 	template <class T>
 	std::shared_ptr<T> GetComponent(void)
 	{
+
+		// コンポーネントの型を取得
+		std::type_index type = typeid(T);
+
 		//! そのコンポーネントが存在しているかを探索
-		for (auto& component : m_Components)
+		auto it = m_Components.find(type);
+		if (it != m_Components.end())
 		{
-			// そのコンポーネントの型にキャストできれば
-			if (T* comp = dynamic_cast<T*>(component.second.get()))
-			{
-				//! コンポーネントのポインタを返す
-				return std::shared_ptr<T>(component.second, comp);
-			}
+			// 目的の型にキャストして返す
+			return std::dynamic_pointer_cast<T>(it->second);
 		}
-		//! なければエラー出力
-		std::cerr << typeid(T).name() << "を保持していません" << std::endl;
+
+		// なければエラー出力
+		std::cerr << typeid(T).name() << " を保持していません" << std::endl;
+		return nullptr;  // コンポーネントが見つからなければ nullptr を返す
 	}
+
+
+
+
 
 private:
 	std::string m_Name;
