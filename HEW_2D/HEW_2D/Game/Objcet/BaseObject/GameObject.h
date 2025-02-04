@@ -38,7 +38,11 @@ enum Tag {
 	ONOMATOPOEIA,
 	PLAYER,
 	ENEMY,
-	CAMERA
+	CAMERA,
+
+
+	NONE,		// デフォルト値
+	TAG_MAX		
 };
 
 // オブジェクトの状態（ここに全部書き出しておく）

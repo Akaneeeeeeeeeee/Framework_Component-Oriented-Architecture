@@ -1,6 +1,7 @@
 #pragma once
 #include "../../../Framework/ComponentManager/ComponentManager.h"
 #include "../../ObjectManager/ObjectManager.h"
+#include "../../../Framework/Component/Transform/TransformComponent.h"
 
 
 /**
@@ -11,14 +12,24 @@
  * ・RigidBody2D
  * ・BoxCollider
  * ・
+ * 
+ * コンポーネントマネージャを作ることも考えたが、そこへのアクセスする分時間もったいないのでは→オブジェクトが直で持つようにする(必要があれば後から変更)
 */
 class Object :public std::enable_shared_from_this<Object>
 {
 public:
-	Object();
+	Object() {
+		// コンストラクタでTransformコンポーネントだけ自動で追加しておく
+		AddComponent<TransformComponent>();
+	};
+
+	Object(const Tag& _tag, const std::string& _name) :m_Tag(_tag), m_Name(_name) {
+		// コンストラクタでTransformコンポーネントだけ自動で追加しておく
+		AddComponent<TransformComponent>();
+	};
+
+
 	virtual ~Object();
-
-
 
 	//-----------------------
 	//-----テンプレート関数-----
@@ -90,13 +101,25 @@ public:
 		return nullptr;  // コンポーネントが見つからなければ nullptr を返す
 	}
 
+	/**
+	 * @brief "全"コンポーネントを取得する関数
+	 * @tparam T 
+	 * @param  
+	 * @return 
+	 * 
+	 * →この機能使う場面が想像できないので作るの一旦止めとく。必要になったら作る！
+	*/
+	/*template <class T>
+	std::vector<IComponent> GetComponents(void)
+	{
+
+	}*/
 
 
 
-
-private:
-	std::string m_Name;
-	Tag m_Tag;
+protected:
+	std::string m_Name = "";
+	Tag m_Tag = Tag::NONE;
 	
 	// これいらなくね？ゲームオブジェクトの中のコンポーネントマネージャからじゃないとaddcomponentできない→オブジェクトがmapで管理しとくほうがいい
 	//ComponentManager m_ComponentManager;
