@@ -79,10 +79,10 @@ public:
 	/**
 	 * @brief コンポーネント取得関数
 	 * @tparam T コンポーネントの型
-	 * @return コンポーネントのポインタ
+	 * @return コンポーネントの生ポインタ
 	*/
 	template <class T>
-	std::shared_ptr<T> GetComponent(void)
+	T* GetComponent(void)
 	{
 
 		// コンポーネントの型を取得
@@ -125,7 +125,7 @@ protected:
 	//ComponentManager m_ComponentManager;
 
 	// コンポーネントのmap
-	std::unordered_map<std::type_index, std::shared_ptr<IComponent>> m_Components;
+	std::unordered_map<std::type_index, std::unique_ptr<IComponent>> m_Components;
 
 };
 
