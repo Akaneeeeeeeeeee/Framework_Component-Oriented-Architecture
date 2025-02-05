@@ -124,7 +124,7 @@ protected:
 	// これいらなくね？ゲームオブジェクトの中のコンポーネントマネージャからじゃないとaddcomponentできない→オブジェクトがmapで管理しとくほうがいい
 	//ComponentManager m_ComponentManager;
 
-	// コンポーネントのmap
+	// コンポーネントのmap(所有権が怖いのでuniqueで管理)
 	std::unordered_map<std::type_index, std::unique_ptr<IComponent>> m_Components;
 
 };

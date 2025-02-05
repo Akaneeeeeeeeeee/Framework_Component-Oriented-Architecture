@@ -78,7 +78,7 @@ private:
 	//! アタッチしているオブジェクトの参照→アタッチ先のオブジェクトは必ず存在していないといけないため参照を使う
 	GameObject& m_Owner;
 	//! コンポーネントの型とポインタをセットでmapに保持
-	std::unordered_map<std::type_index, std::shared_ptr<IComponent>> m_Components;
+	std::unordered_map<std::type_index, std::unique_ptr<IComponent>> m_Components;
 };
 
 
