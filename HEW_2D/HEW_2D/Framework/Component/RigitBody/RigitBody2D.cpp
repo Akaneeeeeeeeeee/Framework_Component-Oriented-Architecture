@@ -24,13 +24,26 @@ void RigidBody2D::Init(void)
 */
 void RigidBody2D::Update(void)
 {
-	// 力の計算
+	//---------------------------------------
+	//			物体にかかる力の計算
+	//---------------------------------------
 	// force に 重力による力（F = m * g） を加算する
 	// force は 次のフレームの加速度計算に使う
-	m_Force += m_Mass * m_GravityScale;
+
+	// 地球では重力は下向きにかかるのでy成分に加算する
+	m_Force.y += m_Mass * m_GravityScale;
 
 	// 加速度を求める
+	// ニュートンの運動方程式 F = m * a を使って加速度 a を計算
+	// a = F(力) / m(質量) なので、質量 m が大きいほど加速しにくい
 	Vector3 acceleration = m_Force / m_Mass;
+
+	// 速度の更新
+	// 速度 v に従ってオブジェクトを移動
+	// p = p + v * dt（積分）→deltatimeは使わない(FPSが固定されているため)
+	// 位置 p が更新されることで、オブジェクトが動く
+	m_Velocity += acceleration;
+
 }
 
 /**
