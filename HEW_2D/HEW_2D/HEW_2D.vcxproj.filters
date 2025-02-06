@@ -150,6 +150,9 @@
     <Filter Include="フレームワーク\コンポーネント\当たり判定\BoxCollider2D">
       <UniqueIdentifier>{45a0e2f6-9eb8-4a7e-96fc-932c997a35e2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="フレームワーク\コンポーネント\描画系">
+      <UniqueIdentifier>{5c89487a-a0f7-46ae-972f-7557f1ecb2a6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Framework\Input\Input.cpp">

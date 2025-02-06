@@ -4,13 +4,19 @@
 using namespace SimpleMath;
 
 
-
-struct ForceMode {
-
+/**
+ * @brief 力の加え方
+ * 
+ * 参考サイト
+ * https://shibuya24.info/entry/unity-rigidbody-addforce#ForceMode%E3%80%8CForce%EF%BC%88%E3%83%95%E3%82%A9%E3%83%BC%E3%82%B9%EF%BC%89%E3%80%8D
+ * https://rightcode.co.jp/blogs/25168
+*/
+enum class ForceMode {
+    Force,              // 質量を考慮して継続的な力を加える(デフォルトはこれ)
+    Acceleration,       // 質量を"無視"して加速度を加える
+    Impulse,            // 質量を考慮して瞬間的な力を加える
+    VeclocityChange     // 質量を"無視"して速度を直接変更する
 };
-
-
-
 
 
 /**
@@ -76,6 +82,7 @@ public:
     {
         m_Velocity = { 0.0f };
         m_Direction = { 0.0f };
+        m_Force = { 0.0f };
         m_Mass = 1.0f;
         DetectCollision = true;
         UseGravity = true;
@@ -97,9 +104,9 @@ public:
     //--------------------------------
     
     // 力を加える
-	void AddForce(Vector3 _Vec);
+    void AddForce(Vector3 _force, ForceMode _mode);
+
 	
-    // 
 
 private:
     // 速度(これは毎フレーム変化する値)
@@ -108,8 +115,14 @@ private:
     // 移動用方向ベクトル(Transform.Rotaionは回転を扱うものなので別物)
     Vector3 m_Direction;
 
+    // 力
+    Vector3 m_Force;
+
     // 質量(単位：kg)
     float m_Mass;
+
+    // 重力
+    float m_GravityScale;
     
     // 衝突判定を有効にするか(デフォルトではON)
 	bool DetectCollision;
