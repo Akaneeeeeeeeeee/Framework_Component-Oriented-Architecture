@@ -108,9 +108,6 @@
     <Filter Include="ゲーム\オブジェクト\キャラクター基本クラス">
       <UniqueIdentifier>{595fa64f-c829-4f2a-81a4-d8aeb957e436}</UniqueIdentifier>
     </Filter>
-    <Filter Include="フレームワーク\コンポーネント\BoxCollider2D">
-      <UniqueIdentifier>{45a0e2f6-9eb8-4a7e-96fc-932c997a35e2}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ゲーム\オブジェクト\カメラ">
       <UniqueIdentifier>{59d1b71c-8ad4-4bb9-941a-c324b57185d6}</UniqueIdentifier>
     </Filter>
@@ -146,6 +143,12 @@
     </Filter>
     <Filter Include="ゲーム\シーン\ステージ1">
       <UniqueIdentifier>{a94b0768-b83e-48ac-98ed-a75a52eb0b2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="フレームワーク\コンポーネント\当たり判定">
+      <UniqueIdentifier>{8581cd84-0bed-47f0-bfcd-0fa06aad79ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="フレームワーク\コンポーネント\当たり判定\BoxCollider2D">
+      <UniqueIdentifier>{45a0e2f6-9eb8-4a7e-96fc-932c997a35e2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -216,7 +219,7 @@
       <Filter>ゲーム\オブジェクト\キャラクター基本クラス</Filter>
     </ClCompile>
     <ClCompile Include="Framework\Component\Collider\BoxCollider2D\Collider.cpp">
-      <Filter>フレームワーク\コンポーネント\BoxCollider2D</Filter>
+      <Filter>フレームワーク\コンポーネント\当たり判定\BoxCollider2D</Filter>
     </ClCompile>
     <ClCompile Include="Framework\Component\RigitBody\Gravity.cpp">
       <Filter>フレームワーク\コンポーネント\Physic（物理）</Filter>
@@ -341,7 +344,7 @@
       <Filter>ゲーム\エントリーポイント</Filter>
     </ClInclude>
     <ClInclude Include="Framework\Component\Collider\BoxCollider2D\Collider.h">
-      <Filter>フレームワーク\コンポーネント\BoxCollider2D</Filter>
+      <Filter>フレームワーク\コンポーネント\当たり判定\BoxCollider2D</Filter>
     </ClInclude>
     <ClInclude Include="Framework\Component\RigitBody\Gravity.h">
       <Filter>フレームワーク\コンポーネント\Physic（物理）</Filter>

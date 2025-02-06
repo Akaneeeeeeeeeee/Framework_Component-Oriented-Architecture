@@ -116,9 +116,17 @@ public:
 	}*/
 
 
+	//----------------------------
+	//			基本関数
+	//----------------------------
+	virtual void Init() = 0;
+	virtual void Update(void) = 0;
+	// 描画は更新処理内で行う？関数だけ作っておいて、描画コンポーネントがある場合に処理を行う？
+	virtual void Uninit(void) = 0;
+
 
 protected:
-	std::string m_Name = "";
+	std::string m_Name = "GameObject";
 	Tag m_Tag = Tag::NONE;
 	
 	// これいらなくね？ゲームオブジェクトの中のコンポーネントマネージャからじゃないとaddcomponentできない→オブジェクトがmapで管理しとくほうがいい

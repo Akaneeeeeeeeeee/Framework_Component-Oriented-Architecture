@@ -3,6 +3,16 @@
 
 using namespace SimpleMath;
 
+
+
+struct ForceMode {
+
+};
+
+
+
+
+
 /**
  * @brief 物理演算
  * 
@@ -59,24 +69,58 @@ update の流れは次のようになります：
 剛体同士の摩擦や弾性衝突の計算
 固定時間ステップの導入（物理更新は固定フレームで実施）
 */
-class RigitBody2D :public IComponent
+class RigidBody2D :public IComponent
 {
 public:
-	RigitBody2D();
-	~RigitBody2D();
+    RigidBody2D(GameObject* _owner) :IComponent(_owner)
+    {
+        m_Velocity = { 0.0f };
+        m_Direction = { 0.0f };
+        m_Mass = 1.0f;
+        DetectCollision = true;
+        UseGravity = true;
+        IsKinematic = true;
+    };
+    ~RigidBody2D() {};
 
-	void AddForce(Vector3);
+
+    //--------------------------------
+    //        オーバーライド関数
+    //--------------------------------
+    void Init(void) override;
+    void Update(void) override;
+    void Uninit(void) override;
+
+
+    //--------------------------------
+    //          オリジナル関数
+    //--------------------------------
+    
+    // 力を加える
+	void AddForce(Vector3 _Vec);
 	
+    // 
 
 private:
-	bool m_DetectCollision;		// 衝突判定を有効にするか
-	//float 
+    // 速度(これは毎フレーム変化する値)
+    Vector3 m_Velocity;
+
+    // 移動用方向ベクトル(Transform.Rotaionは回転を扱うものなので別物)
+    Vector3 m_Direction;
+
+    // 質量(単位：kg)
+    float m_Mass;
+    
+    // 衝突判定を有効にするか(デフォルトではON)
+	bool DetectCollision;
+
+    // 重力の影響を受けるか(デフォルトではON)
+    bool UseGravity;
+
+    // 物理挙動の有無(デフォルトはON)
+    bool IsKinematic;
+
+    // 回転の影響を受けるか
+    //bool FreezeRotation;
 };
 
-RigitBody2D::RigitBody2D()
-{
-}
-
-RigitBody2D::~RigitBody2D()
-{
-}

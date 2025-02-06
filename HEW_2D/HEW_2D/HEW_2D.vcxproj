@@ -188,10 +188,12 @@
     <ClCompile Include="Game\Scene\Stage2Scene.cpp" />
     <ClCompile Include="Game\Scene\TestScene.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="Game\Scene\ResultScene.cpp" />
-    <ClCompile Include="Game\Scene\StageSelectScene.cpp" />
+    <ClCompile Include="Game\Scene\StageSelectScene.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="Game\Scene\Stage1Scene.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -243,7 +245,7 @@
     <ClInclude Include="Game\Scene\Stage2Scene.h" />
     <ClInclude Include="Game\Scene\TestScene.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="Game\Scene\ResultScene.h" />
     <ClInclude Include="Game\Scene\StageSelectScene.h" />
