@@ -24,11 +24,16 @@ void RigidBody2D::Init(void)
 */
 void RigidBody2D::Update(void)
 {
+	// 物理シミュレーションしない場合はスキップ
+	if (IsKinematic) { return; }
+
 	//---------------------------------------
 	//			物体にかかる力の計算
 	//---------------------------------------
 	// force に 重力による力（F = m * g） を加算する
 	// force は 次のフレームの加速度計算に使う
+
+	// ここdeltatime使わないので毎フレーム色々減少させる必要あり
 
 	// 地球では重力は下向きにかかるのでy成分に加算する
 	m_Force.y += m_Mass * m_GravityScale;

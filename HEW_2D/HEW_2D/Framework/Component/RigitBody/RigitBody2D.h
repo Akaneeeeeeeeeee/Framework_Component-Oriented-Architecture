@@ -86,7 +86,7 @@ public:
         m_Mass = 1.0f;
         DetectCollision = true;
         UseGravity = true;
-        IsKinematic = true;
+        IsKinematic = false;
     };
     ~RigidBody2D() {};
 
@@ -130,7 +130,7 @@ private:
     // 重力の影響を受けるか(デフォルトではON)
     bool UseGravity;
 
-    // 物理挙動の有無(デフォルトはON)
+    // 物理挙動の有無(デフォルトはOFF(物理挙動させる))
     bool IsKinematic;
 
     // 回転の影響を受けるか
