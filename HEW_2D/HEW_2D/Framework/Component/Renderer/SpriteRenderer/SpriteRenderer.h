@@ -10,6 +10,8 @@ using namespace Microsoft::WRL;
  * 
  * 頂点座標
  * 頂点情報
+ * インデックスバッファ
+ * 画像情報
 */
 class SpriteRenderer :public IComponent
 {
@@ -28,6 +30,9 @@ private:
 
 	// 頂点バッファ
 	ComPtr<ID3D11Buffer> m_pVertexBuffer;
+
+	// インデックスバッファ
+	ComPtr<ID3D11Buffer> m_IndexBuffer;
 
 	// テクスチャ用変数
 	ComPtr<ID3D11ShaderResourceView> m_pTextureView;
