@@ -20,11 +20,12 @@
 #include <unordered_map>
 #include <typeindex>
 #include <string>
-#include <DirectXMath.h>	// DirextXの数学関連のヘッダーファイル
 #include <SimpleMath.h>
 #include <stdlib.h>
 #include <algorithm>
 #include <d3d11.h>			// DirectX11を使うためのヘッダーファイル
+#include <DirectXMath.h>	// DirextXの数学関連のヘッダーファイル
+#include <wrl.h>			// Comptr(DirectXのリソースなどを管理するためのスマートポインタ)を使うためのヘッダーファイル
 
 // DirectX::を省略したい
 using namespace DirectX;

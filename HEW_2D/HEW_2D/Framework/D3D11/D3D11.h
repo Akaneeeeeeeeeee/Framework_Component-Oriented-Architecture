@@ -95,7 +95,5 @@ struct ConstBuffer
 	DirectX::XMMATRIX matrixWorld;
 };
 
-
-
 // Direct3D‰ð•ú‚ÌŠÈ—ª‰»ƒ}ƒNƒ
 #define SAFE_RELEASE(p) { if( NULL != p ) { p->Release(); p = NULL; } }

@@ -9,8 +9,11 @@
 class TransformComponent :public IComponent
 {
 public:
-	TransformComponent();
-	~TransformComponent();
+	TransformComponent(GameObject* _Owner) :IComponent(_Owner) {
+
+	}
+
+	~TransformComponent(){}
 
 	void Init(void) override;
 	void Update(void) override;
@@ -20,11 +23,3 @@ public:
 private:
 	Transform m_Transform;
 };
-
-TransformComponent::TransformComponent()
-{
-}
-
-TransformComponent::~TransformComponent()
-{
-}
