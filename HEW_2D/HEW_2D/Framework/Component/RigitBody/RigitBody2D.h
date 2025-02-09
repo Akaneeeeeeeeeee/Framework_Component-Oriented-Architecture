@@ -10,12 +10,15 @@ using namespace SimpleMath;
  * 参考サイト
  * https://shibuya24.info/entry/unity-rigidbody-addforce#ForceMode%E3%80%8CForce%EF%BC%88%E3%83%95%E3%82%A9%E3%83%BC%E3%82%B9%EF%BC%89%E3%80%8D
  * https://rightcode.co.jp/blogs/25168
+ * 
+ * accelerationとvelocitychangeは2Dには存在しない
+ * が、velocitychangeは処理的には速度を直接書き換えてるだけなのでここでは実装してしまう
 */
-enum class ForceMode {
+enum class ForceMode2D {
     Force,              // 質量を考慮して継続的な力を加える(デフォルトはこれ)
-    Acceleration,       // 質量を"無視"して加速度を加える
+    // Acceleration,       // 質量を"無視"して加速度を加える
     Impulse,            // 質量を考慮して瞬間的な力を加える
-    VeclocityChange     // 質量を"無視"して速度を直接変更する
+    VelocityChange     // 質量を"無視"して速度を直接変更する
 };
 
 
@@ -104,7 +107,7 @@ public:
     //--------------------------------
     
     // 力を加える
-    void AddForce(Vector3 _force, ForceMode _mode);
+    void AddForce(Vector3 _force, ForceMode2D _mode);
 
 	
 

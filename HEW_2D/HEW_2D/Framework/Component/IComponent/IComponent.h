@@ -9,18 +9,18 @@
 
 class GameObject;
 
-class IComponent :public std::enable_shared_from_this<IComponent>
+class IComponent
 {
 public:
 	IComponent(GameObject* _owner) :m_pOwner(_owner) {};
-	virtual ~IComponent();
+	virtual ~IComponent() { m_pOwner = nullptr; }
 
 	virtual void Init(void) = 0;		// 初期化
 	virtual void Update(void) = 0;		// 更新
 	virtual void Uninit(void) = 0;		// 終了
 
-	void SetOwner(const GameObject& _obj) const;	// オブジェクトのアタッチ(参照渡し)
-	GameObject* GetOwner(void);						// アタッチ先のオブジェクトの取得
+	void SetOwner(const GameObject& _obj);		// オブジェクトのアタッチ(参照渡し)
+	GameObject* GetOwner(void);					// アタッチ先のオブジェクトの取得
 	//void RemoveOwner(void);			// アタッチされているオブジェクトからの取り外し
 
 protected:

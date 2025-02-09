@@ -29,7 +29,7 @@ public:
 	};
 
 
-	virtual ~Object();
+	virtual ~Object() {};
 
 	//-----------------------
 	//-----テンプレート関数-----
@@ -66,7 +66,7 @@ public:
 		}
 
 		// コンポーネントを生成し、所有する
-		auto component = std::make_shared<T>(this);
+		auto component = std::make_unique<T>(this);
 		component->Init();
 
 		// コンポーネントを登録

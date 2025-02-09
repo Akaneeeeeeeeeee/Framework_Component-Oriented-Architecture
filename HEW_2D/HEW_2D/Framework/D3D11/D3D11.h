@@ -18,7 +18,7 @@ public:
 	ID3D11Device *GetDevice(void);                 //!m_Deviceのゲッター
 	ID3D11DeviceContext* GetDeviceContext(void);   //!m_DeviceContextのゲッター
 	IDXGISwapChain* GetSwapChain(void);            //! スワップチェイン＝ダブルバッファ機能
-	ID3D11Buffer* GetConstantBuffer(void);                 //! 定数バッファ用変数
+	ID3D11Buffer* GetConstantBuffer(void);         //! 定数バッファ用変数
 	HRESULT Init(HWND hwnd);		// 初期化（ゲームクラスではこの初期化が成功した場合→ゲームの初期化処理実行にする）
 	void StartRender(void);			// 描画処理
 	void FinishRender(void);		// 描画終了処理

@@ -153,6 +153,15 @@
     <Filter Include="フレームワーク\コンポーネント\描画系">
       <UniqueIdentifier>{5c89487a-a0f7-46ae-972f-7557f1ecb2a6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="フレームワーク\コンポーネント\描画機能">
+      <UniqueIdentifier>{6bdc009a-0649-4537-8c0f-7f8504e318c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="フレームワーク\コンポーネント\描画機能\SprinteRenderer">
+      <UniqueIdentifier>{378e188d-6422-47ed-ba1a-29d82c1f7088}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="フレームワーク\コンポーネント\描画機能\Canvas">
+      <UniqueIdentifier>{3b15213a-59b7-4839-90d6-ea085dfc2ee8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Framework\Input\Input.cpp">
@@ -272,6 +281,12 @@
     <ClCompile Include="Framework\Component\Transform\TransformComponent.cpp">
       <Filter>フレームワーク\コンポーネント\Transform</Filter>
     </ClCompile>
+    <ClCompile Include="Framework\Component\Renderer\SpriteRenderer\SpriteRenderer.cpp">
+      <Filter>フレームワーク\コンポーネント\描画機能\SprinteRenderer</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Component\Renderer\Canvas\Canvas.cpp">
+      <Filter>フレームワーク\コンポーネント\描画機能\Canvas</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\D3D11\D3D11.h">
@@ -390,6 +405,12 @@
     </ClInclude>
     <ClInclude Include="Game\Scene\Stage1Scene.h">
       <Filter>ゲーム\シーン\ステージ1</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Component\Renderer\SpriteRenderer\SpriteRenderer.h">
+      <Filter>フレームワーク\コンポーネント\描画機能\SprinteRenderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Component\Renderer\Canvas\Canvas.h">
+      <Filter>フレームワーク\コンポーネント\描画機能\Canvas</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

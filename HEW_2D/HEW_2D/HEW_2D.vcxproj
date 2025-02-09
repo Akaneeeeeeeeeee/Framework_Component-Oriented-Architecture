@@ -146,6 +146,8 @@
     </ClCompile>
     <ClCompile Include="Framework\Component\Collider\BoxCollider2D\Collider.cpp" />
     <ClCompile Include="Framework\Component\IComponent\IComponent.cpp" />
+    <ClCompile Include="Framework\Component\Renderer\Canvas\Canvas.cpp" />
+    <ClCompile Include="Framework\Component\Renderer\SpriteRenderer\SpriteRenderer.cpp" />
     <ClCompile Include="Framework\Component\RigitBody\Gravity.cpp" />
     <ClCompile Include="Framework\Component\RigitBody\RigitBody2D.cpp" />
     <ClCompile Include="Framework\Component\TransForm\Transform.cpp" />
@@ -203,6 +205,8 @@
     </ClInclude>
     <ClInclude Include="Framework\Component\Collider\BoxCollider2D\Collider.h" />
     <ClInclude Include="Framework\Component\IComponent\IComponent.h" />
+    <ClInclude Include="Framework\Component\Renderer\Canvas\Canvas.h" />
+    <ClInclude Include="Framework\Component\Renderer\SpriteRenderer\SpriteRenderer.h" />
     <ClInclude Include="Framework\Component\RigitBody\Gravity.h" />
     <ClInclude Include="Framework\Component\RigitBody\RigitBody2D.h" />
     <ClInclude Include="Framework\Component\TransForm\Transform.h" />
