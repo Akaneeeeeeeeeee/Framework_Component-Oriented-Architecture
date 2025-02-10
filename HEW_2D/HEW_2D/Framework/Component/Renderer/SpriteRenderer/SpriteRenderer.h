@@ -36,6 +36,9 @@ public:
 	void Update(void) override;
 	void Uninit(void) override;
 
+	// 画像と分割数をセットする
+	void SetTexture(const wchar_t* imgname, XMINT2 _Num = { 1,1 });
+
 private:
 	//! 頂点データ
 	std::vector<Vertex> m_Vertices;

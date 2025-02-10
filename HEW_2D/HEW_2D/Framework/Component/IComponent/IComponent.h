@@ -12,7 +12,7 @@ class GameObject;
 class IComponent
 {
 public:
-	IComponent(GameObject* _owner) :m_pOwner(_owner) {};
+	IComponent(GameObject* _Owner) :m_pOwner(_Owner) {};
 	virtual ~IComponent() { m_pOwner = nullptr; }
 
 	virtual void Init(void) = 0;		// èâä˙âª
