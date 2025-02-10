@@ -18,29 +18,86 @@ class SpriteRenderer :public IComponent
 public:
 	SpriteRenderer() = delete;
 	SpriteRenderer(GameObject* _Owner) :IComponent(_Owner) {};
-	~SpriteRenderer() {};
+	
+	/**
+	 * @brief デストラクタ
+	*/
+	~SpriteRenderer() {
+		// ComPtr(スマートポインタ)なので解放する必要はないが、一応明示的に解放しておく
+		m_pVertexBuffer.Reset();
+		m_pIndexBuffer.Reset();
+		m_pTextureView.Reset();
+	};
+
+	void Init(void) override;
+	void Update(void) override;
+	void Uninit(void) override;
 
 private:
 	//! 頂点データ
-	//! このゲームでは擬音を吸い込むことがあるため頂点を可変にしておく
 	std::vector<Vertex> m_Vertices;
 
 	// 色
 	Color m_Color = { 1.0f, 1.0f, 1.0f, 1.0f };
 
-	// 頂点バッファ
+	// ＜頂点バッファ＞
+	// 頂点データ（座標、色、UV座標、法線など）をGPUに送るためのバッファ
+	// 頂点ごとの情報を格納し、GPUに渡す。GPUはこのデータを 頂点シェーダー（Vertex Shader） に渡して処理する。
 	ComPtr<ID3D11Buffer> m_pVertexBuffer;
 
-	// インデックスバッファ
-	ComPtr<ID3D11Buffer> m_IndexBuffer;
+	// ＜インデックスバッファ＞
+	// 頂点の結ぶ順番（描画する順序）をGPUに送るためのバッファ
+	// 頂点バッファに格納された 頂点の順番 を指定する。GPUは インデックスバッファ を使い、頂点を 適切な順番でシェーダーに渡して描画する。
+	ComPtr<ID3D11Buffer> m_pIndexBuffer;
 
-	// テクスチャ用変数
+	// ＜テクスチャ用変数(画像情報)＞
+	/*
+	・GPUがテクスチャ（画像）を ピクセルシェーダー（Pixel Shader） で使うときに参照するもの。
+	・ただの画像データではなく、「シェーダーがどのように参照するか」を定義する役割もある
+	・画像データをシェーダーが扱えるようにするビュー
+	・テクスチャ（画像データ）そのものではなく、それにアクセスするためのインターフェース というイメージ
+	・画像データ（ID3D11Texture2D）はただのピクセルの集まり → GPUがそのまま使うには情報が足りない
+	・スプライト画像一枚ならtexture2D使わなくてもいいけど、別の画像を保持させておきたい場合、texture2dを持たせておくべきってこと？（これは配列かな？わかんないけど。）
+	　で、基本的にはtexture2dとsrvはセットで持たせておくっていう認識でOK？
+	*/
+	// texture2dも対応付けて持たさないとダメ
 	ComPtr<ID3D11ShaderResourceView> m_pTextureView;
 
-	//テクスチャが縦横に何分割されているか
+
+	//-----シェーダー系-----//
+	// ＜頂点シェーダーオブジェクト＞
+	// 頂点データを加工して画面上の正しい位置に変換。
+	// スプライトやオブジェクトの位置、スケール、回転、変形を行う。これにより、描画対象を画面上の適切な位置に変換したり、アニメーションさせたりできる
+	ComPtr<ID3D11VertexShader> m_pVertexShader;
+
+	// ＜ピクセルシェーダーオブジェクト＞
+	// テクスチャをサンプリングして最終的な色を決定。
+	// テクスチャの色やアルファ値（透明度）を計算する。たとえば、スプライトの色を変更したり、テクスチャの一部を取り込んで表示することができる。
+	ComPtr<ID3D11PixelShader> m_pPixelShader;
+
+
+	// ＜インプットレイアウト＞
+	// スプライトの頂点データは (座標 + UV座標) を持ってるけど、3Dモデルの頂点データは (座標 + 法線 + UV座標 + タンジェント) みたいに構造が違う。
+	// DirectXは、「この頂点データのこの部分が座標で、この部分がUV座標ですよ！」っていう情報を知らないと、正しく描画できない。
+	// ので、ID3D11InputLayout で「この頂点データはこういう構造になってるよ」と教えてあげる必要がある！
+	// スプライトの頂点データを渡すために保持しておく
+	ComPtr<ID3D11InputLayout> m_pInputLayout;
+
+	// ＜ブレンドステート用変数（アルファブレンディング）＞
+	// アルファ値をどの具合にブレンド(混ぜる)するかの「ブレンド方法」 を決める必要がある。
+	// 単純に「このオブジェクトは半透明だよ！」と設定しても、どうやって透明度を計算するかが決まっていなければ、正しく描画できない。
+	ComPtr<ID3D11BlendState> m_pBlendState;
+
+	// ＜サンプラー用変数＞
+	// 「テクスチャの拡大・縮小・フィルタリング方法」を指定する
+	// テクスチャを正しく表示するために、どんな補間方法を使うか を指定する必要がある。
+	// 設定しないと、意図しない表示になったり、ガタガタの見た目になる可能性がある。
+	ComPtr<ID3D11SamplerState> m_pSampler;
+
+	// テクスチャが縦横に何分割されているか
 	XMINT2 m_Split = { 1,1 };
 
-	//左上から何段目を切り抜いて表示するか
+	// 左上から何段目を切り抜いて表示するか
 	XMINT2 m_Number = { 0,0 };
 };
 

@@ -117,6 +117,9 @@ HRESULT D3D11::Init(HWND hwnd)
 	m_pDeviceContext->RSSetViewports(1, &viewport);
 
 	// インプットレイアウト作成
+	// POSITION → XMFLOAT3 だから DXGI_FORMAT_R32G32B32_FLOAT
+	// TEXCOORD → XMFLOAT2 だから DXGI_FORMAT_R32G32_FLOAT
+	// 0, 12 の部分で、それぞれのデータがバッファ内でどこにあるかを指定している
 	D3D11_INPUT_ELEMENT_DESC layout[]
 	{
 		// 位置座標があるということを伝える
