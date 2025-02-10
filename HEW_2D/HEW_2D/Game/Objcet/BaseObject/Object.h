@@ -136,11 +136,3 @@ protected:
 	std::unordered_map<std::type_index, std::unique_ptr<IComponent>> m_Components;
 
 };
-
-//Object::Object()
-//{
-//}
-//
-//Object::~Object()
-//{
-//}

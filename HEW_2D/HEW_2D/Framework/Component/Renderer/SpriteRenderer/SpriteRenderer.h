@@ -17,7 +17,10 @@ class SpriteRenderer :public IComponent
 {
 public:
 	SpriteRenderer() = delete;
-	SpriteRenderer(GameObject* _Owner) :IComponent(_Owner) {};
+	SpriteRenderer(GameObject* _Owner) :IComponent(_Owner) 
+	{
+
+	}
 	
 	/**
 	 * @brief デストラクタ
@@ -60,7 +63,8 @@ private:
 	・スプライト画像一枚ならtexture2D使わなくてもいいけど、別の画像を保持させておきたい場合、texture2dを持たせておくべきってこと？（これは配列かな？わかんないけど。）
 	　で、基本的にはtexture2dとsrvはセットで持たせておくっていう認識でOK？
 	*/
-	// texture2dも対応付けて持たさないとダメ
+	// 複数画像を使いたい場合(ミップマップ(解像度ごとに画像を分けて管理)とか)、texture2dも対応付けて持たさないとダメ
+	// →今回は画像ファイルから直接SRVを作るのでTexture2Dは使わない
 	ComPtr<ID3D11ShaderResourceView> m_pTextureView;
 
 
