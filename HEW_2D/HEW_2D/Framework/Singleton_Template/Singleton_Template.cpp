@@ -3,10 +3,10 @@
 template <class T>
 T& Singleton<T>::GetInstance(void)
 {
-	// 静的ポインタ変数としてシングルトンのインスタンスを保持する
+	// 静的変数としてシングルトンのインスタンスを保持する
 	static T Instance;
 
-	// インスタンスを返す
+	// インスタンスの参照を返す
 	return Instance;
 }
 
