@@ -20,7 +20,7 @@ void TextureManager::Init(void)
 	//! 依存性注入？そもそもD3D11クラスを存在させておくべきかどうか。切り分けて別クラスにしてしまったほうがいいのか？
 	for (auto& tex : Filepath_Texture)
 	{
-		// 
+		// テクスチャのパスを読み込む
 		HRESULT hr = DirectX::CreateWICTextureFromFileEx(D3d11.GetDevice(), D3d11.GetDeviceContext(), tex.second, 0, D3D11_USAGE_DEFAULT,
 			D3D11_BIND_SHADER_RESOURCE, 0, 0, DirectX::WIC_LOADER_IGNORE_SRGB, nullptr, &m_pTextureView);
 		if (FAILED(hr))

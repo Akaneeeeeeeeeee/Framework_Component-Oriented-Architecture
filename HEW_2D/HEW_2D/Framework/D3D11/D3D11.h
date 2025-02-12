@@ -1,6 +1,7 @@
 #pragma once
 #include "../Window/Window.h"
 
+using namespace Microsoft::WRL;
 
 //////////////////////////////////////////////////
 //				DirectXフレームワーク				//
@@ -40,30 +41,29 @@ private:
 	// メンバ変数（宣言したcpp内でのみ有効→どこでも使いたい場合はextern（外部参照）を使う）
 	//--------------------------------------------------------------------------------------
 	// ※ID3D11で始まるポインタ型の変数は、解放する必要がある
-	// デバイス＝DirectXの各種機能を作る
-	ID3D11Device* m_pDevice;
-	// コンテキスト＝描画関連を司る機能
-	ID3D11DeviceContext* m_pDeviceContext;
-	// スワップチェイン＝ダブルバッファ機能
-	IDXGISwapChain* m_pSwapChain;
-	// レンダーターゲット＝描画先を表す機能
-	ID3D11RenderTargetView* m_pRenderTargetView;
-	// デプスバッファ
-	ID3D11DepthStencilView* m_pDepthStencilView;
+	// デバイス＝DirectXの各種機能を作る(これ一番重要。これがないと↓のGPUリソース(テクスチャ、バッファ、シェーダーなど)が作れない！)
+	ComPtr<ID3D11Device> m_pDevice;
+	// コンテキスト＝描画関連を司る機能(描画を実行するための機能、っていう感じ)
+	ComPtr<ID3D11DeviceContext> m_pDeviceContext;
+	// スワップチェイン＝ダブルバッファ機能(これはそのまま。現在描画中の画面の後ろで新しい画面を作っておいて、それを切り替える。)
+	ComPtr<IDXGISwapChain> m_pSwapChain;
+	// レンダーターゲット＝描画先を表す機能(GPUが描画する「最終的な出力先」を決める。例えば「画面全体に描画する」のか、「一部のテクスチャに描画する」のかを決める。)
+	ComPtr<ID3D11RenderTargetView> m_pRenderTargetView;
+	// デプスバッファ＝Z値（奥行き情報）を管理する。近いオブジェクトを手前に、遠いオブジェクトを奥に描画。
+	ComPtr<ID3D11DepthStencilView> m_pDepthStencilView;
 	// インプットレイアウト
-	ID3D11InputLayout* m_pInputLayout;
+	ComPtr<ID3D11InputLayout> m_pInputLayout;
 	// 頂点シェーダーオブジェクト
-	ID3D11VertexShader* m_pVertexShader;
+	ComPtr<ID3D11VertexShader> m_pVertexShader;
 	// ピクセルシェーダーオブジェクト
-	ID3D11PixelShader* m_pPixelShader;
+	ComPtr<ID3D11PixelShader> m_pPixelShader;
 	// サンプラー用変数
-	ID3D11SamplerState* m_pSampler;
+	ComPtr<ID3D11SamplerState> m_pSampler;
 	// 定数バッファ用変数
-	ID3D11Buffer* m_pConstantBuffer;
+	ComPtr<ID3D11Buffer> m_pConstantBuffer;
 	// ブレンドステート用変数（アルファブレンディング）
-	ID3D11BlendState* m_pBlendState;
+	ComPtr<ID3D11BlendState> m_pBlendState;
 
-	//ID3D11ConstantBuffer* m_pConstantBuffer;
 };
 
 
