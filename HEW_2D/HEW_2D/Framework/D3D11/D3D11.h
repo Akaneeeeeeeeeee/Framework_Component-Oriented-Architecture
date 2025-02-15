@@ -51,19 +51,8 @@ private:
 	ComPtr<ID3D11RenderTargetView> m_pRenderTargetView;
 	// デプスバッファ＝Z値（奥行き情報）を管理する。近いオブジェクトを手前に、遠いオブジェクトを奥に描画。
 	ComPtr<ID3D11DepthStencilView> m_pDepthStencilView;
-	// インプットレイアウト
-	ComPtr<ID3D11InputLayout> m_pInputLayout;
-	// 頂点シェーダーオブジェクト
-	ComPtr<ID3D11VertexShader> m_pVertexShader;
-	// ピクセルシェーダーオブジェクト
-	ComPtr<ID3D11PixelShader> m_pPixelShader;
-	// サンプラー用変数
-	ComPtr<ID3D11SamplerState> m_pSampler;
 	// 定数バッファ用変数
 	ComPtr<ID3D11Buffer> m_pConstantBuffer;
-	// ブレンドステート用変数（アルファブレンディング）
-	ComPtr<ID3D11BlendState> m_pBlendState;
-
 };
 
 

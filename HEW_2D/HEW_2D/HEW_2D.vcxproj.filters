@@ -168,6 +168,9 @@
     <Filter Include="フレームワーク\シングルトンテンプレート">
       <UniqueIdentifier>{f4aff7b2-04d9-45b5-91d2-e024f0219fa7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="フレームワーク\コンポーネント\描画機能\シェーダー">
+      <UniqueIdentifier>{cec0e1b5-0aba-4ca6-ba6f-2f4058fd3ffa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Framework\Input\Input.cpp">
@@ -299,6 +302,9 @@
     <ClCompile Include="Framework\Singleton_Template\Singleton_Template.cpp">
       <Filter>フレームワーク\シングルトンテンプレート</Filter>
     </ClCompile>
+    <ClCompile Include="Framework\Component\Renderer\Shader\Shader.cpp">
+      <Filter>フレームワーク\コンポーネント\描画機能\シェーダー</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\D3D11\D3D11.h">
@@ -429,6 +435,9 @@
     </ClInclude>
     <ClInclude Include="Framework\Singleton_Template\Singleton_Template.h">
       <Filter>フレームワーク\シングルトンテンプレート</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Component\Renderer\Shader\Shader.h">
+      <Filter>フレームワーク\コンポーネント\描画機能\シェーダー</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

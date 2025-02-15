@@ -132,7 +132,7 @@ HRESULT D3D11::Init(HWND hwnd)
 	unsigned int numElements = ARRAYSIZE(layout);
 
 	// 頂点シェーダーオブジェクトを生成、同時に頂点レイアウトも生成
-	hr = CreateVertexShader(m_pDevice, "Shader/VertexShader.hlsl", "vs_main", "vs_5_0",
+	hr = CreateVertexShader(m_pDevice.Get(), "Shader/VertexShader.hlsl", "vs_main", "vs_5_0",
 		layout, numElements, &m_pVertexShader, &m_pInputLayout);
 	if (FAILED(hr)) {
 		MessageBoxA(NULL, "CreateVertexShader error", "error", MB_OK);
@@ -140,7 +140,7 @@ HRESULT D3D11::Init(HWND hwnd)
 	}
 
 	// ピクセルシェーダーオブジェクトを生成
-	hr = CreatePixelShader(m_pDevice, "Shader/PixelShader.hlsl", "ps_main", "ps_5_0", &m_pPixelShader);
+	hr = CreatePixelShader(m_pDevice.Get(), "Shader/PixelShader.hlsl", "ps_main", "ps_5_0", &m_pPixelShader);
 	if (FAILED(hr)) {
 		MessageBoxA(NULL, "CreatePixelShader error", "error", MB_OK);
 		return E_FAIL;
