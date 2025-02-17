@@ -157,11 +157,12 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="Framework\D3D11\D3D11.cpp" />
+    <ClCompile Include="Framework\DX11Helper\dx11helper.cpp" />
     <ClCompile Include="Framework\Input\Input.cpp" />
+    <ClCompile Include="Framework\ResourceManager\ResourceManager.cpp" />
     <ClCompile Include="Framework\Scene\IScene.cpp" />
     <ClCompile Include="Framework\Singleton_Template\Singleton_Template.cpp" />
     <ClCompile Include="Framework\Sound\sound.cpp" />
-    <ClCompile Include="Framework\TextureManager\TextureManager.cpp" />
     <ClCompile Include="Framework\Texture\Texture.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
@@ -219,11 +220,12 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="Framework\D3D11\D3D11.h" />
+    <ClInclude Include="Framework\DX11Helper\dx11helper.h" />
     <ClInclude Include="Framework\Input\Input.h" />
+    <ClInclude Include="Framework\ResourceManager\ResourceManager.h" />
     <ClInclude Include="Framework\Scene\IScene.h" />
     <ClInclude Include="Framework\Singleton_Template\Singleton_Template.h" />
     <ClInclude Include="Framework\Sound\sound.h" />
-    <ClInclude Include="Framework\TextureManager\TextureManager.h" />
     <ClInclude Include="Framework\Texture\Texture.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>

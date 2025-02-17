@@ -13,7 +13,18 @@ public:
 	Shader();
 	~Shader();
 
-	void Init(void);
+	// 初期化
+	void Init(const std::string& vsFile, const std::string& vsEntryPoint,
+		const std::string& psFile, const std::string& psEntryPoint, D3D11_INPUT_ELEMENT_DESC* layout, UINT numElements);
+	
+	// 更新
+	void Update(void);
+	
+	// 終了
+	void Uninit(void);
+
+	ID3D11VertexShader* GetVertexShader(void);
+	ID3D11PixelShader* GetPixelShader(void);
 
 private:
 	//-----シェーダー系-----//

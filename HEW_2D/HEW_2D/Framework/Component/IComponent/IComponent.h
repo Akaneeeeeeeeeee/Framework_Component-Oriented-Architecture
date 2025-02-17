@@ -19,7 +19,7 @@ public:
 	virtual void Update(void) = 0;		// 更新
 	virtual void Uninit(void) = 0;		// 終了
 
-	void SetOwner(const GameObject& _obj);		// オブジェクトのアタッチ(参照渡し)
+	void SetOwner(GameObject& _obj);		// オブジェクトのアタッチ(参照渡し)
 	GameObject* GetOwner(void);					// アタッチ先のオブジェクトの取得
 	//void RemoveOwner(void);			// アタッチされているオブジェクトからの取り外し
 

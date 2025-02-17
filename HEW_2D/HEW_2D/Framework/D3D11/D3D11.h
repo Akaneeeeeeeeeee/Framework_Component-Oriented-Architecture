@@ -1,5 +1,6 @@
 #pragma once
 #include "../Window/Window.h"
+#include "../../Framework/Singleton_Template/Singleton_Template.h"
 
 using namespace Microsoft::WRL;
 
@@ -9,14 +10,14 @@ using namespace Microsoft::WRL;
 // TODO:ゲームクラスはD3D11クラスを継承するべき？メンバ変数にとどめておくべき？
 // TODO:2024/10/4 D3D11のInit関数内をさらに関数分けする、エラー吐いてる部分が重要なのでそこの流れを理解する
 
-class D3D11
+class D3D11 :public Singleton<D3D11>
 {
 public:
 
 	D3D11();	//! コンストラクタ
 	~D3D11();
 
-	ID3D11Device *GetDevice(void);                 //!m_Deviceのゲッター
+	ID3D11Device* GetDevice(void);                 //!m_Deviceのゲッター
 	ID3D11DeviceContext* GetDeviceContext(void);   //!m_DeviceContextのゲッター
 	IDXGISwapChain* GetSwapChain(void);            //! スワップチェイン＝ダブルバッファ機能
 	ID3D11Buffer* GetConstantBuffer(void);         //! 定数バッファ用変数
@@ -25,15 +26,15 @@ public:
 	void FinishRender(void);		// 描画終了処理
 	void Release(void);				// 終了処理
 
-	// シェーダー系生成
-	// 頂点シェーダーオブジェクトを生成、同時に頂点レイアウトも生成
-	HRESULT CreateVertexShader(ID3D11Device* device, const char* szFileName, LPCSTR szEntryPoint, LPCSTR szShaderModel,
-		D3D11_INPUT_ELEMENT_DESC* layout, unsigned int numElements, ID3D11VertexShader** ppVertexShader, ID3D11InputLayout** ppVertexLayout);
-	// ピクセルシェーダーオブジェクトを生成
-	HRESULT CreatePixelShader(ID3D11Device* device, const char* szFileName, LPCSTR szEntryPoint, LPCSTR szShaderModel, ID3D11PixelShader** ppPixelShader);
+	//// シェーダー系生成
+	//// 頂点シェーダーオブジェクトを生成、同時に頂点レイアウトも生成
+	//HRESULT CreateVertexShader(ID3D11Device* device, const char* szFileName, LPCSTR szEntryPoint, LPCSTR szShaderModel,
+	//	D3D11_INPUT_ELEMENT_DESC* layout, unsigned int numElements, ID3D11VertexShader** ppVertexShader, ID3D11InputLayout** ppVertexLayout);
+	//// ピクセルシェーダーオブジェクトを生成
+	//HRESULT CreatePixelShader(ID3D11Device* device, const char* szFileName, LPCSTR szEntryPoint, LPCSTR szShaderModel, ID3D11PixelShader** ppPixelShader);
 
-	// シェーダーコンパイル
-	HRESULT CompileShader(const char* szFileName, LPCSTR szEntryPoint, LPCSTR szShaderModel, void** ShaderObject, size_t& ShaderObjectSize, ID3DBlob** ppBlobOut);
+	//// シェーダーコンパイル
+	//HRESULT CompileShader(const char* szFileName, LPCSTR szEntryPoint, LPCSTR szShaderModel, void** ShaderObject, size_t& ShaderObjectSize, ID3DBlob** ppBlobOut);
 
 private:
 
@@ -53,6 +54,17 @@ private:
 	ComPtr<ID3D11DepthStencilView> m_pDepthStencilView;
 	// 定数バッファ用変数
 	ComPtr<ID3D11Buffer> m_pConstantBuffer;
+
+	// ＜ブレンドステート用変数（アルファブレンディング）＞
+	// アルファ値をどの具合にブレンド(混ぜる)するかの「ブレンド方法」 を決める必要がある。
+	// 単純に「このオブジェクトは半透明だよ！」と設定しても、どうやって透明度を計算するかが決まっていなければ、正しく描画できない。
+	ComPtr<ID3D11BlendState> m_pBlendState;
+
+	// ＜サンプラー用変数＞
+	// 「テクスチャの拡大・縮小・フィルタリング方法」を指定する
+	// テクスチャを正しく表示するために、どんな補間方法を使うか を指定する必要がある。
+	// 設定しないと、意図しない表示になったり、ガタガタの見た目になる可能性がある。
+	ComPtr<ID3D11SamplerState> m_pSampler;
 };
 
 

@@ -162,14 +162,17 @@
     <Filter Include="フレームワーク\コンポーネント\描画機能\Canvas">
       <UniqueIdentifier>{3b15213a-59b7-4839-90d6-ea085dfc2ee8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="フレームワーク\テクスチャ管理">
-      <UniqueIdentifier>{d582a844-00ea-4d3a-9c2c-9744205ad2a2}</UniqueIdentifier>
-    </Filter>
     <Filter Include="フレームワーク\シングルトンテンプレート">
       <UniqueIdentifier>{f4aff7b2-04d9-45b5-91d2-e024f0219fa7}</UniqueIdentifier>
     </Filter>
     <Filter Include="フレームワーク\コンポーネント\描画機能\シェーダー">
       <UniqueIdentifier>{cec0e1b5-0aba-4ca6-ba6f-2f4058fd3ffa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="フレームワーク\DX11Helper">
+      <UniqueIdentifier>{3e97bb03-dfcb-4ec1-aa4a-dc7a75a7ee95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="フレームワーク\リソース管理">
+      <UniqueIdentifier>{d582a844-00ea-4d3a-9c2c-9744205ad2a2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -296,14 +299,17 @@
     <ClCompile Include="Framework\Component\Renderer\Canvas\Canvas.cpp">
       <Filter>フレームワーク\コンポーネント\描画機能\Canvas</Filter>
     </ClCompile>
-    <ClCompile Include="Framework\TextureManager\TextureManager.cpp">
-      <Filter>フレームワーク\テクスチャ管理</Filter>
-    </ClCompile>
     <ClCompile Include="Framework\Singleton_Template\Singleton_Template.cpp">
       <Filter>フレームワーク\シングルトンテンプレート</Filter>
     </ClCompile>
     <ClCompile Include="Framework\Component\Renderer\Shader\Shader.cpp">
       <Filter>フレームワーク\コンポーネント\描画機能\シェーダー</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\DX11Helper\dx11helper.cpp">
+      <Filter>フレームワーク\DX11Helper</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\ResourceManager\ResourceManager.cpp">
+      <Filter>フレームワーク\リソース管理</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -430,14 +436,17 @@
     <ClInclude Include="Framework\Component\Renderer\Canvas\Canvas.h">
       <Filter>フレームワーク\コンポーネント\描画機能\Canvas</Filter>
     </ClInclude>
-    <ClInclude Include="Framework\TextureManager\TextureManager.h">
-      <Filter>フレームワーク\テクスチャ管理</Filter>
-    </ClInclude>
     <ClInclude Include="Framework\Singleton_Template\Singleton_Template.h">
       <Filter>フレームワーク\シングルトンテンプレート</Filter>
     </ClInclude>
     <ClInclude Include="Framework\Component\Renderer\Shader\Shader.h">
       <Filter>フレームワーク\コンポーネント\描画機能\シェーダー</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\DX11Helper\dx11helper.h">
+      <Filter>フレームワーク\DX11Helper</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\ResourceManager\ResourceManager.h">
+      <Filter>フレームワーク\リソース管理</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

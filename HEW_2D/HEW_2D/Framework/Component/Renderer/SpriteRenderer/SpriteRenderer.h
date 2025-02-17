@@ -1,6 +1,8 @@
 #pragma once
 #include "../../IComponent/IComponent.h"
 #include "../../../D3D11/D3D11.h"
+#include "../Shader/Shader.h"
+#include "../../../ResourceManager/ResourceManager.h"
 
 using namespace DirectX::SimpleMath;
 using namespace Microsoft::WRL;
@@ -23,7 +25,7 @@ public:
 	}
 	
 	/**
-	 * @brief デストラクタ
+	 * @brief デストラクタ 
 	*/
 	~SpriteRenderer() {
 		// ComPtr(スマートポインタ)なので解放する必要はないが、一応明示的に解放しておく
@@ -37,7 +39,10 @@ public:
 	void Uninit(void) override;
 
 	// 画像と分割数をセットする
-	void SetTexture(const wchar_t* imgname, XMINT2 _Num = { 1,1 });
+	void SetTexture(TextureID _ID ,XMINT2 _split);
+
+	// シェーダーをセット
+	void SetShader(std::shared_ptr<Shader> _shader);
 
 private:
 	//! 頂点データ
@@ -48,7 +53,7 @@ private:
 
 	// ＜頂点バッファ＞
 	// 頂点データ（座標、色、UV座標、法線など）をGPUに送るためのバッファ
-	// 頂点ごとの情報を格納し、GPUに渡す。GPUはこのデータを 頂点シェーダー（Vertex Shader） に渡して処理する。
+	// 頂点ごとの情報を格納し、GPUに渡す。GPUはこのデータを 頂点シェーダー（Vertex Shader）に渡して処理する。
 	ComPtr<ID3D11Buffer> m_pVertexBuffer;
 
 	// ＜インデックスバッファ＞
@@ -71,16 +76,8 @@ private:
 	ComPtr<ID3D11ShaderResourceView> m_pTextureView;
 
 
-	// ＜ブレンドステート用変数（アルファブレンディング）＞
-	// アルファ値をどの具合にブレンド(混ぜる)するかの「ブレンド方法」 を決める必要がある。
-	// 単純に「このオブジェクトは半透明だよ！」と設定しても、どうやって透明度を計算するかが決まっていなければ、正しく描画できない。
-	ComPtr<ID3D11BlendState> m_pBlendState;
-
-	// ＜サンプラー用変数＞
-	// 「テクスチャの拡大・縮小・フィルタリング方法」を指定する
-	// テクスチャを正しく表示するために、どんな補間方法を使うか を指定する必要がある。
-	// 設定しないと、意図しない表示になったり、ガタガタの見た目になる可能性がある。
-	ComPtr<ID3D11SamplerState> m_pSampler;
+	// ＜シェーダー＞
+	std::shared_ptr<Shader> m_pShader;
 
 	// テクスチャが縦横に何分割されているか
 	XMINT2 m_Split = { 1,1 };

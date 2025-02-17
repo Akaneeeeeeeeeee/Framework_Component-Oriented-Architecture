@@ -26,7 +26,6 @@ D3D11::~D3D11()
 }
 
 
-
 //--------------------------------------------------------------------------------------
 // Direct3Dの初期化
 //--------------------------------------------------------------------------------------
@@ -116,35 +115,35 @@ HRESULT D3D11::Init(HWND hwnd)
 	viewport.MaxDepth = 1.0f;
 	m_pDeviceContext->RSSetViewports(1, &viewport);
 
-	// インプットレイアウト作成
-	// POSITION → XMFLOAT3 だから DXGI_FORMAT_R32G32B32_FLOAT
-	// TEXCOORD → XMFLOAT2 だから DXGI_FORMAT_R32G32_FLOAT
-	// 0, 12 の部分で、それぞれのデータがバッファ内でどこにあるかを指定している
-	D3D11_INPUT_ELEMENT_DESC layout[]
-	{
-		// 位置座標があるということを伝える
-		{ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
-		// 色情報があるということを伝える
-	    { "COLOR", 0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 },
-		// UV座標
-		{ "TEX", 0, DXGI_FORMAT_R32G32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 },
-	};
-	unsigned int numElements = ARRAYSIZE(layout);
+	//// インプットレイアウト作成
+	//// POSITION → XMFLOAT3 だから DXGI_FORMAT_R32G32B32_FLOAT
+	//// TEXCOORD → XMFLOAT2 だから DXGI_FORMAT_R32G32_FLOAT
+	//// 0, 12 の部分で、それぞれのデータがバッファ内でどこにあるかを指定している
+	//D3D11_INPUT_ELEMENT_DESC layout[]
+	//{
+	//	// 位置座標があるということを伝える
+	//	{ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
+	//	// 色情報があるということを伝える
+	//    { "COLOR", 0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 },
+	//	// UV座標
+	//	{ "TEX", 0, DXGI_FORMAT_R32G32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 },
+	//};
+	//unsigned int numElements = ARRAYSIZE(layout);
 
-	// 頂点シェーダーオブジェクトを生成、同時に頂点レイアウトも生成
-	hr = CreateVertexShader(m_pDevice.Get(), "Shader/VertexShader.hlsl", "vs_main", "vs_5_0",
-		layout, numElements, &m_pVertexShader, &m_pInputLayout);
-	if (FAILED(hr)) {
-		MessageBoxA(NULL, "CreateVertexShader error", "error", MB_OK);
-		return E_FAIL;
-	}
+	//// 頂点シェーダーオブジェクトを生成、同時に頂点レイアウトも生成
+	//hr = CreateVertexShader(m_pDevice.Get(), "Shader/VertexShader.hlsl", "vs_main", "vs_5_0",
+	//	layout, numElements, &m_pVertexShader, &m_pInputLayout);
+	//if (FAILED(hr)) {
+	//	MessageBoxA(NULL, "CreateVertexShader error", "error", MB_OK);
+	//	return E_FAIL;
+	//}
 
-	// ピクセルシェーダーオブジェクトを生成
-	hr = CreatePixelShader(m_pDevice.Get(), "Shader/PixelShader.hlsl", "ps_main", "ps_5_0", &m_pPixelShader);
-	if (FAILED(hr)) {
-		MessageBoxA(NULL, "CreatePixelShader error", "error", MB_OK);
-		return E_FAIL;
-	}
+	//// ピクセルシェーダーオブジェクトを生成
+	//hr = CreatePixelShader(m_pDevice.Get(), "Shader/PixelShader.hlsl", "ps_main", "ps_5_0", &m_pPixelShader);
+	//if (FAILED(hr)) {
+	//	MessageBoxA(NULL, "CreatePixelShader error", "error", MB_OK);
+	//	return E_FAIL;
+	//}
 
 	// サンプラー作成
 	// →　テクスチャをポリゴンに貼るときに、拡大縮小される際のアルゴリズム
@@ -208,16 +207,16 @@ void D3D11::StartRender()
 	float clearColor[4] = { 0.0f, 0.0f, 1.0f, 1.0f }; //red,green,blue,alpha
 
 	// 描画先のキャンバスと使用する深度バッファを指定する
-	m_pDeviceContext->OMSetRenderTargets(1, &m_pRenderTargetView, m_pDepthStencilView);
+	m_pDeviceContext->OMSetRenderTargets(1, &m_pRenderTargetView, m_pDepthStencilView.Get());
 	// 描画先キャンバスを塗りつぶす
-	m_pDeviceContext->ClearRenderTargetView(m_pRenderTargetView, clearColor);
+	m_pDeviceContext->ClearRenderTargetView(m_pRenderTargetView.Get(), clearColor);
 	// 深度バッファをリセットする
-	m_pDeviceContext->ClearDepthStencilView(m_pDepthStencilView, D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);
+	m_pDeviceContext->ClearDepthStencilView(m_pDepthStencilView.Get(), D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);
 
-	m_pDeviceContext->IASetInputLayout(m_pInputLayout);
-	m_pDeviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
-	m_pDeviceContext->VSSetShader(m_pVertexShader, NULL, 0);		// ここで描画に使うシェーダファイルを適用してる
-	m_pDeviceContext->PSSetShader(m_pPixelShader, NULL, 0);
+	//m_pDeviceContext->IASetInputLayout(m_pInputLayout);
+	//m_pDeviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
+	//m_pDeviceContext->VSSetShader(m_pVertexShader, NULL, 0);		// ここで描画に使うシェーダファイルを適用してる
+	//m_pDeviceContext->PSSetShader(m_pPixelShader, NULL, 0);
 
 	// サンプラーをピクセルシェーダーに渡す
 	m_pDeviceContext->PSSetSamplers(0, 1, &m_pSampler);
@@ -226,7 +225,7 @@ void D3D11::StartRender()
 	m_pDeviceContext->VSSetConstantBuffers(0, 1, &m_pConstantBuffer);
 
 	//ブレンドステートをセットする
-	m_pDeviceContext->OMSetBlendState( m_pBlendState, NULL, 0xffffffff);
+	m_pDeviceContext->OMSetBlendState(m_pBlendState.Get(), NULL, 0xffffffff);
 }
 
 void D3D11::FinishRender()
@@ -242,7 +241,7 @@ void D3D11::FinishRender()
 void D3D11::Release()
 {
 	if (m_pDeviceContext) m_pDeviceContext->ClearState();
-	SAFE_RELEASE(m_pBlendState);
+	/*SAFE_RELEASE(m_pBlendState);
 	SAFE_RELEASE(m_pConstantBuffer);
 	SAFE_RELEASE(m_pSampler);
 	SAFE_RELEASE(m_pPixelShader);
@@ -252,80 +251,80 @@ void D3D11::Release()
 	SAFE_RELEASE(m_pRenderTargetView);
 	SAFE_RELEASE(m_pSwapChain);
 	SAFE_RELEASE(m_pDeviceContext);
-	SAFE_RELEASE(m_pDevice);
+	SAFE_RELEASE(m_pDevice);*/
 }
 
 //--------------------------------------------------------------------------------------
 // シェーダーをファイル拡張子に合わせてコンパイル
 //--------------------------------------------------------------------------------------
-HRESULT D3D11::CompileShader(const char* szFileName, LPCSTR szEntryPoint, LPCSTR szShaderModel, void** ShaderObject, size_t& ShaderObjectSize, ID3DBlob** ppBlobOut)
-{
-	*ppBlobOut = nullptr;
-	int aaa = strlen(szFileName);
-	//拡張子をhlslからcsoに変更したファイル名を作成
-	char* csoFileName = new char[strlen(szFileName)];
-	const char* dot = strrchr(szFileName, '.'); // 最後の"."を探す
-	if (dot != NULL) {
-		size_t prefixLength = dot - szFileName;
-		strncpy_s(csoFileName, prefixLength + 1, szFileName, _TRUNCATE); // 拡張子以外をコピー
-		strcpy_s(csoFileName + prefixLength, 5, ".cso"); // 新しい拡張子を追加
-	}
-	else {
-		strcpy_s(csoFileName, strlen(szFileName), szFileName); // 拡張子がない場合はそのままコピー
-	}
-
-	FILE* fp;
-	// コンパイル済みシェーダーファイル(cso)があれば読み込む
-	if (fopen_s(&fp, csoFileName, "rb") == 0)
-	{
-		long int size = _filelength(_fileno(fp));
-		unsigned char* buffer = new unsigned char[size];
-		fread(buffer, size, 1, fp);
-		if (!buffer) return E_FAIL;
-		*ShaderObject = buffer;
-		ShaderObjectSize = size;
-		fclose(fp);
-	}
-	// コンパイル済みシェーダーファイルが無ければシェーダーファイル(hlsl)をコンパイルする
-	else
-	{
-		ID3DBlob* p1 = nullptr;
-		HRESULT hr = S_OK;
-		WCHAR	filename[512];
-		size_t 	wLen = 0;
-		int err = 0;
-
-		// char -> wcharに変換
-		setlocale(LC_ALL, "japanese");
-		err = mbstowcs_s(&wLen, filename, 512, szFileName, _TRUNCATE);
-
-		DWORD dwShaderFlags = D3DCOMPILE_ENABLE_STRICTNESS;
-#if defined( DEBUG ) || defined( _DEBUG )
-		// D3DCOMPILE_DEBUGフラグを設定すると、シェーダーにデバッグ情報が埋め込まれる
-		dwShaderFlags |= D3DCOMPILE_DEBUG;
-#endif
-
-		ID3DBlob* pErrorBlob = nullptr;
-		hr = D3DCompileFromFile(filename, nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE,
-			szEntryPoint, szShaderModel, dwShaderFlags, 0, ppBlobOut, &pErrorBlob);
-		if (FAILED(hr))
-		{
-			if (pErrorBlob != nullptr) {
-				MessageBoxA(NULL, (char*)pErrorBlob->GetBufferPointer(), "Error", MB_OK);
-			}
-			if (pErrorBlob) pErrorBlob->Release();
-			if (*ppBlobOut)(*ppBlobOut)->Release();
-			return hr;
-		}
-		if (pErrorBlob) pErrorBlob->Release();
-
-		*ShaderObject = (*ppBlobOut)->GetBufferPointer();
-		ShaderObjectSize = (*ppBlobOut)->GetBufferSize();
-	}
-
-	delete[] csoFileName;
-	return S_OK;
-}
+//HRESULT D3D11::CompileShader(const char* szFileName, LPCSTR szEntryPoint, LPCSTR szShaderModel, void** ShaderObject, size_t& ShaderObjectSize, ID3DBlob** ppBlobOut)
+//{
+//	*ppBlobOut = nullptr;
+//	int aaa = strlen(szFileName);
+//	//拡張子をhlslからcsoに変更したファイル名を作成
+//	char* csoFileName = new char[strlen(szFileName)];
+//	const char* dot = strrchr(szFileName, '.'); // 最後の"."を探す
+//	if (dot != NULL) {
+//		size_t prefixLength = dot - szFileName;
+//		strncpy_s(csoFileName, prefixLength + 1, szFileName, _TRUNCATE); // 拡張子以外をコピー
+//		strcpy_s(csoFileName + prefixLength, 5, ".cso"); // 新しい拡張子を追加
+//	}
+//	else {
+//		strcpy_s(csoFileName, strlen(szFileName), szFileName); // 拡張子がない場合はそのままコピー
+//	}
+//
+//	FILE* fp;
+//	// コンパイル済みシェーダーファイル(cso)があれば読み込む
+//	if (fopen_s(&fp, csoFileName, "rb") == 0)
+//	{
+//		long int size = _filelength(_fileno(fp));
+//		unsigned char* buffer = new unsigned char[size];
+//		fread(buffer, size, 1, fp);
+//		if (!buffer) return E_FAIL;
+//		*ShaderObject = buffer;
+//		ShaderObjectSize = size;
+//		fclose(fp);
+//	}
+//	// コンパイル済みシェーダーファイルが無ければシェーダーファイル(hlsl)をコンパイルする
+//	else
+//	{
+//		ID3DBlob* p1 = nullptr;
+//		HRESULT hr = S_OK;
+//		WCHAR	filename[512];
+//		size_t 	wLen = 0;
+//		int err = 0;
+//
+//		// char -> wcharに変換
+//		setlocale(LC_ALL, "japanese");
+//		err = mbstowcs_s(&wLen, filename, 512, szFileName, _TRUNCATE);
+//
+//		DWORD dwShaderFlags = D3DCOMPILE_ENABLE_STRICTNESS;
+//#if defined( DEBUG ) || defined( _DEBUG )
+//		// D3DCOMPILE_DEBUGフラグを設定すると、シェーダーにデバッグ情報が埋め込まれる
+//		dwShaderFlags |= D3DCOMPILE_DEBUG;
+//#endif
+//
+//		ID3DBlob* pErrorBlob = nullptr;
+//		hr = D3DCompileFromFile(filename, nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE,
+//			szEntryPoint, szShaderModel, dwShaderFlags, 0, ppBlobOut, &pErrorBlob);
+//		if (FAILED(hr))
+//		{
+//			if (pErrorBlob != nullptr) {
+//				MessageBoxA(NULL, (char*)pErrorBlob->GetBufferPointer(), "Error", MB_OK);
+//			}
+//			if (pErrorBlob) pErrorBlob->Release();
+//			if (*ppBlobOut)(*ppBlobOut)->Release();
+//			return hr;
+//		}
+//		if (pErrorBlob) pErrorBlob->Release();
+//
+//		*ShaderObject = (*ppBlobOut)->GetBufferPointer();
+//		ShaderObjectSize = (*ppBlobOut)->GetBufferSize();
+//	}
+//
+//	delete[] csoFileName;
+//	return S_OK;
+//}
 
 
 //////////////////////////////////
@@ -335,91 +334,91 @@ HRESULT D3D11::CompileShader(const char* szFileName, LPCSTR szEntryPoint, LPCSTR
 //--------------------------------------------------------------------------------------
 // 頂点シェーダーオブジェクトを生成
 //--------------------------------------------------------------------------------------
-HRESULT D3D11::CreateVertexShader(ID3D11Device* device, const char* szFileName, LPCSTR szEntryPoint, LPCSTR szShaderModel,
-	D3D11_INPUT_ELEMENT_DESC* layout, unsigned int numElements, ID3D11VertexShader** ppVertexShader, ID3D11InputLayout** ppVertexLayout)
-{
-	HRESULT   hr;
-	ID3DBlob* pBlob = nullptr;
-	void* ShaderObject;
-	size_t	  ShaderObjectSize;
-
-	// ファイルの拡張子に合わせてコンパイル
-	hr = CompileShader(szFileName, szEntryPoint, szShaderModel, &ShaderObject, ShaderObjectSize, &pBlob);
-	if (FAILED(hr))
-	{
-		if (pBlob)pBlob->Release();
-		return E_FAIL;
-	}
-
-	// 頂点シェーダーを生成
-	hr = device->CreateVertexShader(ShaderObject, ShaderObjectSize, NULL, ppVertexShader);
-	if (FAILED(hr))
-	{
-		if (pBlob)pBlob->Release();
-		return E_FAIL;
-	}
-
-	// 頂点データ定義生成
-	hr = device->CreateInputLayout(
-		layout,
-		numElements,
-		ShaderObject,
-		ShaderObjectSize,
-		ppVertexLayout);
-	if (FAILED(hr)) {
-		MessageBoxA(NULL, "CreateInputLayout error", "error", MB_OK);
-		pBlob->Release();
-		return E_FAIL;
-	}
-
-	return S_OK;
-}
+//HRESULT D3D11::CreateVertexShader(ID3D11Device* device, const char* szFileName, LPCSTR szEntryPoint, LPCSTR szShaderModel,
+//	D3D11_INPUT_ELEMENT_DESC* layout, unsigned int numElements, ID3D11VertexShader** ppVertexShader, ID3D11InputLayout** ppVertexLayout)
+//{
+//	HRESULT   hr;
+//	ID3DBlob* pBlob = nullptr;
+//	void* ShaderObject;
+//	size_t	  ShaderObjectSize;
+//
+//	// ファイルの拡張子に合わせてコンパイル
+//	hr = CompileShader(szFileName, szEntryPoint, szShaderModel, &ShaderObject, ShaderObjectSize, &pBlob);
+//	if (FAILED(hr))
+//	{
+//		if (pBlob)pBlob->Release();
+//		return E_FAIL;
+//	}
+//
+//	// 頂点シェーダーを生成
+//	hr = device->CreateVertexShader(ShaderObject, ShaderObjectSize, NULL, ppVertexShader);
+//	if (FAILED(hr))
+//	{
+//		if (pBlob)pBlob->Release();
+//		return E_FAIL;
+//	}
+//
+//	// 頂点データ定義生成
+//	hr = device->CreateInputLayout(
+//		layout,
+//		numElements,
+//		ShaderObject,
+//		ShaderObjectSize,
+//		ppVertexLayout);
+//	if (FAILED(hr)) {
+//		MessageBoxA(NULL, "CreateInputLayout error", "error", MB_OK);
+//		pBlob->Release();
+//		return E_FAIL;
+//	}
+//
+//	return S_OK;
+//}
 
 //--------------------------------------------------------------------------------------
 // ピクセルシェーダーオブジェクトを生成
 //--------------------------------------------------------------------------------------
-HRESULT D3D11::CreatePixelShader(ID3D11Device* device, const char* szFileName, LPCSTR szEntryPoint, LPCSTR szShaderModel, ID3D11PixelShader** ppPixelShader)
-{
-	HRESULT   hr;
-	ID3DBlob* pBlob = nullptr;
-	void* ShaderObject;
-	size_t	  ShaderObjectSize;
-
-	// ファイルの拡張子に合わせてコンパイル
-	hr = CompileShader(szFileName, szEntryPoint, szShaderModel, &ShaderObject, ShaderObjectSize, &pBlob);
-	if (FAILED(hr))
-	{
-		return E_FAIL;
-	}
-
-	// ピクセルシェーダーを生成
-	hr = device->CreatePixelShader(ShaderObject, ShaderObjectSize, NULL, ppPixelShader);
-	if (FAILED(hr))
-	{
-		if (pBlob)pBlob->Release();
-		return E_FAIL;
-	}
-
-	return S_OK;
-}
+//HRESULT D3D11::CreatePixelShader(ID3D11Device* device, const char* szFileName, LPCSTR szEntryPoint, LPCSTR szShaderModel, ID3D11PixelShader** ppPixelShader)
+//{
+//	HRESULT   hr;
+//	ID3DBlob* pBlob = nullptr;
+//	void* ShaderObject;
+//	size_t	  ShaderObjectSize;
+//
+//	// ファイルの拡張子に合わせてコンパイル
+//	hr = CompileShader(szFileName, szEntryPoint, szShaderModel, &ShaderObject, ShaderObjectSize, &pBlob);
+//	if (FAILED(hr))
+//	{
+//		return E_FAIL;
+//	}
+//
+//	// ピクセルシェーダーを生成
+//	hr = device->CreatePixelShader(ShaderObject, ShaderObjectSize, NULL, ppPixelShader);
+//	if (FAILED(hr))
+//	{
+//		if (pBlob)pBlob->Release();
+//		return E_FAIL;
+//	}
+//
+//	return S_OK;
+//}
 
 
 ID3D11Device* D3D11::GetDevice(void)
 {
-	return m_pDevice;
+	return m_pDevice.Get();
 }
 
 ID3D11DeviceContext* D3D11::GetDeviceContext(void)
 {
-	return m_pDeviceContext;
+	return m_pDeviceContext.Get();
 }
 
 IDXGISwapChain* D3D11::GetSwapChain(void)
 {
-	return m_pSwapChain;
+	return m_pSwapChain.Get();
 }
 
 ID3D11Buffer* D3D11::GetConstantBuffer(void)
 {
-	return m_pConstantBuffer;
+	return m_pConstantBuffer.Get();
 }

@@ -9,40 +9,77 @@
 #include <stdio.h>
 #include <string.h>
 #include "../../../D3D11/D3D11.h"
+#include "../../../DX11Helper/dx11helper.h"
 
 
-
-void Shader::Init(void)
+/**
+ * @brief 初期化
+ * @return 初期化の結果
+ * 
+ * ここでシェーダーを作成
+*/
+void Shader::Init(const std::string& vsFile, const std::string& vsEntryPoint, 
+	const std::string& psFile, const std::string& psEntryPoint, D3D11_INPUT_ELEMENT_DESC* layout, UINT numElements)
 {
-	HRESULT hr;
+	bool sts;
 
-	// インプットレイアウト作成
-	// POSITION → XMFLOAT3 だから DXGI_FORMAT_R32G32B32_FLOAT
-	// TEXCOORD → XMFLOAT2 だから DXGI_FORMAT_R32G32_FLOAT
-	// 0, 12 の部分で、それぞれのデータがバッファ内でどこにあるかを指定している
-	D3D11_INPUT_ELEMENT_DESC layout[]
-	{
-		// 位置座標があるということを伝える
-		{ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
-		// 色情報があるということを伝える
-		{ "COLOR", 0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 },
-		// UV座標
-		{ "TEX", 0, DXGI_FORMAT_R32G32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 },
-	};
-	unsigned int numElements = ARRAYSIZE(layout);
+	//// インプットレイアウト作成
+	//// POSITION → XMFLOAT3 だから DXGI_FORMAT_R32G32B32_FLOAT
+	//// TEXCOORD → XMFLOAT2 だから DXGI_FORMAT_R32G32_FLOAT
+	//// 0, 12 の部分で、それぞれのデータがバッファ内でどこにあるかを指定している
+	//D3D11_INPUT_ELEMENT_DESC layout[]
+	//{
+	//	// 位置座標があるということを伝える
+	//	{ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
+	//	// 色情報があるということを伝える
+	//	{ "COLOR", 0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 },
+	//	// UV座標
+	//	{ "TEX", 0, DXGI_FORMAT_R32G32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 },
+	//};
 
+
+	// 各シェーダーをコンパイルして作成(バージョン名は決まってるので引数は使わない(○○_5.0とか))
 	// 頂点シェーダーオブジェクトを生成、同時に頂点レイアウトも生成
-	hr = D3D11::CreateVertexShader(m_pDevice.Get(), "Shader/VertexShader.hlsl", "vs_main", "vs_5_0",
-		layout, numElements, &m_pVertexShader, &m_pInputLayout);
-	if (FAILED(hr)) {
+	sts = CreateVertexShader(D3D11::GetInstance().GetDevice(), vsFile.c_str(), vsEntryPoint.c_str(),
+		"vs_5_0", layout, numElements, &m_pVertexShader, &m_pVertexLayout);
+	if (!sts) {
 		MessageBoxA(NULL, "CreateVertexShader error", "error", MB_OK);
-		return E_FAIL;
+		return;
 	}
 
 	// ピクセルシェーダーオブジェクトを生成
-	hr = CreatePixelShader(m_pDevice.Get(), "Shader/PixelShader.hlsl", "ps_main", "ps_5_0", &m_pPixelShader);
-	if (FAILED(hr)) {
+	sts = CreatePixelShader(D3D11::GetInstance().GetDevice(), psFile.c_str(), psEntryPoint.c_str(), "ps_5_0", &m_pPixelShader);
+	if (!sts) {
 		MessageBoxA(NULL, "CreatePixelShader error", "error", MB_OK);
-		return E_FAIL;
+		return;
 	}
+
+}
+
+
+void Shader::Update(void)
+{
+	// 描画のための情報をGPUに渡す
+	auto devicecontext = D3D11::GetInstance().GetDeviceContext();
+	devicecontext->IASetInputLayout(m_pVertexLayout.Get());
+	devicecontext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
+	devicecontext->VSSetShader(m_pVertexShader.Get(), NULL, 0);		// ここで描画に使うシェーダファイルを適用してる
+	devicecontext->PSSetShader(m_pPixelShader.Get(), NULL, 0);
+}
+
+
+void Shader::Uninit(void)
+{
+
+}
+
+
+ID3D11VertexShader* Shader::GetVertexShader(void)
+{
+	return m_pVertexShader.Get();
+}
+
+ID3D11PixelShader* Shader::GetPixelShader(void)
+{
+	return m_pPixelShader.Get();
 }
