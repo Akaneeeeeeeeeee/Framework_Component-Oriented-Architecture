@@ -28,15 +28,27 @@ HRESULT ResourceManager::Init(void)
 	for (auto& tex : Filepath_Texture)
 	{
 		// テクスチャのパスを読み込む
-		HRESULT hr = CreateWICTextureFromFileEx(D3D11::GetInstance().GetDevice(), D3D11::GetInstance().GetDeviceContext(), tex.second.c_str(), 0, D3D11_USAGE_DEFAULT,
-			D3D11_BIND_SHADER_RESOURCE, 0, 0, DirectX::WIC_LOADER_IGNORE_SRGB, nullptr, m_SRVs[tex.first].GetAddressOf());
+		HRESULT hr = CreateWICTextureFromFileEx(
+			D3D11::GetInstance().GetDevice(),
+			D3D11::GetInstance().GetDeviceContext(),
+			tex.second.c_str(),
+			0,
+			D3D11_USAGE_DEFAULT,
+			D3D11_BIND_SHADER_RESOURCE,
+			0,
+			0,
+			DirectX::WIC_LOADER_IGNORE_SRGB,
+			nullptr,
+			m_SRVs[tex.first].GetAddressOf()
+		);
+
 		if (FAILED(hr))
 		{
 			MessageBoxA(NULL, "テクスチャ読み込み失敗", "エラー", MB_ICONERROR | MB_OK);
 			return hr;
 		}
 		// 作成したSRVをmapに登録
-		m_SRVs.emplace(tex);
+		m_SRVs.emplace(tex.first, tex.second);
 	}
 
 	//////////////////////////////////////
@@ -107,6 +119,7 @@ Shader* ResourceManager::GetShader(const ShaderID& _ID)
 */
 void ResourceManager::Uninit(void)
 {
+	m_Shaders.clear();
 	m_SRVs.clear();
 }
 
