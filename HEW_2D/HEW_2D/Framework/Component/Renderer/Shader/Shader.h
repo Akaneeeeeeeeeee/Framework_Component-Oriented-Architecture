@@ -10,8 +10,8 @@ using namespace Microsoft::WRL;
 class Shader
 {
 public:
-	Shader();
-	~Shader();
+	Shader() {};
+	~Shader() {};
 
 	// 初期化
 	void Init(const std::string& vsFile, const std::string& vsEntryPoint,
@@ -46,11 +46,3 @@ private:
 	// スプライトの頂点データを渡すために保持しておく(これは基本頂点シェーダーとセットで使う)
 	ComPtr<ID3D11InputLayout> m_pVertexLayout;
 };
-
-Shader::Shader()
-{
-}
-
-Shader::~Shader()
-{
-}

@@ -9,9 +9,7 @@
 class TransformComponent :public IComponent
 {
 public:
-	TransformComponent(GameObject* _Owner) :IComponent(_Owner) {
-
-	}
+	TransformComponent(Object* _Owner) :IComponent(_Owner) {};
 
 	~TransformComponent(){}
 

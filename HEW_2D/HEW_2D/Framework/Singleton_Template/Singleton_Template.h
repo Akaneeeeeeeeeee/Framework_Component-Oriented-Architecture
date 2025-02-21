@@ -12,7 +12,14 @@ class Singleton
 {
 public:
 	// インスタンス取得関数
-	static T& GetInstance(void);
+	static T& GetInstance(void)
+	{
+		// 静的変数としてシングルトンのインスタンスを保持する
+		static T Instance;
+
+		// インスタンスの参照を返す
+		return Instance;
+	}
 
 protected:
 	// 外部からのインスタンス生成と削除をさせない

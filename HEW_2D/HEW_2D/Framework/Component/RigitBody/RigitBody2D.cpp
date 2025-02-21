@@ -1,5 +1,6 @@
 #include "RigitBody2D.h"
 
+
 /**
  * @brief 初期化
  * @param
@@ -28,7 +29,7 @@ void RigidBody2D::Update(void)
 	if (IsKinematic)
 	{ 
 		// 明示的に速度をリセットしておく
-		m_Velocity = Vector3::Zero;
+		m_Velocity = Vector3(0.0f, 0.0f, 0.0f);
 		return;
 	}
 
@@ -48,7 +49,7 @@ void RigidBody2D::Update(void)
 	// a = F(力) / m(質量) なので、質量 m が大きいほど加速しにくい
 
 	// 三項演算子					条件式			真の場合				偽の場合
-	Vector3 acceleration = (m_Mass > 0) ? (m_Force / m_Mass) : Vector3::Zero;
+	Vector3 acceleration = (m_Mass > 0) ? (m_Force / m_Mass) : Vector3(0.0f, 0.0f, 0.0f);;
 
 	// 速度の更新
 	// 速度 v に従ってオブジェクトを移動
@@ -57,7 +58,7 @@ void RigidBody2D::Update(void)
 	m_Velocity += acceleration;
 
 	// 力のリセット(ここまでに呼んだaddforceのforceを一番最後のもので上書きしないためにここで一回だけリセットする)
-	m_Force = Vector3::Zero;
+	m_Force = Vector3(0.0f, 0.0f, 0.0f);;
 
 }
 

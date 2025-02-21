@@ -7,20 +7,20 @@
 /// →それによってコンポーネントからアタッチしているオブジェクトにアクセスすることができる
 /// </summary>
 
-class GameObject;
+class Object;
 
 class IComponent
 {
 public:
-	IComponent(GameObject* _Owner) :m_pOwner(_Owner) {};
+	IComponent(Object* _Owner) :m_pOwner(_Owner) {};
 	virtual ~IComponent() { m_pOwner = nullptr; }
 
 	virtual void Init(void) = 0;		// 初期化
 	virtual void Update(void) = 0;		// 更新
 	virtual void Uninit(void) = 0;		// 終了
 
-	void SetOwner(GameObject& _obj);		// オブジェクトのアタッチ(参照渡し)
-	GameObject* GetOwner(void);					// アタッチ先のオブジェクトの取得
+	void SetOwner(Object& _obj);		// オブジェクトのアタッチ(参照渡し)
+	Object* GetOwner(void);					// アタッチ先のオブジェクトの取得
 	//void RemoveOwner(void);			// アタッチされているオブジェクトからの取り外し
 
 protected:
@@ -28,7 +28,7 @@ protected:
 	// 参照→nullを使えない→オブジェクトの方が先に削除された場合、未定義動作になるかもなので×
 	// unique,shared→コンポーネントがオブジェクトの主有権を持つ必要がないので×
 	// →ポインタにする
-	GameObject* m_pOwner;				// アタッチされているオブジェクトのポインタ(単一なのでunique_ptr？)
+	Object* m_pOwner;				// アタッチされているオブジェクトのポインタ(単一なのでunique_ptr？)
 };
 
 

@@ -27,6 +27,8 @@ HRESULT ResourceManager::Init(void)
 	//! 依存性注入？そもそもD3D11クラスを存在させておくべきかどうか。切り分けて別クラスにしてしまったほうがいいのか？
 	for (auto& tex : Filepath_Texture)
 	{
+		// map登録用の変数作成
+		ComPtr<ID3D11ShaderResourceView> srv;
 		// テクスチャのパスを読み込む
 		HRESULT hr = CreateWICTextureFromFileEx(
 			D3D11::GetInstance().GetDevice(),
@@ -39,7 +41,7 @@ HRESULT ResourceManager::Init(void)
 			0,
 			DirectX::WIC_LOADER_IGNORE_SRGB,
 			nullptr,
-			m_SRVs[tex.first].GetAddressOf()
+			srv.GetAddressOf()
 		);
 
 		if (FAILED(hr))
@@ -47,8 +49,9 @@ HRESULT ResourceManager::Init(void)
 			MessageBoxA(NULL, "テクスチャ読み込み失敗", "エラー", MB_ICONERROR | MB_OK);
 			return hr;
 		}
+
 		// 作成したSRVをmapに登録
-		m_SRVs.emplace(tex.first, tex.second);
+		m_SRVs.emplace(tex.first, std::move(srv));
 	}
 
 	//////////////////////////////////////

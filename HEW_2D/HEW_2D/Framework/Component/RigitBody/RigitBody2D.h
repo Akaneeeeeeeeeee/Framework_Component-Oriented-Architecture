@@ -81,7 +81,7 @@ update ÇÃó¨ÇÍÇÕéüÇÃÇÊÇ§Ç…Ç»ÇËÇ‹Ç∑ÅF
 class RigidBody2D :public IComponent
 {
 public:
-    RigidBody2D(GameObject* _owner) :IComponent(_owner)
+    RigidBody2D(Object* _owner) :IComponent(_owner)
     {
         m_Velocity = { 0.0f };
         m_Direction = { 0.0f };

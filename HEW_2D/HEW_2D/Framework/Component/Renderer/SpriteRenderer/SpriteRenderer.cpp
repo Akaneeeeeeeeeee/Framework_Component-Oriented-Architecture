@@ -1,5 +1,5 @@
 #include "SpriteRenderer.h"
-
+#include "../../../ResourceManager/ResourceManager.h"
 
 
 void SpriteRenderer::Init(void)

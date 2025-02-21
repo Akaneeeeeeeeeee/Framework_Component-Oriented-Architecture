@@ -73,49 +73,6 @@ public:
 		Objects.emplace(std::move(key), std::make_shared<T>(D3d11));
 	}
 
-	/**
-	 * @brief すでに完成したオブジェクトをタグと合わせて追加する関数
-	 * @tparam T オブジェクトの型
-	 * @param  オブジェクトタグ
-	 * @param  オブジェクトのユニークポインタ
-	*/
-	//template <typename T>
-	//void AddObject(const Tag& _Tag, std::shared_ptr<T>&& _Object) {
-	//	// 今回は弾幕シューティングなので、オブジェクトタグが弾の場合、それぞれ名前の後ろに新しく番号を振ってオブジェクト追加する
-	//	// 弾か敵が追加されようとしている場合
-	//	if (_Tag == PLAYER_BULLET || _Tag == ENEMY_BULLET || _Tag == ENEMY)
-	//	{
-	//		// 名前を設定
-	//		std::string name;
-	//		switch (_Tag)
-	//		{
-	//		case PLAYER_BULLET:
-	//			//TODO:弾オブジェクトごとに番号をふって、特定のタグのオブジェクト同士の当たり判定だけを確認する→負荷が少しはマシになる
-	//			BulletCount_P += 1;		// プレイヤー弾カウントを加算
-
-	//			// 名前に番号を付けて更新
-	//			name += "PlayerBullet_" + std::to_string(BulletCount_P);
-	//			break;
-	//		case ENEMY_BULLET:
-	//			BulletCount_E += 1;		// 敵弾カウント加算
-
-	//			// 名前に番号を付けて更新
-	//			name += "EnemyBullet_" + std::to_string(BulletCount_E);
-	//			break;
-	//		case ENEMY:
-	//			EnemyCount += 1;
-	//			name += "Enemy_" + std::to_string(EnemyCount);
-	//			break;
-	//		default:
-	//			break;
-	//		}
-
-	//		// 名前とタグをpairのキーにする
-	//		std::pair key = std::make_pair(_Tag, name);
-	//		// mapにオブジェクトの所有権を渡す
-	//		Objects.emplace(std::move(key), std::move(_Object));
-	//	}
-	//}
 
 	/**
 	 * @brief 指定したタグのオブジェクトをvectorで渡して追加する関数

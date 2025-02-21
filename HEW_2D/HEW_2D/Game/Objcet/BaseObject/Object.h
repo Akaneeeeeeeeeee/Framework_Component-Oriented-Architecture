@@ -20,12 +20,12 @@ class Object :public std::enable_shared_from_this<Object>
 public:
 	Object() {
 		// コンストラクタでTransformコンポーネントだけ自動で追加しておく
-		AddComponent<TransformComponent>();
+		AddComponent<TransformComponent>(this);
 	};
 
 	Object(const Tag& _tag, const std::string& _name) :m_Tag(_tag), m_Name(_name) {
 		// コンストラクタでTransformコンポーネントだけ自動で追加しておく
-		AddComponent<TransformComponent>();
+		AddComponent<TransformComponent>(this);
 	};
 
 
@@ -41,7 +41,7 @@ public:
 	 * @return コンポーネントのweak_ptr→返した側でlock()関数を使わないとポインタを使えない
 	*/
 	template <class T>
-	std::shared_ptr<T> AddComponent(void)
+	T* AddComponent(Object* _Owner)
 	{
 		////! コンポーネントのポインタを生成
 		//auto component = std::make_shared<T>();
@@ -56,6 +56,9 @@ public:
 		////! コンポーネントのポインタを返す
 		//return std::weak_ptr<T>(component);
 
+		// コンパイル時チェック
+		static_assert(std::is_base_of<IComponent, T>::value, "T は Component を継承している必要があります");
+		static_assert(std::is_constructible<T, Object*>::value, "T は Object* を受け取るコンストラクタを持つ必要があります");
 
 		// コンポーネントの型を取得
 		std::type_index type = typeid(T);
@@ -66,13 +69,13 @@ public:
 		}
 
 		// コンポーネントを生成し、所有する
-		auto component = std::make_unique<T>(this);
+		auto component = std::make_unique<T>(_Owner);
 		component->Init();
 
 		// コンポーネントを登録
-		m_Components.emplace(type, component);
+		m_Components.emplace(type, std::move(component));
 
-		return component;
+		return component.get();
 	}
 
 

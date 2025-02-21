@@ -2,10 +2,11 @@
 #include "../../IComponent/IComponent.h"
 #include "../../../D3D11/D3D11.h"
 #include "../Shader/Shader.h"
-#include "../../../ResourceManager/ResourceManager.h"
 
 using namespace DirectX::SimpleMath;
 using namespace Microsoft::WRL;
+
+enum class TextureID;
 
 /**
  * @brief 画像描画コンポーネント
@@ -19,7 +20,7 @@ class SpriteRenderer :public IComponent
 {
 public:
 	SpriteRenderer() = delete;
-	SpriteRenderer(GameObject* _Owner) :IComponent(_Owner) 
+	SpriteRenderer(Object* _Owner) :IComponent(_Owner)
 	{
 
 	}

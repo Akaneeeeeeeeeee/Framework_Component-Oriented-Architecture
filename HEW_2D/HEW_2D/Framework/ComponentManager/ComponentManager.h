@@ -12,7 +12,7 @@
 class ComponentManager
 {
 public:
-	ComponentManager(GameObject& _Owner) :m_Owner(_Owner) {
+	ComponentManager(Object& _Owner) :m_Owner(_Owner) {
 
 	}
 
@@ -76,7 +76,7 @@ public:
 
 private:
 	//! アタッチしているオブジェクトの参照→アタッチ先のオブジェクトは必ず存在していないといけないため参照を使う
-	GameObject& m_Owner;
+	Object& m_Owner;
 	//! コンポーネントの型とポインタをセットでmapに保持
 	std::unordered_map<std::type_index, std::unique_ptr<IComponent>> m_Components;
 };

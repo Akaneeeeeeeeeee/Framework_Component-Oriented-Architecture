@@ -42,8 +42,8 @@ enum class ShaderID {
 class ResourceManager : public Singleton<ResourceManager>
 {
 public:
-	ResourceManager();
-	~ResourceManager();
+	ResourceManager() {};
+	~ResourceManager() {};
 
 	HRESULT Init(void);
 	void Update(void);
@@ -73,11 +73,3 @@ private:
 
 	// ƒTƒEƒ“ƒhŠÇ—map
 };
-
-ResourceManager::ResourceManager()
-{
-}
-
-ResourceManager::~ResourceManager()
-{
-}
