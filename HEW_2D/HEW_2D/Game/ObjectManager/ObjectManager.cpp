@@ -1,5 +1,6 @@
 #include "ObjectManager.h"
 #include "../../Framework/Component/Collider/BoxCollider2D/Collider.h"
+#include "../../Framework/Component/Renderer/SpriteRenderer/SpriteRenderer.h"
 
 
 /**
@@ -133,7 +134,6 @@ void ObjectManager::Update(void) {
 	
 }
 
-
 /**
  * @brief 描画
  * 
@@ -141,98 +141,126 @@ void ObjectManager::Update(void) {
  * カメラがない場合はそのまま描画
 */
 void ObjectManager::Draw(void) {
-	D3d11.StartRender();
+
+	//// カメラがある場合
+	//if (auto cam = HasCamera())
+	//{
+	//	// 描画するべきオブジェクトを格納していく
+	//	std::vector<std::pair<std::pair<Tag, std::string>, std::shared_ptr<GameObject>>> drawobj;
+	//	
+	//	// カメラの描画範囲
+	//	float left = cam->GetPosition().x - cam->GetScale().x / 2;  // カメラの左端
+	//	float right = cam->GetPosition().x + cam->GetScale().x / 2; // カメラの右端
+	//	float up = cam->GetPosition().y + cam->GetScale().y / 2;    // カメラの上端
+	//	float down = cam->GetPosition().y - cam->GetScale().y / 2;  // カメラの下端
+
+	//	// オブジェクトをチェック
+	//	for (auto& obj : Objects) {
+	//		float objX = obj.second->GetPosition().x;
+	//		float objY = obj.second->GetPosition().y;
+
+	//		// オブジェクトのx座標がカメラの視界範囲内、かつy座標が視界範囲内にある場合
+	//		if (left <= objX && objX <= right && down <= objY && objY <= up) {
+	//			// オブジェクトを描画するべきリストに追加
+	//			drawobj.push_back(obj);  // 必要に応じて追加処理
+	//			obj.second->Draw();      // オブジェクトを描画
+	//		}
+	//	}
+
+	//	// 範囲for文
+	//	// 先に背景から描画
+	//	for (auto& obj : drawobj)
+	//	{
+	//		if (obj.first.first == BACKGROUND)
+	//		{
+	//			// firstがキー（ObjectName）,secondがオブジェクト本体
+	//			obj.second->Draw();
+	//		}
+	//	}
+
+	//	// 背景とUI以外を描画
+	//	for (auto& obj : drawobj)
+	//	{
+	//		if (obj.first.first != BACKGROUND && obj.first.first != UI)
+	//		{
+	//			obj.second->Draw();
+	//		}
+	//	}
+
+	//	// 最後にUIを描画
+	//	for (auto& obj : drawobj)
+	//	{
+	//		if (obj.first.first == UI)
+	//		{
+	//			obj.second->Draw();
+	//		}
+	//	}
+	//	
+	//}
+	//// カメラがない場合
+	//else
+	//{
+	//	// 範囲for文
+	//	// 先に背景から描画
+	//	for (auto& obj : Objects)
+	//	{
+	//		if (obj.first.first == BACKGROUND)
+	//		{
+	//			// firstがキー（ObjectName）,secondがオブジェクト本体
+	//			obj.second->Draw();
+	//		}
+	//	}
+
+	//	// 背景とUI以外を描画
+	//	for (auto& obj : Objects)
+	//	{
+	//		if (obj.first.first != BACKGROUND && obj.first.first != UI)
+	//		{
+	//			obj.second->Draw();
+	//		}
+	//	}
+
+	//	// 最後にUIを描画
+	//	for (auto& obj : Objects)
+	//	{
+	//		if (obj.first.first == UI)
+	//		{
+	//			obj->Draw();
+	//		}
+	//	}
+	//}
+
+	
+	//// 範囲for文
+	//// 先に背景から描画
+	//for (auto& obj : Objects)
+	//{
+	//	if (obj->GetTag() == BACKGROUND)
+	//	{
+	//		// firstがキー（ObjectName）,secondがオブジェクト本体
+	//		obj->GetComponent<SpriteRenderer>();
+	//	}
+	//}
+
+	//// 背景とUI以外を描画
+	//for (auto& obj : drawobj)
+	//{
+	//	if (obj.first.first != BACKGROUND && obj.first.first != UI)
+	//	{
+	//		obj.second->Draw();
+	//	}
+	//}
+
+	//// 最後にUIを描画
+	//for (auto& obj : drawobj)
+	//{
+	//	if (obj.first.first == UI)
+	//	{
+	//		obj.second->Draw();
+	//	}
+	//}
 
 
-	// カメラがある場合
-	if (auto cam = HasCamera())
-	{
-		// 描画するべきオブジェクトを格納していく
-		std::vector<std::pair<std::pair<Tag, std::string>, std::shared_ptr<GameObject>>> drewobj;
-		
-		// カメラの描画範囲
-		float left = cam->GetPosition().x - cam->GetScale().x / 2;  // カメラの左端
-		float right = cam->GetPosition().x + cam->GetScale().x / 2; // カメラの右端
-		float up = cam->GetPosition().y + cam->GetScale().y / 2;    // カメラの上端
-		float down = cam->GetPosition().y - cam->GetScale().y / 2;  // カメラの下端
-
-		// オブジェクトをチェック
-		for (auto& obj : Objects) {
-			float objX = obj.second->GetPosition().x;
-			float objY = obj.second->GetPosition().y;
-
-			// オブジェクトのx座標がカメラの視界範囲内、かつy座標が視界範囲内にある場合
-			if (left <= objX && objX <= right && down <= objY && objY <= up) {
-				// オブジェクトを描画するべきリストに追加
-				drewobj.push_back(obj);  // 必要に応じて追加処理
-				obj.second->Draw();      // オブジェクトを描画
-			}
-		}
-
-		// 範囲for文
-		// 先に背景から描画
-		for (auto& obj : drewobj)
-		{
-			if (obj.first.first == BACKGROUND)
-			{
-				// firstがキー（ObjectName）,secondがオブジェクト本体
-				obj.second->Draw();
-			}
-		}
-
-		// 背景とUI以外を描画
-		for (auto& obj : drewobj)
-		{
-			if (obj.first.first != BACKGROUND && obj.first.first != UI)
-			{
-				obj.second->Draw();
-			}
-		}
-
-		// 最後にUIを描画
-		for (auto& obj : drewobj)
-		{
-			if (obj.first.first == UI)
-			{
-				obj.second->Draw();
-			}
-		}
-		
-	}
-	// カメラがない場合
-	else
-	{
-		// 範囲for文
-		// 先に背景から描画
-		for (auto& obj : Objects)
-		{
-			if (obj.first.first == BACKGROUND)
-			{
-				// firstがキー（ObjectName）,secondがオブジェクト本体
-				obj.second->Draw();
-			}
-		}
-
-		// 背景とUI以外を描画
-		for (auto& obj : Objects)
-		{
-			if (obj.first.first != BACKGROUND && obj.first.first != UI)
-			{
-				obj.second->Draw();
-			}
-		}
-
-		// 最後にUIを描画
-		for (auto& obj : Objects)
-		{
-			if (obj.first.first == UI)
-			{
-				obj.second->Draw();
-			}
-		}
-	}
-
-	D3d11.FinishRender();
 }
 
 void ObjectManager::Uninit(void) {
@@ -241,7 +269,7 @@ void ObjectManager::Uninit(void) {
 	{
 		// firstがキー（ObjectName）,secondがオブジェクト本体
 		// オブジェクトの中身を解放
-		obj.second->Uninit();
+		obj->Uninit();
 	}
 	// コンテナ全体を解放
 	Objects.clear();
@@ -268,11 +296,11 @@ std::vector<std::pair<std::pair<Tag, std::string>, std::shared_ptr<GameObject>>>
  * @param  
  * @return 
 */
-std::shared_ptr<Camera> ObjectManager::HasCamera(void)
-{
-	for (const auto& obj : Objects) {
-		if (auto casted = std::dynamic_pointer_cast<Camera>(obj.second)) {
-			return casted;  // 1つ見つかったら終了
-		}
-	}
-}
+//std::shared_ptr<Camera> ObjectManager::HasCamera(void)
+//{
+//	for (const auto& obj : Objects) {
+//		if (auto casted = std::dynamic_pointer_cast<Camera>(obj.second)) {
+//			return casted;  // 1つ見つかったら終了
+//		}
+//	}
+//}

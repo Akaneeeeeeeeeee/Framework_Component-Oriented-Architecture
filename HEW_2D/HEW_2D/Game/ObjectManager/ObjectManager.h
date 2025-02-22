@@ -1,6 +1,6 @@
 #pragma once
 #include "../EntryPoint/main.h"
-#include "../../Game/Objcet/BaseObject/GameObject.h"
+#include "../../Game/Objcet/BaseObject/Object.h"
 #include "../Objcet/Player/Player.h"
 #include "../Objcet/SoundGun/SoundGun.h"
 #include "../Objcet/Camera/Camera.h"
@@ -27,50 +27,28 @@ class ObjectManager
 {
 public:
 	ObjectManager() = default;
-	ObjectManager(D3D11& _D3d11) :D3d11(_D3d11) {
+	/*ObjectManager(D3D11& _D3d11) :D3d11(_D3d11) {
 
-	}
+	}*/
 	~ObjectManager() {};
 
 	/**
 	 * @brief オブジェクト個別追加関数
 	 * @tparam T オブジェクトの型
-	 * @param _SceneName
-	 * 追加時にmake_pairを書かずに引数二つ書くだけで動作させたい→関数内で引数二つの型を確認し、二つの型がTagとstringであればmake_pairしてmapに追加する
+	 * 
+	 * ID設定、タグ設定、名前設定を行ってコンテナに追加
 	*/
 	template <typename T>
-	void AddObject(const Tag& _Tag, const std::string& _Name)
+	void AddObject(const Tag& _Tag, std::string& _Name)
 	{
-		// 同一のタグと名前を持つオブジェクトが存在する場合にはエラーを出すようにする
-		// 名前が空の場合は追加しない
-		if (_Name.empty()) {
-			std::cerr << "オブジェクトに名前が設定されていません" << std::endl;
-			return; // 無効な名前の場合は追加しない
-		}
-
-		//TODO:改善案
-		// 追加しようとしているオブジェクトを探す→そのオブジェクトの数+1したものを名前の後ろに付け加える
-		// っていう処理で全てのオブジェクトに対応できる
-		// となるとどうするべきか→同じ型、タグのオブジェクトが存在している場合、そのオブジェクトの数+1した名前をつかる
-
-		//// 同一タグ、型を持つオブジェクトの配列を取得
-		//auto SameObjects = this->GetObjects<T>(_Tag);
-		//// 名前に付与する番号
-		//int count = SameObjects.size();
-		//// 名前を変更(後ろに番号を付与)
-		//std::string newName = _Name + std::to_string(count + 1);
-
-		// 名前があればとりあえずキーとして作成
-		std::pair key = std::make_pair(_Tag, _Name);
-		// キーと同じオブジェクトがendじゃない→見つかった場合、エラー出力
-		if (Objects.find(key) != Objects.end())
-		{
-			std::cerr << "同一タグと名前を持つオブジェクトが既に存在しています" << std::endl;
-			return; // すでに同じキーが存在する場合は追加しない
-		}
-
-		// 正常であればキーとオブジェクトをセットで追加
-		Objects.emplace(std::move(key), std::make_shared<T>(D3d11));
+		// ID(完全一意のものを設定)
+		static UINT id = 0;
+		// コンパイル時チェック
+		static_assert(std::is_base_of<T, Object>, "このオブジェクトはObjectを継承していません");
+		// オブジェクト生成
+		auto obj = std::make_unique<T>(++id, _Tag, _Name);
+		// コンテナに追加
+		Objects.push_back(std::move(obj));
 	}
 
 
@@ -197,7 +175,6 @@ public:
 	}
 
 
-
 	/**
 	 * @brief オブジェクト削除関数
 	 * @param object 削除対象オブジェクト
@@ -206,7 +183,6 @@ public:
 
 	// オブジェクト取得関数
 	//GameObject* GetGameObject(const Tag& _Tag, const std::string _Name);
-
 
 	/**
 	 * @brief オブジェクト取得関数(weak_ptrを返す)
@@ -236,12 +212,11 @@ public:
 		return std::weak_ptr<T>();
 	}
 
-
 	// 全オブジェクトを取得する
 	std::vector<std::pair<std::pair<Tag, std::string>, std::shared_ptr<GameObject>>> GetAllObjects(void);
 
 	// カメラがあればそのポインタを返す関数
-	std::shared_ptr<Camera> HasCamera(void);
+	//std::shared_ptr<Camera> HasCamera(void);
 
 	/**
 	 * @brief タグ変更関数
@@ -271,9 +246,8 @@ private:
 	//! オブジェクトの管理はタグ（大まかな分類）と名前（一意のもの）を使う
 
 	// unordered_mapにpairを使う場合、pairの紐づけないといけないためPairHashをmapの引数に入れる
-	std::unordered_map<std::pair<Tag, std::string>, std::shared_ptr<GameObject>, PairHash> Objects;
+	//std::unordered_map<std::pair<Tag, std::string>, std::shared_ptr<GameObject>, PairHash> Objects;
 	//std::vector<std::shared_ptr<GameObject>> m_DrawObjects;		// 描画するオブジェクトを保存するコンテナ(毎フレームこの中のオブジェクトだけを描画する)
-	D3D11& D3d11;
+	//D3D11& D3d11;
+	std::vector<std::unique_ptr<Object>> Objects;		// 完全一意の検索手段がないのでvectorにしてしまう
 };
-
-// シーン側で全オブジェクトを取得→オブジェクトのタグを確認→カメラの範囲以内にいないものは描画しない

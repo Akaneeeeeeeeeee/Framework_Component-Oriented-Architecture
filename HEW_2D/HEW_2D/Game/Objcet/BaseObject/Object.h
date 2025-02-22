@@ -23,7 +23,7 @@ public:
 		AddComponent<TransformComponent>(this);
 	};
 
-	Object(const Tag& _tag, const std::string& _name) :m_Tag(_tag), m_Name(_name) {
+	Object(UINT _ID, const Tag& _tag, const std::string& _name) :m_ID(_ID), m_Tag(_tag), m_Name(_name) {
 		// コンストラクタでTransformコンポーネントだけ自動で追加しておく
 		AddComponent<TransformComponent>(this);
 	};
@@ -38,7 +38,7 @@ public:
 	/**
 	 * @brief コンポーネント追加関数
 	 * @tparam T コンポーネント
-	 * @return コンポーネントのweak_ptr→返した側でlock()関数を使わないとポインタを使えない
+	 * @return コンポーネントの生ポインタ
 	*/
 	template <class T>
 	T* AddComponent(Object* _Owner)
@@ -87,7 +87,6 @@ public:
 	template <class T>
 	T* GetComponent(void)
 	{
-
 		// コンポーネントの型を取得
 		std::type_index type = typeid(T);
 
@@ -122,13 +121,17 @@ public:
 	//----------------------------
 	//			基本関数
 	//----------------------------
-	virtual void Init() = 0;
-	virtual void Update(void) = 0;
+	virtual void Init(void);
+	virtual void Update(void);
 	// 描画は更新処理内で行う？関数だけ作っておいて、描画コンポーネントがある場合に処理を行う？
-	virtual void Uninit(void) = 0;
+	virtual void Uninit(void);
+
+	const virtual Tag& GetTag(void) { return m_Tag; }
+	const virtual std::string& GetName(void) { return m_Name; }
 
 
 protected:
+	UINT m_ID;
 	std::string m_Name = "GameObject";
 	Tag m_Tag = Tag::NONE;
 	

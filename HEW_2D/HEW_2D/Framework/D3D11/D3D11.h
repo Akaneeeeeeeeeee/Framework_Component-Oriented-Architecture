@@ -10,6 +10,7 @@ using namespace Microsoft::WRL;
 // TODO:ゲームクラスはD3D11クラスを継承するべき？メンバ変数にとどめておくべき？
 // TODO:2024/10/4 D3D11のInit関数内をさらに関数分けする、エラー吐いてる部分が重要なのでそこの流れを理解する
 
+
 class D3D11 :public Singleton<D3D11>
 {
 public:

@@ -88,6 +88,7 @@ public:
 
 private:
 	D3D11& D3d11;
+	// ここにPrefabマネージャ入れる？
 	std::unordered_map<SceneName, std::unique_ptr<IScene>> Scenes;	//! シーン配列
 	SceneName CurrentScene;
 	bool Quit = false;

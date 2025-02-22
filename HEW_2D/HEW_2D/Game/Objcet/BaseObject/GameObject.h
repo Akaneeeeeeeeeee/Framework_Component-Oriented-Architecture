@@ -30,6 +30,7 @@
  * @brief オブジェクト管理タグ
 */
 enum Tag {
+	NONE = -1,		// デフォルト値
 	BACKGROUND,
 	IMAGE,
 	UI,
@@ -41,7 +42,6 @@ enum Tag {
 	CAMERA,
 
 
-	NONE,		// デフォルト値
 	TAG_MAX		
 };
 
