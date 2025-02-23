@@ -11,12 +11,12 @@ using namespace Microsoft::WRL;
 // TODO:2024/10/4 D3D11のInit関数内をさらに関数分けする、エラー吐いてる部分が重要なのでそこの流れを理解する
 
 
-class D3D11 :public Singleton<D3D11>
+class Graphics :public Singleton<Graphics>
 {
 public:
 
-	D3D11();	//! コンストラクタ
-	~D3D11();
+	Graphics();	//! コンストラクタ
+	~Graphics();
 
 	ID3D11Device* GetDevice(void);                 //!m_Deviceのゲッター
 	ID3D11DeviceContext* GetDeviceContext(void);   //!m_DeviceContextのゲッター
@@ -53,7 +53,7 @@ private:
 	ComPtr<ID3D11RenderTargetView> m_pRenderTargetView;
 	// デプスバッファ＝Z値（奥行き情報）を管理する。近いオブジェクトを手前に、遠いオブジェクトを奥に描画。
 	ComPtr<ID3D11DepthStencilView> m_pDepthStencilView;
-	// 定数バッファ用変数
+	// 最終的にGPUに送る定数バッファ用変数
 	ComPtr<ID3D11Buffer> m_pConstantBuffer;
 
 	// ＜ブレンドステート用変数（アルファブレンディング）＞

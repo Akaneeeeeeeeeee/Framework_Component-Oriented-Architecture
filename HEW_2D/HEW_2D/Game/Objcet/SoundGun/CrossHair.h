@@ -1,20 +1,20 @@
 #pragma once
-#include "../BaseObject/GameObject.h"
+#include "../BaseObject/Object.h"
 
 /**
  * @brief クロスヘアクラス
  * 
  * クロスヘア画像の移動だけ行う(クロスヘアはUI設定で登録されるので当たり判定を気にする必要はない)
 */
-class CrossHair :public GameObject
+class CrossHair :public Object
 {
 public:
-	CrossHair(D3D11& _D3d11):GameObject(_D3d11) {
+	CrossHair():Object() {
 		MoveLeft = false;
 		MoveRight = false;
 		MoveUp = false;
 		MoveDown = false;
-		m_Velocity = { 10.0f };	// クロスヘアの移動速度
+		GetComponent<RigidBody2D>()->AddForce(Vector3(10.0f, 0.0f, 0.0f), ForceMode2D::VelocityChange);	// クロスヘアの移動速度
 	}
 
 	~CrossHair() {};

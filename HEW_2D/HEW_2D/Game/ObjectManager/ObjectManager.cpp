@@ -5,7 +5,7 @@
 
 /**
  * @brief オブジェクト削除関数
- * @param object 
+ * @param object
 */
 void ObjectManager::DeleteObject(Tag _ObjName) {
 	//! オブジェクト配列が空でなければ
@@ -18,14 +18,14 @@ void ObjectManager::DeleteObject(Tag _ObjName) {
 
 /**
  * @brief プレイヤーと何かの当たり判定
- * 
- * 
+ *
+ *
 */
 void ObjectManager::Collider_Player_to_Object(void)
 {
 	// プレイヤー取得
 	auto playerobj = GetGameObjectPtr<Player>(PLAYER, "Player");
-	
+
 	// 変更予定のオブジェクトを記録するリスト
 	std::vector<std::pair<std::pair<Tag, std::string>, std::shared_ptr<GameObject>>> toBeUpdated;
 
@@ -35,18 +35,18 @@ void ObjectManager::Collider_Player_to_Object(void)
 		// タグが地面、オブジェクト、敵のものだけ当たり判定を取る
 		switch (obj.first.first)
 		{
-		// オブジェクトが地面なら
+			// オブジェクトが地面なら
 		case BACKGROUND:
 			// 地面との当たり判定を取る
 			Collider_toGround(playerobj, obj.second);
 			break;
-		// 画像は当たり判定を取らない
+			// 画像は当たり判定を取らない
 		case IMAGE:
 			break;
-		// UIも判定を取らない
+			// UIも判定を取らない
 		case UI:
 			break;
-		// ゲームオブジェクトなら判定を取る
+			// ゲームオブジェクトなら判定を取る
 		case OBJECT:
 			// ここはマガジンの判定を取っている
 			if (Collider_to_Object(playerobj, obj.second))
@@ -63,7 +63,7 @@ void ObjectManager::Collider_Player_to_Object(void)
 		default:
 			break;
 		}
-		
+
 	}
 
 	// 記録した変更対象を処理(マガジン用だが、中身を変えればオブジェクトの削除も可能)
@@ -116,7 +116,7 @@ bool ObjectManager::ChangeTag(Tag _oldtag, const std::string _name, Tag _newTag)
 /**
  * @brief オブジェクト初期化
  * コンストラクタでオブジェクトを一括追加→Init内で初期化が良さげ？→それぞれ初期化値が違うのでここでオブジェクトのInitを回せない
- * 
+ *
  * ここではコンテナの初期化だけを行う
 */
 void ObjectManager::Init(void) {
@@ -129,19 +129,19 @@ void ObjectManager::Update(void) {
 	// 範囲for文
 	for (auto& obj : Objects)
 	{
-		obj.second->Update();
+		obj->Update();
 	}
-	
+
 }
 
 /**
  * @brief 描画
- * 
+ *
  * カメラがある場合は、そのオブジェクトの大きさ以内にいるものだけを描画する
  * カメラがない場合はそのまま描画
 */
 void ObjectManager::Draw(void) {
-
+	Graphics::GetInstance().StartRender();
 	//// カメラがある場合
 	//if (auto cam = HasCamera())
 	//{
@@ -167,100 +167,37 @@ void ObjectManager::Draw(void) {
 	//		}
 	//	}
 
-	//	// 範囲for文
-	//	// 先に背景から描画
-	//	for (auto& obj : drawobj)
-	//	{
-	//		if (obj.first.first == BACKGROUND)
-	//		{
-	//			// firstがキー（ObjectName）,secondがオブジェクト本体
-	//			obj.second->Draw();
-	//		}
-	//	}
+	// 範囲for文
+	// 先に背景から描画
+	for (auto& obj : Objects)
+	{
+		if (obj.get()->GetTag() == BACKGROUND)
+		{
+			// firstがキー（ObjectName）,secondがオブジェクト本体
+			obj->Draw();
+		}
+	}
 
-	//	// 背景とUI以外を描画
-	//	for (auto& obj : drawobj)
-	//	{
-	//		if (obj.first.first != BACKGROUND && obj.first.first != UI)
-	//		{
-	//			obj.second->Draw();
-	//		}
-	//	}
+	// 背景とUI以外を描画
+	for (auto& obj : Objects)
+	{
+		if (obj.get()->GetTag() != BACKGROUND && obj.get()->GetTag() != UI)
+		{
+			obj->Draw();
+		}
+	}
 
-	//	// 最後にUIを描画
-	//	for (auto& obj : drawobj)
-	//	{
-	//		if (obj.first.first == UI)
-	//		{
-	//			obj.second->Draw();
-	//		}
-	//	}
-	//	
-	//}
-	//// カメラがない場合
-	//else
-	//{
-	//	// 範囲for文
-	//	// 先に背景から描画
-	//	for (auto& obj : Objects)
-	//	{
-	//		if (obj.first.first == BACKGROUND)
-	//		{
-	//			// firstがキー（ObjectName）,secondがオブジェクト本体
-	//			obj.second->Draw();
-	//		}
-	//	}
-
-	//	// 背景とUI以外を描画
-	//	for (auto& obj : Objects)
-	//	{
-	//		if (obj.first.first != BACKGROUND && obj.first.first != UI)
-	//		{
-	//			obj.second->Draw();
-	//		}
-	//	}
-
-	//	// 最後にUIを描画
-	//	for (auto& obj : Objects)
-	//	{
-	//		if (obj.first.first == UI)
-	//		{
-	//			obj->Draw();
-	//		}
-	//	}
-	//}
-
-	
-	//// 範囲for文
-	//// 先に背景から描画
-	//for (auto& obj : Objects)
-	//{
-	//	if (obj->GetTag() == BACKGROUND)
-	//	{
-	//		// firstがキー（ObjectName）,secondがオブジェクト本体
-	//		obj->GetComponent<SpriteRenderer>();
-	//	}
-	//}
-
-	//// 背景とUI以外を描画
-	//for (auto& obj : drawobj)
-	//{
-	//	if (obj.first.first != BACKGROUND && obj.first.first != UI)
-	//	{
-	//		obj.second->Draw();
-	//	}
-	//}
-
-	//// 最後にUIを描画
-	//for (auto& obj : drawobj)
-	//{
-	//	if (obj.first.first == UI)
-	//	{
-	//		obj.second->Draw();
-	//	}
-	//}
+	// 最後にUIを描画
+	for (auto& obj : Objects)
+	{
+		if (obj.get()->GetTag() == UI)
+		{
+			obj->Draw();
+		}
+	}
 
 
+	Graphics::GetInstance().FinishRender();
 }
 
 void ObjectManager::Uninit(void) {
@@ -278,7 +215,7 @@ void ObjectManager::Uninit(void) {
 
 /**
  * @brief 全てのオブジェクトを取得
- * @return 
+ * @return
 */
 std::vector<std::pair<std::pair<Tag, std::string>, std::shared_ptr<GameObject>>> ObjectManager::GetAllObjects(void)
 {
@@ -293,8 +230,8 @@ std::vector<std::pair<std::pair<Tag, std::string>, std::shared_ptr<GameObject>>>
 
 /**
  * @brief カメラがあればそのポインタを返す
- * @param  
- * @return 
+ * @param
+ * @return
 */
 //std::shared_ptr<Camera> ObjectManager::HasCamera(void)
 //{

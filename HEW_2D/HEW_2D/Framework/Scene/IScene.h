@@ -40,7 +40,7 @@ enum SceneName {
 class IScene
 {
 public:
-	IScene(D3D11& _D3d11) :objectmanager(_D3d11) {
+	IScene() :objectmanager() {
 		m_Frame = FRAME1;
 		m_MagCount = 1;
 	};

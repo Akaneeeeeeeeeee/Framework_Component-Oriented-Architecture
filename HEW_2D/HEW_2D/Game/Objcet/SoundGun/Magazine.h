@@ -24,10 +24,10 @@
  * 　　　→座標、スケールを変更して画面上の任意の場所に表示させる
  * 
 */
-class Magazine : public GameObject
+class Magazine : public Object
 {
 public:
-	Magazine(D3D11& _D3d11) :GameObject(_D3d11) {
+	Magazine() :Object() {
 		// 最初はマガジンにはどの擬音も入っていない
 		m_Onomatopoeia = nullptr;
 		OnGround = false;

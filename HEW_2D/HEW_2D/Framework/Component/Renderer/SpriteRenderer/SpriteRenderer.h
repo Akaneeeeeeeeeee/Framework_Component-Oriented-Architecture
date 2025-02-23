@@ -1,6 +1,6 @@
 #pragma once
-#include "../../IComponent/IComponent.h"
-#include "../../../D3D11/D3D11.h"
+#include "../../Renderer/IRenderer/IRenderer.h"
+#include "../../../Graphics/Graphics.h"
 #include "../Shader/Shader.h"
 
 using namespace DirectX::SimpleMath;
@@ -16,11 +16,11 @@ enum class TextureID;
  * インデックスバッファ
  * 画像情報
 */
-class SpriteRenderer :public IComponent
+class SpriteRenderer :public IRenderer
 {
 public:
 	SpriteRenderer() = delete;
-	SpriteRenderer(Object* _Owner) :IComponent(_Owner)
+	SpriteRenderer(Object* _Owner) :IRenderer(_Owner)
 	{
 
 	}
@@ -37,6 +37,7 @@ public:
 
 	void Init(void) override;
 	void Update(void) override;
+	void Render(void) override;
 	void Uninit(void) override;
 
 	// 画像と分割数をセットする
@@ -75,6 +76,9 @@ private:
 	// 複数画像を使いたい場合(ミップマップ(解像度ごとに画像を分けて管理)とか)、texture2dも対応付けて持たさないとダメ
 	// →今回は画像ファイルから直接SRVを作るのでTexture2Dは使わない
 	ComPtr<ID3D11ShaderResourceView> m_pTextureView;
+
+	// DXのリソース管理クラスのID3D11Bufferに渡すための構造体
+	ConstBuffer m_ConstantBuffer;
 
 
 	// ＜シェーダー＞

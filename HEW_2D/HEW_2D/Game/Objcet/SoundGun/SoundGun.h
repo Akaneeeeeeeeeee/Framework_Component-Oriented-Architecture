@@ -1,5 +1,5 @@
 #pragma once
-#include "../BaseObject/GameObject.h"
+#include "../BaseObject/Object.h"
 
 
 class Magazine;
@@ -16,10 +16,10 @@ class Magazine;
  * 
  * ＜必要なもの＞
 */
-class SoundGun : public GameObject
+class SoundGun : public Object
 {
 public:
-	SoundGun(D3D11& _D3d11) :GameObject(_D3d11) {
+	SoundGun() :Object() {
 		IsSuction = false;
 		IsShot = false;
 		m_ShotPower = 25.0f;
@@ -28,7 +28,7 @@ public:
 
 	// TODO:2025/01/27 吸い込み関数作りきる→外側でやってるからどうするかも決める、擬音銃が吸い込み中の時だけ画像とアニメーションを回す
 	// W押したらエラー吐くのを直す
-	bool Suction(std::weak_ptr<GameObject> _gion);	// 吸い込み関数(吸い込む擬音のデータ、それを戻り値で渡し、マガジンに入れ込む)
+	bool Suction(std::weak_ptr<Object> _gion);	// 吸い込み関数(吸い込む擬音のデータ、それを戻り値で渡し、マガジンに入れ込む)
 	void Shot(std::shared_ptr<Magazine> _mag);		// 発射関数(選択したマガジン内の擬音を発射する)
 
 	void SetIsSuction(bool _flg);

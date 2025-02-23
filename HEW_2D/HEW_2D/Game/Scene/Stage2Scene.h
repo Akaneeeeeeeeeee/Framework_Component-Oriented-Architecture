@@ -11,7 +11,7 @@
 class Stage2Scene :public IScene
 {
 public:
-	Stage2Scene(D3D11& _D3d11) :IScene(_D3d11) {
+	Stage2Scene() :IScene() {
 		// オブジェクトの追加はシーンの初期化で行う
 		// サウンドとかこのシーンのみ存在するものがあればその初期化を行う
 		ChangeScene = false;

@@ -19,7 +19,7 @@ class Player;
 class PataPata :public IOnomatopoeia
 {
 public:
-	PataPata(D3D11& _D3d11) :IOnomatopoeia(_D3d11) {
+	PataPata() :IOnomatopoeia() {
 		Max_altitude = 300.0f;		// ŒÀŠE‚“x‰¼İ’è(Y:+400)
 		Collider_check = false;
 	}

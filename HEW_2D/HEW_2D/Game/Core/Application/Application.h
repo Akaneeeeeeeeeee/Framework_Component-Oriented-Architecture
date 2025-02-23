@@ -1,5 +1,5 @@
 #pragma once
-#include "../../../Framework/D3D11/D3D11.h"
+#include "../../../Framework/Graphics/Graphics.h"
 #include "../../../Framework/Window/Window.h"
 #include "../Game/Game.h"
 
@@ -17,12 +17,12 @@
 */
 class Application {
 private:
-	D3D11 m_D3d11;			// DirectX11管理クラス
+	//D3D11 m_D3d11;			// DirectX11管理クラス
 	//Window window;		// ウィンドウクラス
 	Game m_Game;			// ゲームクラス
 public:
 	//! メンバ変数は宣言した順に初期化される→先にd3d11のコンストラクタを呼び出し、そのあとにgameクラスのコンストラクタを呼ぶ
-	Application() :m_D3d11(), m_Game(m_D3d11) {};
+	Application() : m_Game() {};
 	~Application() {};
 
 

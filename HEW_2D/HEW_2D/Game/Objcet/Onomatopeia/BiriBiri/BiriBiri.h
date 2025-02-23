@@ -4,7 +4,7 @@
 class BiriBiri :public IOnomatopoeia
 {
 public:
-	BiriBiri(D3D11& _D3d11) :IOnomatopoeia(_D3d11) {
+	BiriBiri() :IOnomatopoeia() {
 		knockback_power = 10;
 		BiriBiri_check = false;
 	}

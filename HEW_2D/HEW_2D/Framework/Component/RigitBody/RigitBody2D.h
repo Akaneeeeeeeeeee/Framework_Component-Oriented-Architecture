@@ -87,6 +87,7 @@ public:
         m_Direction = { 0.0f };
         m_Force = { 0.0f };
         m_Mass = 1.0f;
+        m_GravityScale = 0.98f;
         DetectCollision = true;
         UseGravity = true;
         IsKinematic = false;

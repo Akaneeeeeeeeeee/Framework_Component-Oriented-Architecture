@@ -13,7 +13,7 @@
 void SceneManager::Init(void) 
 {
 	//! タイトルシーンを生成してコンテナに追加
-	Scenes.emplace(TITLE, std::make_unique<TitleScene>(D3d11));
+	Scenes.emplace(TITLE, std::make_unique<TitleScene>());
 	//Scenes現在シーンをタイトルシーンに設定
 	CurrentScene = TITLE;
 	Scenes[CurrentScene]->Init();

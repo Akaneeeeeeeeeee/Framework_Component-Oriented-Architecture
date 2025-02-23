@@ -1,7 +1,7 @@
 #pragma once
 #include "../../Framework/Scene/IScene.h"
 #include "../../Framework/Sound/sound.h"
-#include "../../Framework/D3D11/D3D11.h"
+#include "../../Framework/Graphics/Graphics.h"
 
 
 /**
@@ -14,7 +14,7 @@
 class Stage1Scene :public IScene
 {
 public:
-	Stage1Scene(D3D11& _D3d11) :IScene(_D3d11) {
+	Stage1Scene() :IScene() {
 		// オブジェクトの追加はシーンの初期化で行う
 		// サウンドとかこのシーンのみ存在するものがあればその初期化を行う
 		ChangeScene = false;

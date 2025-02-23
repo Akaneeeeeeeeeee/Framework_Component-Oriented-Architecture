@@ -1,5 +1,5 @@
 #pragma once
-#include "../../../D3D11/D3D11.h"
+#include "../../../Graphics/Graphics.h"
 
 using namespace DirectX::SimpleMath;
 using namespace Microsoft::WRL;

@@ -33,7 +33,7 @@ void Stage2Scene::Init(void) {
 	// TODO:1218ここまで オブジェクトの管理をenumから変更→tagと名前にしたい
 
 	// 背景
-	objectmanager.AddObject<GameObject>(BACKGROUND, "Background");
+	objectmanager.AddObject<Object>(BACKGROUND, "Background");
 	objectmanager.GetGameObjectPtr<GameObject>(BACKGROUND, "Background").lock()->Init(L"Game/Asset/BackGround/TitleBack.png");
 	objectmanager.GetGameObjectPtr<GameObject>(BACKGROUND, "Background").lock()->SetPosition(Vector3(0.0f, 0.0f, 0.0f));
 	objectmanager.GetGameObjectPtr<GameObject>(BACKGROUND, "Background").lock()->SetScale(Vector3(1920.0f, 1080.0f, 0.0f));

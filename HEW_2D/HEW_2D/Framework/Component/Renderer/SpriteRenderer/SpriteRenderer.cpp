@@ -31,7 +31,7 @@ void SpriteRenderer::Init(void)
 	subResourceData.SysMemPitch = 0;
 	subResourceData.SysMemSlicePitch = 0;
 
-	HRESULT hr = D3D11::GetInstance().GetDevice()->CreateBuffer(&bufferDesc, &subResourceData, &m_pVertexBuffer);
+	HRESULT hr = Graphics::GetInstance().GetDevice()->CreateBuffer(&bufferDesc, &subResourceData, &m_pVertexBuffer);
 }
 
 /**
@@ -43,40 +43,44 @@ void SpriteRenderer::Update(void)
 	//頂点バッファを設定
 	UINT strides = sizeof(Vertex);
 	UINT offsets = 0;
-	D3D11::GetInstance().GetDeviceContext()->IASetVertexBuffers(0, 1, &m_pVertexBuffer, &strides, &offsets);
+	Graphics::GetInstance().GetDeviceContext()->IASetVertexBuffers(0, 1, &m_pVertexBuffer, &strides, &offsets);
 
 	// テクスチャをピクセルシェーダーに渡す
-	D3D11::GetInstance().GetDeviceContext()->PSSetShaderResources(0, 1, &m_pTextureView);
+	Graphics::GetInstance().GetDeviceContext()->PSSetShaderResources(0, 1, &m_pTextureView);
 
-	// 定数バッファ作成
-	ConstBuffer cb;
 
 	// 定数バッファを更新
 	// プロジェクション変換行列を作成
-	cb.matrixProj = DirectX::XMMatrixOrthographicLH(SCREEN_WIDTH, SCREEN_HEIGHT, 0.0f, 3.0f);
-	cb.matrixProj = DirectX::XMMatrixTranspose(cb.matrixProj);
+	m_ConstantBuffer.matrixProj = DirectX::XMMatrixOrthographicLH(SCREEN_WIDTH, SCREEN_HEIGHT, 0.0f, 3.0f);
+	m_ConstantBuffer.matrixProj = DirectX::XMMatrixTranspose(m_ConstantBuffer.matrixProj);
 
 	// ワールド変換行列の作成
 	// →オブジェクトの位置・大きさ・向きを指定
 	TransformComponent* transform = m_pOwner->GetComponent<TransformComponent>();
-	cb.matrixWorld = DirectX::XMMatrixScaling(transform->GetScale().x, transform->GetScale().y, transform->GetScale().z);
-	cb.matrixWorld *= DirectX::XMMatrixRotationZ(transform->GetRotation().z * 3.14f / 180);
-	cb.matrixWorld *= DirectX::XMMatrixTranslation(transform->GetPosition().x, transform->GetPosition().y, transform->GetPosition().z);
-	cb.matrixWorld = DirectX::XMMatrixTranspose(cb.matrixWorld);
+	m_ConstantBuffer.matrixWorld = DirectX::XMMatrixScaling(transform->GetScale().x, transform->GetScale().y, transform->GetScale().z);
+	m_ConstantBuffer.matrixWorld *= DirectX::XMMatrixRotationZ(transform->GetRotation().z * 3.14f / 180);
+	m_ConstantBuffer.matrixWorld *= DirectX::XMMatrixTranslation(transform->GetPosition().x, transform->GetPosition().y, transform->GetPosition().z);
+	m_ConstantBuffer.matrixWorld = DirectX::XMMatrixTranspose(m_ConstantBuffer.matrixWorld);
 
 	// UVアニメーションの行列作成
 	float u = static_cast<float>(m_Number.x) / m_Split.x;
 	float v = static_cast<float>(m_Number.y) / m_Split.y;
-	cb.matrixTex = DirectX::XMMatrixTranslation(u, v, 0.0f);
-	cb.matrixTex = DirectX::XMMatrixTranspose(cb.matrixTex);
+	m_ConstantBuffer.matrixTex = DirectX::XMMatrixTranslation(u, v, 0.0f);
+	m_ConstantBuffer.matrixTex = DirectX::XMMatrixTranspose(m_ConstantBuffer.matrixTex);
 
 	//頂点カラーのデータを作成
-	cb.color = m_Color;
+	m_ConstantBuffer.color = m_Color;
 
+	
+}
+
+
+void SpriteRenderer::Render(void)
+{
 	// 行列をシェーダーに渡す
-	D3D11::GetInstance().GetDeviceContext()->UpdateSubresource(D3D11::GetInstance().GetConstantBuffer(), 0, NULL, &cb, 0, 0);
-
-	D3D11::GetInstance().GetDeviceContext()->Draw(4, 0); // 描画命令
+	Graphics::GetInstance().GetDeviceContext()->UpdateSubresource(Graphics::GetInstance().GetConstantBuffer(), 0, NULL, &m_ConstantBuffer, 0, 0);
+	// 描画命令
+	Graphics::GetInstance().GetDeviceContext()->Draw(4, 0);
 
 }
 

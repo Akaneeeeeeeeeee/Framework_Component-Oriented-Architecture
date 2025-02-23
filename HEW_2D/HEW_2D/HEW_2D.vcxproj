@@ -147,6 +147,7 @@
     <ClCompile Include="Framework\Component\Collider\BoxCollider2D\Collider.cpp" />
     <ClCompile Include="Framework\Component\IComponent\IComponent.cpp" />
     <ClCompile Include="Framework\Component\Renderer\Canvas\Canvas.cpp" />
+    <ClCompile Include="Framework\Component\Renderer\IRenderer\IRenderer.cpp" />
     <ClCompile Include="Framework\Component\Renderer\Shader\Shader.cpp" />
     <ClCompile Include="Framework\Component\Renderer\SpriteRenderer\SpriteRenderer.cpp" />
     <ClCompile Include="Framework\Component\RigitBody\Gravity.cpp" />
@@ -156,8 +157,8 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="Framework\D3D11\D3D11.cpp" />
     <ClCompile Include="Framework\DX11Helper\dx11helper.cpp" />
+    <ClCompile Include="Framework\Graphics\Graphics.cpp" />
     <ClCompile Include="Framework\Input\Input.cpp" />
     <ClCompile Include="Framework\ResourceManager\ResourceManager.cpp" />
     <ClCompile Include="Framework\Scene\IScene.cpp" />
@@ -172,11 +173,15 @@
     <ClCompile Include="Game\Core\Application\Application.cpp" />
     <ClCompile Include="Game\Core\Game\Game.cpp" />
     <ClCompile Include="Game\EntryPoint\main.cpp" />
-    <ClCompile Include="Game\Objcet\BaseObject\GameObject.cpp" />
+    <ClCompile Include="Game\Objcet\BaseObject\GameObject.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="Game\Objcet\BaseObject\Object.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="Game\Objcet\Camera\Camera.cpp" />
+    <ClCompile Include="Game\Objcet\Camera\Camera.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="Game\Objcet\Character\Character.cpp" />
     <ClCompile Include="Game\Objcet\Enemy\Enemy.cpp" />
     <ClCompile Include="Game\Objcet\Onomatopeia\BiriBiri\BiriBiri.cpp" />
@@ -210,6 +215,7 @@
     <ClInclude Include="Framework\Component\Collider\BoxCollider2D\Collider.h" />
     <ClInclude Include="Framework\Component\IComponent\IComponent.h" />
     <ClInclude Include="Framework\Component\Renderer\Canvas\Canvas.h" />
+    <ClInclude Include="Framework\Component\Renderer\IRenderer\IRenderer.h" />
     <ClInclude Include="Framework\Component\Renderer\Shader\Shader.h" />
     <ClInclude Include="Framework\Component\Renderer\SpriteRenderer\SpriteRenderer.h" />
     <ClInclude Include="Framework\Component\RigitBody\Gravity.h" />
@@ -219,8 +225,8 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="Framework\D3D11\D3D11.h" />
     <ClInclude Include="Framework\DX11Helper\dx11helper.h" />
+    <ClInclude Include="Framework\Graphics\Graphics.h" />
     <ClInclude Include="Framework\Input\Input.h" />
     <ClInclude Include="Framework\ResourceManager\ResourceManager.h" />
     <ClInclude Include="Framework\Scene\IScene.h" />
@@ -235,11 +241,15 @@
     <ClInclude Include="Game\Core\Application\Application.h" />
     <ClInclude Include="Game\Core\Game\Game.h" />
     <ClInclude Include="Game\EntryPoint\main.h" />
-    <ClInclude Include="Game\Objcet\BaseObject\GameObject.h" />
+    <ClInclude Include="Game\Objcet\BaseObject\GameObject.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="Game\Objcet\BaseObject\Object.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="Game\Objcet\Camera\Camera.h" />
+    <ClInclude Include="Game\Objcet\Camera\Camera.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="Game\Objcet\Character\Character.h" />
     <ClInclude Include="Game\Objcet\Enemy\Enemy.h" />
     <ClInclude Include="Game\Objcet\Onomatopeia\BiriBiri\BiriBiri.h" />

@@ -31,8 +31,8 @@ HRESULT ResourceManager::Init(void)
 		ComPtr<ID3D11ShaderResourceView> srv;
 		// テクスチャのパスを読み込む
 		HRESULT hr = CreateWICTextureFromFileEx(
-			D3D11::GetInstance().GetDevice(),
-			D3D11::GetInstance().GetDeviceContext(),
+			Graphics::GetInstance().GetDevice(),
+			Graphics::GetInstance().GetDeviceContext(),
 			tex.second.c_str(),
 			0,
 			D3D11_USAGE_DEFAULT,

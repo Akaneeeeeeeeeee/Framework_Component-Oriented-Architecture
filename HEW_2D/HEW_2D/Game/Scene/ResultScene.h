@@ -5,7 +5,7 @@
 class ResultScene :public IScene
 {
 public:
-	ResultScene(D3D11& _D3d11) :IScene(_D3d11) {};
+	ResultScene() :IScene() {};
 	~ResultScene() {};
 	
 	void Init(void) override;		//! ‰Šú‰»

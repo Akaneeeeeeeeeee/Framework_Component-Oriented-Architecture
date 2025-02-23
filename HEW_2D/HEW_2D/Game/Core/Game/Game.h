@@ -1,6 +1,6 @@
 #pragma once
 #include "../../../Game/SceneManager/SceneManager.h"
-#include "../../../Framework/D3D11/D3D11.h"
+#include "../../../Framework/Graphics/Graphics.h"
 #include"../../../Game/Scene/Stage1Scene.h"
 #include "../../../Framework/Sound/sound.h"
 
@@ -16,7 +16,7 @@
 class Game
 {
 public:
-	Game(D3D11& _D3d11) :scenemanager(_D3d11) {};
+	Game() :scenemanager() {};
 	~Game() {};
 
 	void Init(void);

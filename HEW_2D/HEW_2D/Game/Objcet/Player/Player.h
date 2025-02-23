@@ -38,7 +38,7 @@ class Magazine;
 class Player :public Character
 {
 public:
-	Player(D3D11& _D3d11) :Character(_D3d11) {
+	Player() :Character() {
 		m_Velocity = { 0.0f };
 		m_MoveSpeed = 5.0f;
 		m_JumpPower = 10.5f; //7.5
@@ -63,7 +63,7 @@ public:
 
 	void Animation(STATE _Anim_Name);	// プレイヤー個別のアニメーション関数
 
-	void SetChild(const std::shared_ptr<GameObject> _child) override;
+	void SetChild(const std::shared_ptr<Object> _child);
 
 	// マガジンを取得したときに、UIとして表示する座標を設定したい→既に取得してUIとして表示されているマガジンの座標横に配置する→マガジンの座標が欲しい
 	//void SetMagazine(std::shared_ptr<Magazine> _mag);

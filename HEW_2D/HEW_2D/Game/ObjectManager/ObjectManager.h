@@ -7,7 +7,6 @@
 
 //TODO: いちいちダウンキャストするのめんどくさいから関数にしちゃって、指定した型にダウンキャストしたポインタを返す関数作ったほうがいい
 
-
 /**
  * @brief オブジェクトのmapを管理するために使うstd::pairの二つmapに紐づける関数
 */
@@ -56,10 +55,10 @@ public:
 	 * @brief 指定したタグのオブジェクトをvectorで渡して追加する関数
 	*/
 	template <typename T>
-	void AddObject(Tag _Tag, std::vector<std::shared_ptr<T>> _Objects)
+	void AddObject(Tag _Tag, std::vector<std::unique_ptr<T>> _Objects)
 	{
 		// 引数の長さ分オブジェクト追加関数を回す
-		for (auto&& object : _Objects)
+		for (auto& object : _Objects)
 		{
 			AddObject(_Tag, std::move(object));
 		}
@@ -85,33 +84,33 @@ public:
 	 * @param _name 名前
 	 * @return mapに登録されている状態(タグと名前がセットになった状態)でのオブジェクト
 	*/
-	template <class T>
-	std::pair<const std::pair<Tag, std::string>, std::shared_ptr<T>> GetGameObject(const Tag& _tag, const std::string& _name)
-	{
-		// 名前とタグを持つオブジェクトを探索
-		//std::pair<std::pair<Tag, std::string>, std::shared_ptr<T>> retobj;
-		for (auto& obj : Objects)
-		{
-			// 名前とタグが一致すれば
-			if (obj.first.first == _tag && obj.first.second == _name)
-			{
-				// ダウンキャストを試みる
-				auto castedObj = std::dynamic_pointer_cast<T>(obj.second);
-				if (castedObj)
-				{
-					// キャスト成功時、適切に返す
-					return std::make_pair(obj.first, castedObj);
-				}
-				else
-				{
-					// キャスト失敗時の処理（例外を投げる、もしくはエラーハンドリング）
-					throw std::runtime_error("指定したオブジェクトの型にキャストできませんでした");
-				}
-			}
-		}
-		// 一致するオブジェクトが見つからない場合
-		throw std::runtime_error("指定されたタグと名前のオブジェクトが見つかりませんでした");
-	}
+	//template <class T>
+	//std::pair<const std::pair<Tag, std::string>, std::shared_ptr<T>> GetGameObject(const Tag& _tag, const std::string& _name)
+	//{
+	//	// 名前とタグを持つオブジェクトを探索
+	//	//std::pair<std::pair<Tag, std::string>, std::shared_ptr<T>> retobj;
+	//	for (auto& obj : Objects)
+	//	{
+	//		// 名前とタグが一致すれば
+	//		if (obj.first.first == _tag && obj.first.second == _name)
+	//		{
+	//			// ダウンキャストを試みる
+	//			auto castedObj = std::dynamic_pointer_cast<T>(obj.second);
+	//			if (castedObj)
+	//			{
+	//				// キャスト成功時、適切に返す
+	//				return std::make_pair(obj.first, castedObj);
+	//			}
+	//			else
+	//			{
+	//				// キャスト失敗時の処理（例外を投げる、もしくはエラーハンドリング）
+	//				throw std::runtime_error("指定したオブジェクトの型にキャストできませんでした");
+	//			}
+	//		}
+	//	}
+	//	// 一致するオブジェクトが見つからない場合
+	//	throw std::runtime_error("指定されたタグと名前のオブジェクトが見つかりませんでした");
+	//}
 
 
 	/**
@@ -120,30 +119,30 @@ public:
 	 * @param  オブジェクトのタグ
 	 * @return タグで指定したオブジェクトをマネージャに登録した状態でvectorにしたもの
 	*/
-	template <class T>
-	std::vector<std::pair<std::pair<Tag, std::string>, std::shared_ptr<T>>> GetGameObjectPair(const Tag& _tag)
-	{
-		std::vector<std::pair<std::pair<Tag, std::string>, std::shared_ptr<T>>> returnobjects;
-		// map内を探索
-		for (auto& obj : Objects)
-		{
-			// タグが同じで
-			if (obj.first.first == _tag)
-			{
-				// キャストできるならキャストして配列に格納
-				if (auto casted = std::dynamic_pointer_cast<T>(obj.second))
-				{
-					returnobjects.emplace_back(obj.first, casted);
-				}
-				// 基底クラスならそのまま格納
-				else
-				{
-					returnobjects.emplace_back(obj.first, std::static_pointer_cast<T>(obj.second));
-				}
-			}
-		}
-		return returnobjects;
-	}
+	//template <class T>
+	//std::vector<std::pair<std::pair<Tag, std::string>, std::shared_ptr<T>>> GetGameObjectPair(const Tag& _tag)
+	//{
+	//	std::vector<std::pair<std::pair<Tag, std::string>, std::shared_ptr<T>>> returnobjects;
+	//	// map内を探索
+	//	for (auto& obj : Objects)
+	//	{
+	//		// タグが同じで
+	//		if (obj.first.first == _tag)
+	//		{
+	//			// キャストできるならキャストして配列に格納
+	//			if (auto casted = std::dynamic_pointer_cast<T>(obj.second))
+	//			{
+	//				returnobjects.emplace_back(obj.first, casted);
+	//			}
+	//			// 基底クラスならそのまま格納
+	//			else
+	//			{
+	//				returnobjects.emplace_back(obj.first, std::static_pointer_cast<T>(obj.second));
+	//			}
+	//		}
+	//	}
+	//	return returnobjects;
+	//}
 
 
 	/**
@@ -190,27 +189,27 @@ public:
 	 * @param _Name 付けた
 	 * @return オブジェクトの生ポインタ(タグの型にキャストしてから返す)
 	*/
-	template <class T>
-	std::weak_ptr<T> GetGameObjectPtr(const Tag& _Tag, const std::string& _Name)
-	{
-		// タグと名前の一致するオブジェクトを見つける(見つからない場合はend()が返ってくる)
-		auto iterator = Objects.find(std::make_pair(_Tag, _Name));
-		// 見つかった場合
-		if (iterator != Objects.end())
-		{
-			// ポインタを取得して型に合わせて一度shared_ptrにキャスト
-			std::shared_ptr<T> castedptr = std::dynamic_pointer_cast<T>(iterator->second);
+	//template <class T>
+	//std::weak_ptr<T> GetGameObjectPtr(const Tag& _Tag, const std::string& _Name)
+	//{
+	//	// タグと名前の一致するオブジェクトを見つける(見つからない場合はend()が返ってくる)
+	//	auto iterator = Objects.find(std::make_pair(_Tag, _Name));
+	//	// 見つかった場合
+	//	if (iterator != Objects.end())
+	//	{
+	//		// ポインタを取得して型に合わせて一度shared_ptrにキャスト
+	//		std::shared_ptr<T> castedptr = std::dynamic_pointer_cast<T>(iterator->second);
 
-			// キャストが成功した場合(nullptrではない場合)
-			if (castedptr)
-			{
-				// ポインタを返す(ここで自動的にweak_ptrに変換される)
-				return castedptr;
-			}
-		}
-		// 見つからなければ空のweak_ptrを返す
-		return std::weak_ptr<T>();
-	}
+	//		// キャストが成功した場合(nullptrではない場合)
+	//		if (castedptr)
+	//		{
+	//			// ポインタを返す(ここで自動的にweak_ptrに変換される)
+	//			return castedptr;
+	//		}
+	//	}
+	//	// 見つからなければ空のweak_ptrを返す
+	//	return std::weak_ptr<T>();
+	//}
 
 	// 全オブジェクトを取得する
 	std::vector<std::pair<std::pair<Tag, std::string>, std::shared_ptr<GameObject>>> GetAllObjects(void);

@@ -283,7 +283,7 @@ void Player::Animation(STATE _Anim_Name)
  * 〇マガジン取得の流れ
  * 　・マガジンを拾う→タグをUIに変更→大きさと座標を変更、としたい
 */
-void Player::SetChild(std::shared_ptr<GameObject> _child)
+void Player::SetChild(std::shared_ptr<Object> _child)
 {
 	// 設定する子オブジェクトがマガジンであれば(キャストできれば)
 	if (auto casted = std::dynamic_pointer_cast<Magazine>(_child))

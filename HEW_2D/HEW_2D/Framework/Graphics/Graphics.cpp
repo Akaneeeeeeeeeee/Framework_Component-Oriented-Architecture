@@ -7,13 +7,13 @@
 #include <io.h>
 #include <stdio.h>
 #include <string.h>
-#include "D3D11.h"
+#include "Graphics.h"
 
 /**
  * @brief コンストラクタ
  * アプリケーションクラスのメンバ初期化子リストにあるゲームクラスにこのクラスの参照を渡すため、ここで初期化をできるだけ済ませておく
 */
-D3D11::D3D11()
+Graphics::Graphics()
 {
 	HWND hWnd;						// ウィンドウハンドル代入用変数
 	Window::GetInstance().Init();	// ウィンドウ初期化
@@ -21,7 +21,7 @@ D3D11::D3D11()
 	Init(hWnd);				// ウィンドウ情報を使ってDirectXを初期化
 }
 
-D3D11::~D3D11()
+Graphics::~Graphics()
 {
 }
 
@@ -29,7 +29,7 @@ D3D11::~D3D11()
 //--------------------------------------------------------------------------------------
 // Direct3Dの初期化
 //--------------------------------------------------------------------------------------
-HRESULT D3D11::Init(HWND hwnd)
+HRESULT Graphics::Init(HWND hwnd)
 {
 	HRESULT  hr; // HRESULT型・・・Windowsプログラムで関数実行の成功/失敗を受け取る
 
@@ -201,7 +201,7 @@ HRESULT D3D11::Init(HWND hwnd)
 //--------------------------------------------------------------------------------------
 // Direct3Dの描画
 //--------------------------------------------------------------------------------------
-void D3D11::StartRender()
+void Graphics::StartRender()
 {
 	// 画面塗りつぶし色
 	float clearColor[4] = { 0.0f, 0.0f, 1.0f, 1.0f }; //red,green,blue,alpha
@@ -228,7 +228,7 @@ void D3D11::StartRender()
 	m_pDeviceContext->OMSetBlendState(m_pBlendState.Get(), NULL, 0xffffffff);
 }
 
-void D3D11::FinishRender()
+void Graphics::FinishRender()
 {
 	// ダブルバッファの切り替えを行い画面を更新する
 	m_pSwapChain->Present(0, 0);
@@ -238,7 +238,7 @@ void D3D11::FinishRender()
 // Direct3Dの解放（終了処理）
 //--------------------------------------------------------------------------------------
 // ※DirectXの各機能は作成した後、アプリ終了時に必ず解放しなければならない
-void D3D11::Release()
+void Graphics::Release()
 {
 	if (m_pDeviceContext) m_pDeviceContext->ClearState();
 	/*SAFE_RELEASE(m_pBlendState);
@@ -403,22 +403,22 @@ void D3D11::Release()
 //}
 
 
-ID3D11Device* D3D11::GetDevice(void)
+ID3D11Device* Graphics::GetDevice(void)
 {
 	return m_pDevice.Get();
 }
 
-ID3D11DeviceContext* D3D11::GetDeviceContext(void)
+ID3D11DeviceContext* Graphics::GetDeviceContext(void)
 {
 	return m_pDeviceContext.Get();
 }
 
-IDXGISwapChain* D3D11::GetSwapChain(void)
+IDXGISwapChain* Graphics::GetSwapChain(void)
 {
 	return m_pSwapChain.Get();
 }
 
-ID3D11Buffer* D3D11::GetConstantBuffer(void)
+ID3D11Buffer* Graphics::GetConstantBuffer(void)
 {
 	return m_pConstantBuffer.Get();
 }

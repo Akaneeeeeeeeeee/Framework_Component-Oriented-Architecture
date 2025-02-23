@@ -1,6 +1,6 @@
 #pragma once
 #include "../../EntryPoint/main.h"
-#include "../../../Framework/D3D11/D3D11.h"
+#include "../../../Framework/Graphics/Graphics.h"
 #include "../../../Framework/WICTextureLoader/WICTextureLoader.h"	// テクスチャ読み込みライブラリ
 #include "../../../Framework/Component/Transform/Transform.h"		//Transform.h読み込み
 
@@ -26,24 +26,7 @@
 /// 
 /// </summary> 
 
-/**
- * @brief オブジェクト管理タグ
-*/
-enum Tag {
-	NONE = -1,		// デフォルト値
-	BACKGROUND,
-	IMAGE,
-	UI,
-	OBJECT,
-	GROUND,
-	ONOMATOPOEIA,
-	PLAYER,
-	ENEMY,
-	CAMERA,
 
-
-	TAG_MAX		
-};
 
 // オブジェクトの状態（ここに全部書き出しておく）
 enum STATE
@@ -87,7 +70,7 @@ class IOnomatopoeia;
  * 
  * 一旦コンポーネント指向ではなくオブジェクト指向で止めておく
  * @param vertices 頂点データ
- * @param d3d11 d3dクラスのポインタ（描画に使用）
+ * @param Graphics d3dクラスのポインタ（描画に使用）
  * @param transform トランスフォーム（座標、回転、大きさ）
  * @param color 色情報
  * 
@@ -100,7 +83,7 @@ protected:
 	std::vector<Vertex> vertices;
 	
 	// d3dクラス
-	D3D11& D3d11;
+	Graphics& Graphics;
 
 	// 座標,大きさ,角度
 	Transform transform;
@@ -161,7 +144,7 @@ public:
 
 
 	//GameObject() = default;	// クラスのメンバ変数に参照が入っている場合、デフォルトコンストラクタが使えない（初期化が必須となる）
-	GameObject(D3D11& _D3d11);
+	GameObject();
 	virtual ~GameObject();
 
 	virtual void Init(const wchar_t* imgname, int sx = 1, int sy = 1, bool _animation = false); // 初期化

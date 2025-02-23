@@ -174,13 +174,13 @@
     <Filter Include="フレームワーク\リソース管理">
       <UniqueIdentifier>{d582a844-00ea-4d3a-9c2c-9744205ad2a2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="フレームワーク\コンポーネント\描画機能\IRenderer">
+      <UniqueIdentifier>{a3ada835-966b-42a6-bc45-7b453eb66b17}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Framework\Input\Input.cpp">
       <Filter>フレームワーク\入力管理</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\D3D11\D3D11.cpp">
-      <Filter>フレームワーク\DirectX3D11管理</Filter>
     </ClCompile>
     <ClCompile Include="Framework\WICTextureLoader\WICTextureLoader.cpp">
       <Filter>フレームワーク\画像読み込み</Filter>
@@ -311,11 +311,14 @@
     <ClCompile Include="Framework\ResourceManager\ResourceManager.cpp">
       <Filter>フレームワーク\リソース管理</Filter>
     </ClCompile>
+    <ClCompile Include="Framework\Graphics\Graphics.cpp">
+      <Filter>フレームワーク\DirectX3D11管理</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Component\Renderer\IRenderer\IRenderer.cpp">
+      <Filter>フレームワーク\コンポーネント\描画機能\IRenderer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Framework\D3D11\D3D11.h">
-      <Filter>フレームワーク\DirectX3D11管理</Filter>
-    </ClInclude>
     <ClInclude Include="Framework\Input\Input.h">
       <Filter>フレームワーク\入力管理</Filter>
     </ClInclude>
@@ -447,6 +450,12 @@
     </ClInclude>
     <ClInclude Include="Framework\ResourceManager\ResourceManager.h">
       <Filter>フレームワーク\リソース管理</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Graphics\Graphics.h">
+      <Filter>フレームワーク\DirectX3D11管理</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Component\Renderer\IRenderer\IRenderer.h">
+      <Filter>フレームワーク\コンポーネント\描画機能\IRenderer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

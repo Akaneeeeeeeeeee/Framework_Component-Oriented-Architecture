@@ -19,7 +19,7 @@ class Poyon : public IOnomatopoeia
 {
 public:
 
-	Poyon(D3D11& _D3d11) :IOnomatopoeia(_D3d11) {
+	Poyon() :IOnomatopoeia() {
 
 	}
 

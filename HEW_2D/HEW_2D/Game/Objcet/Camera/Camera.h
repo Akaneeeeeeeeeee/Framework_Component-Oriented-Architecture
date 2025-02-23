@@ -17,7 +17,7 @@
 class Camera : public GameObject
 {
 public:
-	Camera(D3D11& _D3d11) :GameObject(_D3d11) {
+	Camera() :GameObject() {
 		//! カメラの移動スピード
 		m_Velocity = { 20.0f };
 		Vector3 scele = { 1920.0f, 1080.0f, 0.0f };

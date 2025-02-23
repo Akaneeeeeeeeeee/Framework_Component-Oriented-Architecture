@@ -2,7 +2,26 @@
 #include "../../../Framework/ComponentManager/ComponentManager.h"
 #include "../../ObjectManager/ObjectManager.h"
 #include "../../../Framework/Component/Transform/TransformComponent.h"
+#include "../../../Framework/Component/RigitBody/RigitBody2D.h"
 
+/**
+ * @brief オブジェクト管理タグ
+*/
+enum Tag {
+	NONE = -1,		// デフォルト値
+	BACKGROUND,
+	IMAGE,
+	UI,
+	OBJECT,
+	GROUND,
+	ONOMATOPOEIA,
+	PLAYER,
+	ENEMY,
+	CAMERA,
+
+
+	TAG_MAX
+};
 
 /**
  * @brief ベースとなるオブジェクトクラス
@@ -23,7 +42,7 @@ public:
 		AddComponent<TransformComponent>(this);
 	};
 
-	Object(UINT _ID, const Tag& _tag, const std::string& _name) :m_ID(_ID), m_Tag(_tag), m_Name(_name) {
+	Object(const UINT& _ID, const Tag& _tag, const std::string& _name) :m_ID(_ID), m_Tag(_tag), m_Name(_name) {
 		// コンストラクタでTransformコンポーネントだけ自動で追加しておく
 		AddComponent<TransformComponent>(this);
 	};
@@ -124,6 +143,7 @@ public:
 	virtual void Init(void);
 	virtual void Update(void);
 	// 描画は更新処理内で行う？関数だけ作っておいて、描画コンポーネントがある場合に処理を行う？
+	virtual void Draw(void);
 	virtual void Uninit(void);
 
 	const virtual Tag& GetTag(void) { return m_Tag; }
@@ -133,7 +153,7 @@ public:
 protected:
 	UINT m_ID;
 	std::string m_Name = "GameObject";
-	Tag m_Tag = Tag::NONE;
+	Tag m_Tag = NONE;
 	
 	// これいらなくね？ゲームオブジェクトの中のコンポーネントマネージャからじゃないとaddcomponentできない→オブジェクトがmapで管理しとくほうがいい
 	//ComponentManager m_ComponentManager;
