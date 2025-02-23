@@ -36,7 +36,7 @@ void TitleScene::Init(void) {
 	// ÉJÅ[É\Éã
 	objectmanager.AddObject<Object>(UI, "Cursol");
 	objectmanager.GetGameObjectPtr<Object>(UI, "Cursol").lock()->Init(L"Game/Asset/UI/CharacterCursor.png", 3.1);
-	objectmanager.GetGameObjectPtr<Object>(UI, "Cursol").lock()->SetUV(Int2(2, 0));
+	objectmanager.GetGameObjectPtr<Object>(UI, "Cursol").lock()->SetUV(XMINT2(2, 0));
 	objectmanager.GetGameObjectPtr<Object>(UI, "Cursol").lock()->SetPosition(Vector3(300.0f, -170.0f, 0.0f));
 	objectmanager.GetGameObjectPtr<Object>(UI, "Cursol").lock()->SetScale(Vector3(300.0f, 450.0f, 0.0f));
 

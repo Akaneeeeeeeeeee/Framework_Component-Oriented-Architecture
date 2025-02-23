@@ -22,7 +22,7 @@ public:
 	void Draw(void)override;
 	void Uninit(void)override;
 
-	void Title_Onomatope_Move(std::weak_ptr<GameObject>,float); //TitleScene‚Ì‘•ü—p‚Ì‹[‰¹‚Ì“®‚«
+	void Title_Onomatope_Move(std::weak_ptr<Object>,float); //TitleScene‚Ì‘•ü—p‚Ì‹[‰¹‚Ì“®‚«
 
 protected:
 	

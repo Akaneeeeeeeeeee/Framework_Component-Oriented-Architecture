@@ -37,7 +37,7 @@ public:
 	 * ID設定、タグ設定、名前設定を行ってコンテナに追加
 	*/
 	template <typename T>
-	void AddObject(const Tag& _Tag, std::string& _Name)
+	void AddObject(const Tag& _Tag, const std::string _Name)
 	{
 		// ID(完全一意のものを設定)
 		static UINT id = 0;
