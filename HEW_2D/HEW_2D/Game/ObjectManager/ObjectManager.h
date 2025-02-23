@@ -1,6 +1,5 @@
 #pragma once
 #include "../EntryPoint/main.h"
-#include "../../Game/Objcet/BaseObject/Object.h"
 #include "../Objcet/Player/Player.h"
 #include "../Objcet/SoundGun/SoundGun.h"
 #include "../Objcet/Camera/Camera.h"
@@ -54,15 +53,15 @@ public:
 	/**
 	 * @brief 指定したタグのオブジェクトをvectorで渡して追加する関数
 	*/
-	template <typename T>
-	void AddObject(Tag _Tag, std::vector<std::unique_ptr<T>> _Objects)
-	{
-		// 引数の長さ分オブジェクト追加関数を回す
-		for (auto& object : _Objects)
-		{
-			AddObject(_Tag, std::move(object));
-		}
-	}
+	//template <typename T>
+	//void AddObject(Tag _Tag, std::vector<std::unique_ptr<T>> _Objects)
+	//{
+	//	// 引数の長さ分オブジェクト追加関数を回す
+	//	for (auto& object : _Objects)
+	//	{
+	//		AddObject(_Tag, std::move(object));
+	//	}
+	//}
 
 	/**
 	 * @brief オブジェクト複数追加関数
@@ -189,30 +188,32 @@ public:
 	 * @param _Name 付けた
 	 * @return オブジェクトの生ポインタ(タグの型にキャストしてから返す)
 	*/
-	//template <class T>
-	//std::weak_ptr<T> GetGameObjectPtr(const Tag& _Tag, const std::string& _Name)
-	//{
-	//	// タグと名前の一致するオブジェクトを見つける(見つからない場合はend()が返ってくる)
-	//	auto iterator = Objects.find(std::make_pair(_Tag, _Name));
-	//	// 見つかった場合
-	//	if (iterator != Objects.end())
-	//	{
-	//		// ポインタを取得して型に合わせて一度shared_ptrにキャスト
-	//		std::shared_ptr<T> castedptr = std::dynamic_pointer_cast<T>(iterator->second);
+	template <class T>
+	T* GetGameObject(const std::string& _Name)
+	{
+		// タグと名前の一致するオブジェクトを見つける(見つからない場合はend()が返ってくる)
+		for (auto& iterator : Objects) {
+			// 見つかった場合
+			if (iterator.get()->GetName() == _Name)
+			{
+				// ポインタを取得して型に合わせて一度shared_ptrにキャスト
+				static_assert(std::is_base_of<T, Object>::value, "TはObjectを継承している必要があります");
+				auto castedptr = dynamic_cast<T*>(iterator.get());
 
-	//		// キャストが成功した場合(nullptrではない場合)
-	//		if (castedptr)
-	//		{
-	//			// ポインタを返す(ここで自動的にweak_ptrに変換される)
-	//			return castedptr;
-	//		}
-	//	}
-	//	// 見つからなければ空のweak_ptrを返す
-	//	return std::weak_ptr<T>();
-	//}
+				// キャストが成功した場合(nullptrではない場合)
+				if (castedptr)
+				{
+					// ポインタを返す(ここで自動的にweak_ptrに変換される)
+					return castedptr;
+				}
+			}
+		}
+		// 見つからなければ空のweak_ptrを返す
+		return nullptr;
+	}
 
 	// 全オブジェクトを取得する
-	std::vector<std::pair<std::pair<Tag, std::string>, std::shared_ptr<GameObject>>> GetAllObjects(void);
+	//std::vector<std::pair<std::pair<Tag, std::string>, std::shared_ptr<Object>>> GetAllObjects(void);
 
 	// カメラがあればそのポインタを返す関数
 	//std::shared_ptr<Camera> HasCamera(void);

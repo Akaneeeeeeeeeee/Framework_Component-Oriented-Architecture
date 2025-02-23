@@ -1,7 +1,7 @@
 #include "BiriBiri.h"
 #include "../../Player/Player.h"
 
-void BiriBiri::Action(std::weak_ptr<GameObject> player)
+void BiriBiri::Action(std::weak_ptr<Object> player)
 {
 	Vector3 player_pos = player.lock()->GetPosition();
 	Vector3 player_rotation = player.lock()->GetRotation();

@@ -9,7 +9,7 @@
 class CrossHair :public Object
 {
 public:
-	CrossHair():Object() {
+	CrossHair(const UINT& _ID, const Tag& _tag, const std::string& _name):Object(_ID, _tag, _name) {
 		MoveLeft = false;
 		MoveRight = false;
 		MoveUp = false;
@@ -18,7 +18,7 @@ public:
 	}
 
 	~CrossHair() {};
-	void Update(void) override;
+	void Update(void);
 	void SetMoveLeft(bool _flg) { MoveLeft = _flg; }
 	void SetMoveRight(bool _flg) { MoveRight = _flg; }
 	void SetMoveUp(bool _flg) { MoveUp = _flg; }

@@ -33,10 +33,10 @@ void TestScene::Init(void) {
 	{
 	case FRAME1:
 		// îwåi
-		objectmanager.AddObject<GameObject>(BACKGROUND, "Background");
-		objectmanager.GetGameObjectPtr<GameObject>(BACKGROUND, "Background").lock()->Init(L"Game/Asset/BackGround/ResultBack.png");
-		objectmanager.GetGameObjectPtr<GameObject>(BACKGROUND, "Background").lock()->SetPosition(Vector3(0.0f, 0.0f, 0.0f));
-		objectmanager.GetGameObjectPtr<GameObject>(BACKGROUND, "Background").lock()->SetScale(Vector3(1920.0f, 1080.0f, 0.0f));
+		objectmanager.AddObject<Object>(BACKGROUND, "Background");
+		objectmanager.GetGameObjectPtr<Object>(BACKGROUND, "Background").lock()->Init(L"Game/Asset/BackGround/ResultBack.png");
+		objectmanager.GetGameObjectPtr<Object>(BACKGROUND, "Background").lock()->SetPosition(Vector3(0.0f, 0.0f, 0.0f));
+		objectmanager.GetGameObjectPtr<Object>(BACKGROUND, "Background").lock()->SetScale(Vector3(1920.0f, 1080.0f, 0.0f));
 
 		// ÉvÉåÉCÉÑÅ[
 		objectmanager.AddObject<Player>(PLAYER, "Player");
@@ -147,7 +147,7 @@ void TestScene::Init(void) {
 
 	case FRAME2:
 		// îwåi
-		objectmanager.AddObject<GameObject>(BACKGROUND, "Background");
+		objectmanager.AddObject<Object>(BACKGROUND, "Background");
 		objectmanager.GetGameObjectPtr<GameObject>(BACKGROUND, "Background").lock()->Init(L"Game/Asset/BackGround/ResultBack.png");
 		objectmanager.GetGameObjectPtr<GameObject>(BACKGROUND, "Background").lock()->SetPosition(Vector3(0.0f, 0.0f, 0.0f));
 		objectmanager.GetGameObjectPtr<GameObject>(BACKGROUND, "Background").lock()->SetScale(Vector3(1920.0f, 1080.0f, 0.0f));

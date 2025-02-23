@@ -38,12 +38,12 @@ class Magazine;
 class Player :public Character
 {
 public:
-	Player() :Character() {
-		m_Velocity = { 0.0f };
+	Player(const UINT& _ID, const Tag& _tag, const std::string& _name) :Character(_ID, _tag, _name) {
+		GetComponent<RigidBody2D>()->AddForce(Vector3(0.0f,0.0f,0.0f),ForceMode2D::VelocityChange);
 		m_MoveSpeed = 5.0f;
 		m_JumpPower = 10.5f; //7.5
 		IsShot = false;
-		IsSuction = false;
+		//IsSuction = false;
 		m_Soundgun = nullptr;
 		m_Magazines.clear();
 		UseMagNumber = 1;		// 0番目のマガジンはドォン専用なので1番目からスタート
@@ -57,9 +57,9 @@ public:
 		Uninit();
 	};
 	
-	void Update(void) override;		// プレイヤー固有の入力はここで取得する
-	void Draw(void) override;		// 擬音使用で描画方法変更があった場合用に宣言
-	void Uninit(void) override;		// 解放
+	void Update(void);		// プレイヤー固有の入力はここで取得する
+	void Draw(void);		// 擬音使用で描画方法変更があった場合用に宣言
+	void Uninit(void);		// 解放
 
 	void Animation(STATE _Anim_Name);	// プレイヤー個別のアニメーション関数
 
@@ -71,7 +71,7 @@ public:
 	// TODO:2025/01/27 擬音銃クラスで吸い込み関数作成→プレイヤーの吸い込みではそれを実行し、その関数の戻り値で吸い込んだ擬音を返し、マガジンにセットすれば行けるはず
 	
 	// TODO:2025/01/28 移動しながら吸い込んだらうまく吸い込まれないバグを直す。吐きだし処理を完成させる
-	bool Suction(std::weak_ptr<GameObject>);	// 吸い込み関数(戻り値で吸い込み処理が終了したかを判定)
+	bool Suction(std::weak_ptr<Object>);	// 吸い込み関数(戻り値で吸い込み処理が終了したかを判定)
 	void Shot(void);		// 擬音の発射関数
 
 	void SetIsShot(bool _flg);

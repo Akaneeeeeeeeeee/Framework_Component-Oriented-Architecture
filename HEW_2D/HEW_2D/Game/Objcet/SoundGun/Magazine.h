@@ -27,10 +27,10 @@
 class Magazine : public Object
 {
 public:
-	Magazine() :Object() {
+	Magazine(const UINT& _ID, const Tag& _tag, const std::string& _name) :Object(_ID, _tag, _name) {
 		// 最初はマガジンにはどの擬音も入っていない
 		m_Onomatopoeia = nullptr;
-		OnGround = false;
+		//OnGround = false;
 		IsFlying = false;
 	}
 
@@ -44,8 +44,8 @@ public:
 		m_Onomatopoeia.reset();
 	};
 
-	void Update(void) override;		// 擬音の状態などをこっちで管理するためにオーバーライド
-	void Draw(void) override;		// 擬音装填したときにそれも描画するのでオーバーライド
+	void Update(void);		// 擬音の状態などをこっちで管理するためにオーバーライド
+	void Draw(void);		// 擬音装填したときにそれも描画するのでオーバーライド
 	// マガジンに入った場合、その擬音の所有権はマガジンに移るはずなのでunique_ptr
 	//void SetOnomatopoeia(Tag, std::string, std::shared_ptr<GameObject>&& _onomatopoeia);
 

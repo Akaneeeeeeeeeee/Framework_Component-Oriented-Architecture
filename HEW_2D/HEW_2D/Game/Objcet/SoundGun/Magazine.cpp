@@ -1,4 +1,4 @@
-#include"Magazine.h"
+#include "Magazine.h"
 
 /**
  * @brief ‹[‰¹‘•“U

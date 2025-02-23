@@ -12,7 +12,7 @@
 
 //PlayerとGroundの当たり判定(配列)
 //template <class T, class U>
-bool ColliderPlayer_Ground(std::shared_ptr<Player> _player, std::vector<std::shared_ptr<GameObject>> _objects)
+bool ColliderPlayer_Ground(std::shared_ptr<Player> _player, std::vector<std::shared_ptr<Object>> _objects)
 {
 	// 地面の配列の要素数分ループ
 	for (auto& ground : _objects) {
@@ -54,7 +54,7 @@ bool Collider_Player_to_Magazine(std::weak_ptr<Player> obj1, std::weak_ptr<Magaz
 	Ground_Right_Collider = obj2.lock()->GetPosition().x + obj2.lock()->GetScale().x / 2; //グラウンドの右の当たり判定変数
 	Ground_Left_Collider = obj2.lock()->GetPosition().x - obj2.lock()->GetScale().x / 2;  //グラウンドの左の当たり判定変数
 	Ground_Top_Collider = obj2.lock()->GetPosition().y + obj2.lock()->GetScale().y / 2;    //グラウンドの上の当たり判定変数
-	Ground_Bottom_Collider = obj2.lock()->GetPosition().y - obj2.lock()->GetScale().y / 2;//グラウンドの下の当たり判定変数
+	Ground_Bottom_Collider = obj2.lock()->GetPosition().y - obj2.lock()->vvvGetScale().y / 2;//グラウンドの下の当たり判定変数
 
 	//プレイヤーとマガジンの当たり判定
 	if (Player_Left_Collider < Ground_Right_Collider &&
@@ -75,7 +75,7 @@ bool Collider_Player_to_Magazine(std::weak_ptr<Player> obj1, std::weak_ptr<Magaz
  * @brief プレイヤーとオブジェクトの当たり判定
  * @return 結果
 */
-bool Collider_to_Object(std::weak_ptr<Player> _player, std::weak_ptr<GameObject> _object) {
+bool Collider_to_Object(std::weak_ptr<Player> _player, std::weak_ptr<Object> _object) {
 	float Player_Right_Collider, Player_Left_Collider, Player_Top_Collider, Player_Bottom_Collider;//playerの当たり判定変数
 	float Ground_Right_Collider, Ground_Left_Collider, Ground_Top_Collider, Ground_Bottom_Collider;//groundの当たり判定変数
 
@@ -176,7 +176,7 @@ bool Collider_to_Object(std::weak_ptr<Player> _player, std::weak_ptr<GameObject>
 
 
 //PlayerとGionの当たり判定
-bool ColliderPlayer_Gion(std::shared_ptr<Player> player, std::shared_ptr<GameObject> gion)
+bool ColliderPlayer_Gion(std::shared_ptr<Player> player, std::shared_ptr<Object> gion)
 {
 	float Player_Right_Collider, Player_Left_Collider, Player_Up_Collider, Player_Bottom_Collider;//playerの当たり判定変数
 	float Gion_Right_Collider, Gion_Left_Collider, Gion_Up_Collider, Gion_Bottom_Collider;        //gionの当たり判定変数

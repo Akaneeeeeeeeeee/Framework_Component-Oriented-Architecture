@@ -27,18 +27,6 @@
 /// </summary> 
 
 
-
-// オブジェクトの状態（ここに全部書き出しておく）
-enum STATE
-{
-	NORMAL,		// 通常時
-	RUN,		// 移動時
-	JUMP,		// ジャンプ時
-	DAMAGED,	// 被ダメ時
-	ATTACKED,	// 攻撃時
-	EFECT,      //エフェクト
-};
-
 /**
  * @brief アニメーション番号管理用構造体
 */

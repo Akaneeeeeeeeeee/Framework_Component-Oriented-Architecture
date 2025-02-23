@@ -1,8 +1,6 @@
 #pragma once
 #include "../BaseObject/Object.h"
 
-
-
 /**
  * @brief 全キャラクターの元となるクラス
  * シーン側では入力の取得、フラグ立てだけを行い、このクラスの派生クラスで個々の動きを書く
@@ -10,21 +8,21 @@
 class Character :public Object
 {
 public:
-	Character() :Object() {
+	Character(const UINT& _ID, const Tag& _tag, const std::string& _name) :Object(_ID, _tag, _name) {
 		MoveUp = false;
 		MoveDown = false;
 		MoveLeft = false;
 		MoveRight = false;
 		Jump = false;
 		Jumping = false;
-		OnGround = false;
+		//OnGround = false;
 		m_JumpPower = 0.0f;
 		m_MoveSpeed = 0.0f;
 	}
 
 	virtual ~Character() {};
 
-	virtual void Update(void) override;
+	virtual void Update(void);
 
 	// ゲッターセッター系
 	virtual bool GetMoveUp(void);

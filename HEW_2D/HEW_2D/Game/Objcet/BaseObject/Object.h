@@ -23,6 +23,17 @@ enum Tag {
 	TAG_MAX
 };
 
+// オブジェクトの状態（ここに全部書き出しておく）
+enum STATE
+{
+	NORMAL,		// 通常時
+	RUN,		// 移動時
+	JUMP,		// ジャンプ時
+	DAMAGED,	// 被ダメ時
+	ATTACKED,	// 攻撃時
+	EFECT,      //エフェクト
+};
+
 /**
  * @brief ベースとなるオブジェクトクラス
  * 
@@ -114,7 +125,7 @@ public:
 		if (it != m_Components.end())
 		{
 			// 目的の型にキャストして返す
-			return std::dynamic_pointer_cast<T>(it->second);
+			return dynamic_cast<T>(it->second.get());
 		}
 
 		// なければエラー出力
@@ -151,6 +162,11 @@ public:
 
 
 protected:
+	// 親オブジェクトのポインタ
+	Object* m_pParent;
+	// 子オブジェクトのポインタ
+
+
 	UINT m_ID;
 	std::string m_Name = "GameObject";
 	Tag m_Tag = NONE;

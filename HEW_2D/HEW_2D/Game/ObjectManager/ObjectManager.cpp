@@ -88,28 +88,28 @@ void ObjectManager::Collider_Player_to_Object(void)
  * @param _newTag 変更後のタグ
  * @return 結果
 */
-bool ObjectManager::ChangeTag(Tag _oldtag, const std::string _name, Tag _newTag)
-{
-	// 現在のキーを作成
-	auto oldKey = std::make_pair(_oldtag, _name);
-
-	// 1. 元のキーでオブジェクトを検索
-	auto it = Objects.find(oldKey);
-	if (it == Objects.end()) {
-		std::cerr << "オブジェクトが見つかりません: " << _name << std::endl;
-		return false;
-	}
-
-	// 2. オブジェクトを取得し、マップから削除
-	auto obj = it->second;
-	Objects.erase(it);
-
-	// 3. 新しいタグで再登録
-	auto newKey = std::make_pair(_newTag, _name);
-	Objects[newKey] = obj;
-
-	return true;
-}
+//bool ObjectManager::ChangeTag(Tag _oldtag, const std::string _name, Tag _newTag)
+//{
+//	// 現在のキーを作成
+//	auto oldKey = std::make_pair(_oldtag, _name);
+//
+//	// 1. 元のキーでオブジェクトを検索
+//	auto it = Objects.find(oldKey);
+//	if (it == Objects.end()) {
+//		std::cerr << "オブジェクトが見つかりません: " << _name << std::endl;
+//		return false;
+//	}
+//
+//	// 2. オブジェクトを取得し、マップから削除
+//	auto obj = it->second;
+//	Objects.erase(it);
+//
+//	// 3. 新しいタグで再登録
+//	auto newKey = std::make_pair(_newTag, _name);
+//	Objects[newKey] = obj;
+//
+//	return true;
+//}
 
 
 

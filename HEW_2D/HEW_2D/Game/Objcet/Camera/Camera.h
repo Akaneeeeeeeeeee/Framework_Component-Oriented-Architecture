@@ -1,5 +1,5 @@
 #pragma once
-#include "../BaseObject/GameObject.h"
+#include "../BaseObject/Object.h"
 
 /**
  * @brief カメラクラス
@@ -14,15 +14,16 @@
  * こんなところか？当たり判定もいらないし
  * →で、カメラ画面内にあるモノだけ描画する、とすれば行けるはず
 */
-class Camera : public GameObject
+class Camera : public Object
 {
 public:
-	Camera() :GameObject() {
+	Camera() :Object() {
 		//! カメラの移動スピード
-		m_Velocity = { 20.0f };
-		Vector3 scele = { 1920.0f, 1080.0f, 0.0f };
-		transform.SetScale(scele);
-		transform.SetPosition(Vector3(0.0f, 0.0f, 0.0f));
+		GetComponent<RigidBody2D>()->AddForce(Vector3(20.0f,0.0f,0.0f),ForceMode2D::VelocityChange);
+		Vector3 scale = { 1920.0f, 1080.0f, 0.0f };
+		GetComponent<TransformComponent>()->SetScale(scale);
+		Vector3 pos = { 0.0f,0.0f,0.0f };
+		GetComponent<TransformComponent>()->SetPosition(pos);
 		//cameraSpeed = StageSize / 100;	//!ステージの移動スピード
 
 		// 最初はフェードインから始めたいのでフェードのフラグのみを設定しておく
@@ -33,7 +34,7 @@ public:
 
 	~Camera() {};
 	
-	void Update(void) override;		//! カメラスピードとオブジェクトの位置
+	void Update(void);		//! カメラスピードとオブジェクトの位置
 	void SetIsMoving(bool _flg) { IsMoving = _flg; }
 
 private:

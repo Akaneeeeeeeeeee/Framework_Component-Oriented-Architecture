@@ -22,32 +22,32 @@ void TitleScene::Init(void) {
 	objectmanager.GetGameObjectPtr<Player>(UI, "TitleLogo").lock()->SetRotation(r_rotation);
 
 	//startロゴ
-	objectmanager.AddObject<GameObject>(UI, "start");
-	objectmanager.GetGameObjectPtr<GameObject>(UI, "start").lock()->Init(L"Game/Asset/UI/StartButton.png",2.1);
-	objectmanager.GetGameObjectPtr<GameObject>(UI, "start").lock()->SetPosition(Vector3(500.0f, -150.0f, 0.0f));
-	objectmanager.GetGameObjectPtr<GameObject>(UI, "start").lock()->SetScale(Vector3(500.0f, 400.0f, 0.0f));
+	objectmanager.AddObject<Object>(UI, "start");
+	objectmanager.GetGameObjectPtr<Object>(UI, "start").lock()->Init(L"Game/Asset/UI/StartButton.png",2.1);
+	objectmanager.GetGameObjectPtr<Object>(UI, "start").lock()->SetPosition(Vector3(500.0f, -150.0f, 0.0f));
+	objectmanager.GetGameObjectPtr<Object>(UI, "start").lock()->SetScale(Vector3(500.0f, 400.0f, 0.0f));
 
 	//endロゴ
-	objectmanager.AddObject<GameObject>(UI, "end");
-	objectmanager.GetGameObjectPtr<GameObject>(UI, "end").lock()->Init(L"Game/Asset/UI/EndButton.png", 2.1);
-	objectmanager.GetGameObjectPtr<GameObject>(UI, "end").lock()->SetPosition(Vector3(500.0f, -350.0f, 0.0f));
-	objectmanager.GetGameObjectPtr<GameObject>(UI, "end").lock()->SetScale(Vector3(500.0f, 400.0f, 0.0f));
+	objectmanager.AddObject<Object>(UI, "end");
+	objectmanager.GetGameObjectPtr<Object>(UI, "end").lock()->Init(L"Game/Asset/UI/EndButton.png", 2.1);
+	objectmanager.GetGameObjectPtr<Object>(UI, "end").lock()->SetPosition(Vector3(500.0f, -350.0f, 0.0f));
+	objectmanager.GetGameObjectPtr<Object>(UI, "end").lock()->SetScale(Vector3(500.0f, 400.0f, 0.0f));
 
 	// カーソル
-	objectmanager.AddObject<GameObject>(UI, "Cursol");
-	objectmanager.GetGameObjectPtr<GameObject>(UI, "Cursol").lock()->Init(L"Game/Asset/UI/CharacterCursor.png", 3.1);
-	objectmanager.GetGameObjectPtr<GameObject>(UI, "Cursol").lock()->SetUV(Int2(2, 0));
-	objectmanager.GetGameObjectPtr<GameObject>(UI, "Cursol").lock()->SetPosition(Vector3(300.0f, -170.0f, 0.0f));
-	objectmanager.GetGameObjectPtr<GameObject>(UI, "Cursol").lock()->SetScale(Vector3(300.0f, 450.0f, 0.0f));
+	objectmanager.AddObject<Object>(UI, "Cursol");
+	objectmanager.GetGameObjectPtr<Object>(UI, "Cursol").lock()->Init(L"Game/Asset/UI/CharacterCursor.png", 3.1);
+	objectmanager.GetGameObjectPtr<Object>(UI, "Cursol").lock()->SetUV(Int2(2, 0));
+	objectmanager.GetGameObjectPtr<Object>(UI, "Cursol").lock()->SetPosition(Vector3(300.0f, -170.0f, 0.0f));
+	objectmanager.GetGameObjectPtr<Object>(UI, "Cursol").lock()->SetScale(Vector3(300.0f, 450.0f, 0.0f));
 
 	//キャラクターロゴ
-	objectmanager.AddObject<GameObject>(UI, "PlayerLogo");
-	objectmanager.GetGameObjectPtr<GameObject>(UI, "PlayerLogo").lock()->Init(L"Game/Asset/Character/Player.png");
-	objectmanager.GetGameObjectPtr<GameObject>(UI, "PlayerLogo").lock()->SetPosition(Vector3(-400.0f, -300.0f, 0.0f));
-	objectmanager.GetGameObjectPtr<GameObject>(UI, "PlayerLogo").lock()->SetScale(Vector3(800.0f, 900.0f, 0.0f));
-	Vector3 c_rotation = objectmanager.GetGameObjectPtr<GameObject>(UI, "PlayerLogo").lock()->GetRotation();
+	objectmanager.AddObject<Object>(UI, "PlayerLogo");
+	objectmanager.GetGameObjectPtr<Object>(UI, "PlayerLogo").lock()->Init(L"Game/Asset/Character/Player.png");
+	objectmanager.GetObjectPtr<Object>(UI, "PlayerLogo").lock()->SetPosition(Vector3(-400.0f, -300.0f, 0.0f));
+	objectmanager.GetObjectPtr<Object>(UI, "PlayerLogo").lock()->SetScale(Vector3(800.0f, 900.0f, 0.0f));
+	Vector3 c_rotation = objectmanager.GetObjectPtr<Object>(UI, "PlayerLogo").lock()->GetRotation();
 	c_rotation.z = 15.0f;
-	objectmanager.GetGameObjectPtr<GameObject>(UI, "PlayerLogo").lock()->SetRotation(c_rotation);
+	objectmanager.GetObjectPtr<Object>(UI, "PlayerLogo").lock()->SetRotation(c_rotation);
 
 	std::cout << "TitleSceneInit" << std::endl;
 }
@@ -60,7 +60,7 @@ void TitleScene::Update(void) {
 	Vector2 RightStickInput = Input::GetInstance().GetRightAnalogStick();	// 右スティック入力
 	Vector2 LeftStickInput = Input::GetInstance().GetLeftAnalogStick();		// 左スティック入力
 	
-	Vector3 Cursol_pos = objectmanager.GetGameObjectPtr<GameObject>(UI, "Cursol").lock()->GetPosition();
+	Vector3 Cursol_pos = objectmanager.GetObjectPtr<Object>(UI, "Cursol").lock()->GetPosition();
 
 	
 	// ゲームセレクト画面に遷移
@@ -94,7 +94,7 @@ void TitleScene::Update(void) {
 	if (Input::GetInstance().GetButtonTrigger(XINPUT_GAMEPAD_DPAD_DOWN) || Input::GetInstance().GetKeyPress(VK_DOWN))
 	{
 		Cursol_pos.y = -370.0f;
-		objectmanager.GetGameObjectPtr<GameObject>(UI, "Cursol").lock()->SetPosition(Cursol_pos);
+		objectmanager.GetObjectPtr<Object>(UI, "Cursol").lock()->SetPosition(Cursol_pos);
 		// SE再生
 		Sound::GetInstance().Play(SE_CLICK);
 	}
@@ -103,7 +103,7 @@ void TitleScene::Update(void) {
 	if (Input::GetInstance().GetButtonTrigger(XINPUT_GAMEPAD_DPAD_UP) || Input::GetInstance().GetKeyPress(VK_UP))
 	{
 		Cursol_pos.y = -170.0f;
-		objectmanager.GetGameObjectPtr<GameObject>(UI, "Cursol").lock()->SetPosition(Cursol_pos);
+		objectmanager.GetObjectPtr<Object>(UI, "Cursol").lock()->SetPosition(Cursol_pos);
 		// SE再生
 		Sound::GetInstance().Play(SE_CLICK);
 	}
@@ -119,7 +119,7 @@ void TitleScene::Uninit(void) {
 }
 
 //オノマトペのMove関数
-void TitleScene::Title_Onomatope_Move(std::weak_ptr<GameObject>_onomatope,float deltaTime)
+void TitleScene::Title_Onomatope_Move(std::weak_ptr<Object>_onomatope,float deltaTime)
 {
 	
 }

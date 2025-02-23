@@ -1,5 +1,5 @@
 #pragma once
-#include "../../BaseObject/GameObject.h"
+#include "../../BaseObject/Object.h"
 
 
 
@@ -15,7 +15,7 @@
  * 
  * ・擬音は付与された親オブジェクトに影響を与える
 */
-class IOnomatopoeia : public GameObject
+class IOnomatopoeia : public Object
 {
 public:
 
@@ -23,7 +23,7 @@ public:
 	// 擬音がオブジェクトに与える動き(ここで画像の動きをいじる)
 	virtual void Action(void) = 0;		// マガジンが親の場合は効果を与えない
 	virtual void Fade_in_out(void);		// 擬音のフェードイン/フェードアウト
-	virtual void Update(void) override;	// 更新
+	virtual void Update(void);			// 更新
 	virtual void Set_Onomatope(bool) = 0;   //擬音のフラグセット
 	virtual bool Get_Onomatope(void) = 0;   //擬音のフラグゲット
 	virtual void Set_gion(bool) = 0;
@@ -32,7 +32,7 @@ public:
 protected:
 	// コンストラクタをprotectedにすると派生クラスからしかコンストラクタを動かせない
 	// →このクラスの親クラスのGameObjectクラスは実体を作れるが、このクラスを継承した擬音クラス達はIOnomatopoeiaとして実体を持つことはできなくなる
-	IOnomatopoeia() :GameObject() {
+	IOnomatopoeia(const UINT& _ID, const Tag& _tag, const std::string& _name) :Object(_ID, _tag, _name) {
 
 	};
 	// 擬音が付与されているオブジェクトはGameObjectクラスのm_pParentで判断する

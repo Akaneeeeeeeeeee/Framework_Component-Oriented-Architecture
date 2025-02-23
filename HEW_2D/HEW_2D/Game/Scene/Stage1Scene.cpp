@@ -148,10 +148,10 @@ void Stage1Scene::Init(void) {
 	{
 	case FRAME1:
 		// 背景
-		objectmanager.AddObject<GameObject>(BACKGROUND, "Background");
-		objectmanager.GetGameObjectPtr<GameObject>(BACKGROUND, "Background").lock()->Init(L"Game/Asset/BackGround/TitleBack.png");
-		objectmanager.GetGameObjectPtr<GameObject>(BACKGROUND, "Background").lock()->SetPosition(Vector3(0.0f, 0.0f, 0.0f));
-		objectmanager.GetGameObjectPtr<GameObject>(BACKGROUND, "Background").lock()->SetScale(Vector3(1920.0f, 1080.0f, 0.0f));
+		objectmanager.AddObject<Object>(BACKGROUND, "Background");
+		objectmanager.GetGameObjectPtr<Object>(BACKGROUND, "Background").lock()->Init(L"Game/Asset/BackGround/TitleBack.png");
+		objectmanager.GetGameObjectPtr<Object>(BACKGROUND, "Background").lock()->SetPosition(Vector3(0.0f, 0.0f, 0.0f));
+		objectmanager.GetGameObjectPtr<Object>(BACKGROUND, "Background").lock()->SetScale(Vector3(1920.0f, 1080.0f, 0.0f));
 
 		// プレイヤー
 		objectmanager.AddObject<Player>(PLAYER, "Player");
@@ -207,23 +207,23 @@ void Stage1Scene::Init(void) {
 
 
 		// 地面
-		objectmanager.AddObject<GameObject>(GROUND, "Ground");
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground").lock()->Init(L"Game/Asset/GameObject/Ground.png");
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground").lock()->SetPosition(Vector3(0.0f, -500.0f, 0.0f));
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground").lock()->SetScale(Vector3(1920.0f, 120.0f, 0.0f));
+		objectmanager.AddObject<Object>(GROUND, "Ground");
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground").lock()->Init(L"Game/Asset/GameObject/Ground.png");
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground").lock()->SetPosition(Vector3(0.0f, -500.0f, 0.0f));
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground").lock()->SetScale(Vector3(1920.0f, 120.0f, 0.0f));
 
 
 		// 地面2
-		objectmanager.AddObject<GameObject>(GROUND, "Ground2");
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground2").lock()->Init(L"Game/Asset/GameObject/Ground.png");
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground2").lock()->SetPosition(Vector3(600.0f, -50.0f, 0.0f));
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground2").lock()->SetScale(Vector3(900.0f, 120.0f, 0.0f));
+		objectmanager.AddObject<Object>(GROUND, "Ground2");
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground2").lock()->Init(L"Game/Asset/GameObject/Ground.png");
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground2").lock()->SetPosition(Vector3(600.0f, -50.0f, 0.0f));
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground2").lock()->SetScale(Vector3(900.0f, 120.0f, 0.0f));
 
 		// 地面3
-		objectmanager.AddObject<GameObject>(GROUND, "Ground3");
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground3").lock()->Init(L"Game/Asset/GameObject/Ground.png");
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground3").lock()->SetPosition(Vector3(400.0f, 40.0f, 0.0f));
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground3").lock()->SetScale(Vector3(300.0f, 50.0f, 0.0f));
+		objectmanager.AddObject<Object>(GROUND, "Ground3");
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground3").lock()->Init(L"Game/Asset/GameObject/Ground.png");
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground3").lock()->SetPosition(Vector3(400.0f, 40.0f, 0.0f));
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground3").lock()->SetScale(Vector3(300.0f, 50.0f, 0.0f));
 
 		// スライム
 		objectmanager.AddObject<Enemy>(ENEMY, "Slime");
@@ -246,10 +246,10 @@ void Stage1Scene::Init(void) {
 		objectmanager.GetGameObjectPtr<Poyon>(ONOMATOPOEIA, "_Gion2").lock()->SetScale(Vector3(240.0f, 120.0f, 0.0f));
 
 		// バネ
-		objectmanager.AddObject<GameObject>(OBJECT, "bane");
-		objectmanager.GetGameObjectPtr<GameObject>(OBJECT, "bane").lock()->Init(L"Game/Asset/GameObject/Bane.png", 3, 1);
-		objectmanager.GetGameObjectPtr<GameObject>(OBJECT, "bane").lock()->SetPosition(Vector3(0.0f, -360.0f, 0.0f));
-		objectmanager.GetGameObjectPtr<GameObject>(OBJECT, "bane").lock()->SetScale(Vector3(330.0f, 330.0f, 0.0f));
+		objectmanager.AddObject<Object>(OBJECT, "bane");
+		objectmanager.GetGameObjectPtr<Object>(OBJECT, "bane").lock()->Init(L"Game/Asset/GameObject/Bane.png", 3, 1);
+		objectmanager.GetGameObjectPtr<Object>(OBJECT, "bane").lock()->SetPosition(Vector3(0.0f, -360.0f, 0.0f));
+		objectmanager.GetGameObjectPtr<Object>(OBJECT, "bane").lock()->SetScale(Vector3(330.0f, 330.0f, 0.0f));
 
 		//サンダーエフェクト
 		objectmanager.AddObject<BiriBiri>(UI, "Thunder_Effect");
@@ -259,19 +259,19 @@ void Stage1Scene::Init(void) {
 		objectmanager.GetGameObjectPtr<BiriBiri>(UI, "Thunder_Effect").lock()->SetColor(Color(1.0f, 1.0f, 1.0f, 1.0f));
 
 		//マガジンの外枠
-		objectmanager.AddObject<GameObject>(UI, "Frame");	// 名前要変更
-		objectmanager.GetGameObjectPtr<GameObject>(UI, "Frame").lock()->Init(L"Game/Asset/UI/Frame.png");
-		objectmanager.GetGameObjectPtr<GameObject>(UI, "Frame").lock()->SetPosition(Vector3(-900.0f, 495.0f, 0.0f));
-		objectmanager.GetGameObjectPtr<GameObject>(UI, "Frame").lock()->SetScale(Vector3(120.0f, 80.0f, 0.0f));
+		objectmanager.AddObject<Object>(UI, "Frame");	// 名前要変更
+		objectmanager.GetGameObjectPtr<Object>(UI, "Frame").lock()->Init(L"Game/Asset/UI/Frame.png");
+		objectmanager.GetGameObjectPtr<Object>(UI, "Frame").lock()->SetPosition(Vector3(-900.0f, 495.0f, 0.0f));
+		objectmanager.GetGameObjectPtr<Object>(UI, "Frame").lock()->SetScale(Vector3(120.0f, 80.0f, 0.0f));
 
 		break;
 
 	case FRAME2:
 		// 背景
-		objectmanager.AddObject<GameObject>(BACKGROUND, "Background");
-		objectmanager.GetGameObjectPtr<GameObject>(BACKGROUND, "Background").lock()->Init(L"Game/Asset/BackGround/ResultBack.png");
-		objectmanager.GetGameObjectPtr<GameObject>(BACKGROUND, "Background").lock()->SetPosition(Vector3(0.0f, 0.0f, 0.0f));
-		objectmanager.GetGameObjectPtr<GameObject>(BACKGROUND, "Background").lock()->SetScale(Vector3(1920.0f, 1080.0f, 0.0f));
+		objectmanager.AddObject<Object>(BACKGROUND, "Background");
+		objectmanager.GetGameObjectPtr<Object>(BACKGROUND, "Background").lock()->Init(L"Game/Asset/BackGround/ResultBack.png");
+		objectmanager.GetGameObjectPtr<Object>(BACKGROUND, "Background").lock()->SetPosition(Vector3(0.0f, 0.0f, 0.0f));
+		objectmanager.GetGameObjectPtr<Object>(BACKGROUND, "Background").lock()->SetScale(Vector3(1920.0f, 1080.0f, 0.0f));
 
 		// プレイヤー
 		objectmanager.AddObject<Player>(PLAYER, "Player");
@@ -295,10 +295,10 @@ void Stage1Scene::Init(void) {
 
 
 		// ビリビリであくやつ
-		objectmanager.AddObject<GameObject>(GROUND, "Ground6");
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground6").lock()->Init(L"Game/Asset/GameObject/Ground.png");
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground6").lock()->SetPosition(Vector3(-800.0f, 250.0f, 0.0f));
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground6").lock()->SetScale(Vector3(250.0f, 250.0f, 0.0f));
+		objectmanager.AddObject<Object>(GROUND, "Ground6");
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground6").lock()->Init(L"Game/Asset/GameObject/Ground.png");
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground6").lock()->SetPosition(Vector3(-800.0f, 250.0f, 0.0f));
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground6").lock()->SetScale(Vector3(250.0f, 250.0f, 0.0f));
 
 		//擬音（ドーン）
 		objectmanager.AddObject<Poyon>(ONOMATOPOEIA, "Gion2");	// 名前要変更
@@ -334,29 +334,29 @@ void Stage1Scene::Init(void) {
 
 
 		// 地面
-		objectmanager.AddObject<GameObject>(GROUND, "Ground");
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground").lock()->Init(L"Game/Asset/GameObject/Ground.png");
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground").lock()->SetPosition(Vector3(0.0f, -500.0f, 0.0f));
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground").lock()->SetScale(Vector3(1920.0f, 120.0f, 0.0f));
+		objectmanager.AddObject<Object>(GROUND, "Ground");
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground").lock()->Init(L"Game/Asset/GameObject/Ground.png");
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground").lock()->SetPosition(Vector3(0.0f, -500.0f, 0.0f));
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground").lock()->SetScale(Vector3(1920.0f, 120.0f, 0.0f));
 
 
 		// 3段目
-		objectmanager.AddObject<GameObject>(GROUND, "Ground2");
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground2").lock()->Init(L"Game/Asset/GameObject/Ground.png");
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground2").lock()->SetPosition(Vector3(-700.0f, 100.0f, 0.0f));
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground2").lock()->SetScale(Vector3(600.0f, 50.0f, 0.0f));
+		objectmanager.AddObject<Object>(GROUND, "Ground2");
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground2").lock()->Init(L"Game/Asset/GameObject/Ground.png");
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground2").lock()->SetPosition(Vector3(-700.0f, 100.0f, 0.0f));
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground2").lock()->SetScale(Vector3(600.0f, 50.0f, 0.0f));
 
 		// 1段目
-		objectmanager.AddObject<GameObject>(GROUND, "Ground3");
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground3").lock()->Init(L"Game/Asset/GameObject/Ground.png");
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground3").lock()->SetPosition(Vector3(545.0f, -180.0f, 0.0f));
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground3").lock()->SetScale(Vector3(400.0f, 50.0f, 0.0f));
+		objectmanager.AddObject<Object>(GROUND, "Ground3");
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground3").lock()->Init(L"Game/Asset/GameObject/Ground.png");
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground3").lock()->SetPosition(Vector3(545.0f, -180.0f, 0.0f));
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground3").lock()->SetScale(Vector3(400.0f, 50.0f, 0.0f));
 
 		// パタパタ箱
-		objectmanager.AddObject<GameObject>(GROUND, "Ground4");
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground4").lock()->Init(L"Game/Asset/GameObject/Ground.png");
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground4").lock()->SetPosition(Vector3(145.0f, -80.0f, 0.0f));
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground4").lock()->SetScale(Vector3(150.0f, 50.0f, 0.0f));
+		objectmanager.AddObject<Object>(GROUND, "Ground4");
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground4").lock()->Init(L"Game/Asset/GameObject/Ground.png");
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground4").lock()->SetPosition(Vector3(145.0f, -80.0f, 0.0f));
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground4").lock()->SetScale(Vector3(150.0f, 50.0f, 0.0f));
 
 		// スライム
 		objectmanager.AddObject<Enemy>(ENEMY, "Slime");
@@ -366,10 +366,10 @@ void Stage1Scene::Init(void) {
 
 
 		//二段目
-		objectmanager.AddObject<GameObject>(GROUND, "Ground5");
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground5").lock()->Init(L"Game/Asset/GameObject/Ground.png");
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground5").lock()->SetPosition(Vector3(-130.0f, 20.0f, 0.0f));
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground5").lock()->SetScale(Vector3(400.0f, 50.0f, 0.0f));
+		objectmanager.AddObject<Object>(GROUND, "Ground5");
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground5").lock()->Init(L"Game/Asset/GameObject/Ground.png");
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground5").lock()->SetPosition(Vector3(-130.0f, 20.0f, 0.0f));
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground5").lock()->SetScale(Vector3(400.0f, 50.0f, 0.0f));
 
 
 		// クロスヘア
@@ -387,10 +387,10 @@ void Stage1Scene::Init(void) {
 		objectmanager.GetGameObjectPtr<Poyon>(ONOMATOPOEIA, "_Gion2").lock()->SetScale(Vector3(240.0f, 120.0f, 0.0f));
 
 		// バネ
-		objectmanager.AddObject<GameObject>(OBJECT, "bane");
-		objectmanager.GetGameObjectPtr<GameObject>(OBJECT, "bane").lock()->Init(L"Game/Asset/GameObject/Bane.png", 3, 1);
-		objectmanager.GetGameObjectPtr<GameObject>(OBJECT, "bane").lock()->SetPosition(Vector3(300.0f, -360.0f, 0.0f));
-		objectmanager.GetGameObjectPtr<GameObject>(OBJECT, "bane").lock()->SetScale(Vector3(330.0f, 330.0f, 0.0f));
+		objectmanager.AddObject<Object>(OBJECT, "bane");
+		objectmanager.GetGameObjectPtr<Object>(OBJECT, "bane").lock()->Init(L"Game/Asset/GameObject/Bane.png", 3, 1);
+		objectmanager.GetGameObjectPtr<Object>(OBJECT, "bane").lock()->SetPosition(Vector3(300.0f, -360.0f, 0.0f));
+		objectmanager.GetGameObjectPtr<Object>(OBJECT, "bane").lock()->SetScale(Vector3(330.0f, 330.0f, 0.0f));
 
 		//サンダーエフェクト
 		//objectmanager.AddObject<BiriBiri>(UI, "Thunder_Effect");
@@ -400,19 +400,19 @@ void Stage1Scene::Init(void) {
 		//objectmanager.GetGameObjectPtr<BiriBiri>(UI, "Thunder_Effect").lock()->SetColor(Color(1.0f, 1.0f, 1.0f, 1.0f));
 
 		//マガジンの外枠
-		objectmanager.AddObject<GameObject>(UI, "Frame");	// 名前要変更
-		objectmanager.GetGameObjectPtr<GameObject>(UI, "Frame").lock()->Init(L"Game/Asset/UI/Frame.png");
-		objectmanager.GetGameObjectPtr<GameObject>(UI, "Frame").lock()->SetPosition(Vector3(-900.0f, 495.0f, 0.0f));
-		objectmanager.GetGameObjectPtr<GameObject>(UI, "Frame").lock()->SetScale(Vector3(120.0f, 80.0f, 0.0f));
+		objectmanager.AddObject<Object>(UI, "Frame");	// 名前要変更
+		objectmanager.GetGameObjectPtr<Object>(UI, "Frame").lock()->Init(L"Game/Asset/UI/Frame.png");
+		objectmanager.GetGameObjectPtr<Object>(UI, "Frame").lock()->SetPosition(Vector3(-900.0f, 495.0f, 0.0f));
+		objectmanager.GetGameObjectPtr<Object>(UI, "Frame").lock()->SetScale(Vector3(120.0f, 80.0f, 0.0f));
 
 		break;
 
 	case FRAME3:
 		// 背景
-		objectmanager.AddObject<GameObject>(BACKGROUND, "Background");
-		objectmanager.GetGameObjectPtr<GameObject>(BACKGROUND, "Background").lock()->Init(L"Game/Asset/BackGround/ResultBack.png");
-		objectmanager.GetGameObjectPtr<GameObject>(BACKGROUND, "Background").lock()->SetPosition(Vector3(0.0f, 0.0f, 0.0f));
-		objectmanager.GetGameObjectPtr<GameObject>(BACKGROUND, "Background").lock()->SetScale(Vector3(1920.0f, 1080.0f, 0.0f));
+		objectmanager.AddObject<Object>(BACKGROUND, "Background");
+		objectmanager.GetGameObjectPtr<Object>(BACKGROUND, "Background").lock()->Init(L"Game/Asset/BackGround/ResultBack.png");
+		objectmanager.GetGameObjectPtr<Object>(BACKGROUND, "Background").lock()->SetPosition(Vector3(0.0f, 0.0f, 0.0f));
+		objectmanager.GetGameObjectPtr<Object>(BACKGROUND, "Background").lock()->SetScale(Vector3(1920.0f, 1080.0f, 0.0f));
 
 		// プレイヤー
 		objectmanager.AddObject<Player>(PLAYER, "Player");
@@ -468,29 +468,29 @@ void Stage1Scene::Init(void) {
 
 
 		// 地面
-		objectmanager.AddObject<GameObject>(GROUND, "Ground");
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground").lock()->Init(L"Game/Asset/GameObject/Ground.png");
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground").lock()->SetPosition(Vector3(0.0f, -500.0f, 0.0f));
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground").lock()->SetScale(Vector3(1920.0f, 120.0f, 0.0f));
+		objectmanager.AddObject<Object>(GROUND, "Ground");
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground").lock()->Init(L"Game/Asset/GameObject/Ground.png");
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground").lock()->SetPosition(Vector3(0.0f, -500.0f, 0.0f));
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground").lock()->SetScale(Vector3(1920.0f, 120.0f, 0.0f));
 
 
 		// 3段目
-		objectmanager.AddObject<GameObject>(GROUND, "Ground2");
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground2").lock()->Init(L"Game/Asset/GameObject/Ground.png");
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground2").lock()->SetPosition(Vector3(-700.0f, 100.0f, 0.0f));
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground2").lock()->SetScale(Vector3(600.0f, 50.0f, 0.0f));
+		objectmanager.AddObject<Object>(GROUND, "Ground2");
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground2").lock()->Init(L"Game/Asset/GameObject/Ground.png");
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground2").lock()->SetPosition(Vector3(-700.0f, 100.0f, 0.0f));
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground2").lock()->SetScale(Vector3(600.0f, 50.0f, 0.0f));
 
 		// 1段目
-		objectmanager.AddObject<GameObject>(GROUND, "Ground3");
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground3").lock()->Init(L"Game/Asset/GameObject/Ground.png");
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground3").lock()->SetPosition(Vector3(750.0f, -80.0f, 0.0f));
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground3").lock()->SetScale(Vector3(450.0f, 50.0f, 0.0f));
+		objectmanager.AddObject<Object>(GROUND, "Ground3");
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground3").lock()->Init(L"Game/Asset/GameObject/Ground.png");
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground3").lock()->SetPosition(Vector3(750.0f, -80.0f, 0.0f));
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground3").lock()->SetScale(Vector3(450.0f, 50.0f, 0.0f));
 
 		// パタパタ箱
-		objectmanager.AddObject<GameObject>(GROUND, "Ground4");
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground4").lock()->Init(L"Game/Asset/GameObject/Ground.png");
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground4").lock()->SetPosition(Vector3(-645.0f, -120.0f, 0.0f));
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground4").lock()->SetScale(Vector3(300.0f, 50.0f, 0.0f));
+		objectmanager.AddObject<Object>(GROUND, "Ground4");
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground4").lock()->Init(L"Game/Asset/GameObject/Ground.png");
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground4").lock()->SetPosition(Vector3(-645.0f, -120.0f, 0.0f));
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground4").lock()->SetScale(Vector3(300.0f, 50.0f, 0.0f));
 
 		// スライム
 		objectmanager.AddObject<Enemy>(ENEMY, "Slime");
@@ -500,22 +500,22 @@ void Stage1Scene::Init(void) {
 
 
 		//二段目
-		objectmanager.AddObject<GameObject>(GROUND, "Ground5");
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground5").lock()->Init(L"Game/Asset/GameObject/Ground.png");
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground5").lock()->SetPosition(Vector3(-130.0f, -240.0f, 0.0f));
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground5").lock()->SetScale(Vector3(300.0f, 50.0f, 0.0f));
+		objectmanager.AddObject<Object>(GROUND, "Ground5");
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground5").lock()->Init(L"Game/Asset/GameObject/Ground.png");
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground5").lock()->SetPosition(Vector3(-130.0f, -240.0f, 0.0f));
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground5").lock()->SetScale(Vector3(300.0f, 50.0f, 0.0f));
 
 		// パタパタ箱
-		objectmanager.AddObject<GameObject>(GROUND, "Ground7");
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground7").lock()->Init(L"Game/Asset/GameObject/Ground.png");
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground7").lock()->SetPosition(Vector3(200.0f, -350.0f, 0.0f));
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground7").lock()->SetScale(Vector3(100.0f, 50.0f, 0.0f));
+		objectmanager.AddObject<Object>(GROUND, "Ground7");
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground7").lock()->Init(L"Game/Asset/GameObject/Ground.png");
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground7").lock()->SetPosition(Vector3(200.0f, -350.0f, 0.0f));
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground7").lock()->SetScale(Vector3(100.0f, 50.0f, 0.0f));
 
 		// 上にあるパタパタ箱
-		objectmanager.AddObject<GameObject>(GROUND, "Ground6");
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground6").lock()->Init(L"Game/Asset/GameObject/Ground.png");
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground6").lock()->SetPosition(Vector3(-230.0f, -80.0f, 0.0f));
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground6").lock()->SetScale(Vector3(100.0f, 100.0f, 0.0f));
+		objectmanager.AddObject<Object>(GROUND, "Ground6");
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground6").lock()->Init(L"Game/Asset/GameObject/Ground.png");
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground6").lock()->SetPosition(Vector3(-230.0f, -80.0f, 0.0f));
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground6").lock()->SetScale(Vector3(100.0f, 100.0f, 0.0f));
 
 
 		// クロスヘア
@@ -533,10 +533,10 @@ void Stage1Scene::Init(void) {
 		objectmanager.GetGameObjectPtr<Poyon>(ONOMATOPOEIA, "_Gion2").lock()->SetScale(Vector3(240.0f, 120.0f, 0.0f));
 
 		// バネ
-		objectmanager.AddObject<GameObject>(OBJECT, "bane");
-		objectmanager.GetGameObjectPtr<GameObject>(OBJECT, "bane").lock()->Init(L"Game/Asset/GameObject/Bane.png", 3, 1);
-		objectmanager.GetGameObjectPtr<GameObject>(OBJECT, "bane").lock()->SetPosition(Vector3(400.0f, -360.0f, 0.0f));
-		objectmanager.GetGameObjectPtr<GameObject>(OBJECT, "bane").lock()->SetScale(Vector3(330.0f, 330.0f, 0.0f));
+		objectmanager.AddObject<Object>(OBJECT, "bane");
+		objectmanager.GetGameObjectPtr<Object>(OBJECT, "bane").lock()->Init(L"Game/Asset/GameObject/Bane.png", 3, 1);
+		objectmanager.GetGameObjectPtr<Object>(OBJECT, "bane").lock()->SetPosition(Vector3(400.0f, -360.0f, 0.0f));
+		objectmanager.GetGameObjectPtr<Object>(OBJECT, "bane").lock()->SetScale(Vector3(330.0f, 330.0f, 0.0f));
 
 		//サンダーエフェクト
 		//objectmanager.AddObject<BiriBiri>(UI, "Thunder_Effect");
@@ -546,19 +546,19 @@ void Stage1Scene::Init(void) {
 		//objectmanager.GetGameObjectPtr<BiriBiri>(UI, "Thunder_Effect").lock()->SetColor(Color(1.0f, 1.0f, 1.0f, 1.0f));
 
 		//マガジンの外枠
-		objectmanager.AddObject<GameObject>(UI, "Frame");	// 名前要変更
-		objectmanager.GetGameObjectPtr<GameObject>(UI, "Frame").lock()->Init(L"Game/Asset/UI/Frame.png");
-		objectmanager.GetGameObjectPtr<GameObject>(UI, "Frame").lock()->SetPosition(Vector3(-900.0f, 495.0f, 0.0f));
-		objectmanager.GetGameObjectPtr<GameObject>(UI, "Frame").lock()->SetScale(Vector3(120.0f, 80.0f, 0.0f));
+		objectmanager.AddObject<Object>(UI, "Frame");	// 名前要変更
+		objectmanager.GetGameObjectPtr<Object>(UI, "Frame").lock()->Init(L"Game/Asset/UI/Frame.png");
+		objectmanager.GetGameObjectPtr<Object>(UI, "Frame").lock()->SetPosition(Vector3(-900.0f, 495.0f, 0.0f));
+		objectmanager.GetGameObjectPtr<Object>(UI, "Frame").lock()->SetScale(Vector3(120.0f, 80.0f, 0.0f));
 
 		break;
 
 
 	case FRAME4:
-		objectmanager.AddObject<GameObject>(BACKGROUND, "Background");
-		objectmanager.GetGameObjectPtr<GameObject>(BACKGROUND, "Background").lock()->Init(L"Game/Asset/BackGround/ResultBack.png");
-		objectmanager.GetGameObjectPtr<GameObject>(BACKGROUND, "Background").lock()->SetPosition(Vector3(0.0f, 0.0f, 0.0f));
-		objectmanager.GetGameObjectPtr<GameObject>(BACKGROUND, "Background").lock()->SetScale(Vector3(1920.0f, 1080.0f, 0.0f));
+		objectmanager.AddObject<Object>(BACKGROUND, "Background");
+		objectmanager.GetGameObjectPtr<Object>(BACKGROUND, "Background").lock()->Init(L"Game/Asset/BackGround/ResultBack.png");
+		objectmanager.GetGameObjectPtr<Object>(BACKGROUND, "Background").lock()->SetPosition(Vector3(0.0f, 0.0f, 0.0f));
+		objectmanager.GetGameObjectPtr<Object>(BACKGROUND, "Background").lock()->SetScale(Vector3(1920.0f, 1080.0f, 0.0f));
 
 		// プレイヤー
 		objectmanager.AddObject<Player>(PLAYER, "Player");
@@ -614,40 +614,40 @@ void Stage1Scene::Init(void) {
 
 
 		// 地面左
-		objectmanager.AddObject<GameObject>(GROUND, "Ground");
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground").lock()->Init(L"Game/Asset/GameObject/Ground.png");
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground").lock()->SetPosition(Vector3(-700.0f, -500.0f, 0.0f));
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground").lock()->SetScale(Vector3(600.0f, 100.0f, 0.0f));
+		objectmanager.AddObject<Object>(GROUND, "Ground");
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground").lock()->Init(L"Game/Asset/GameObject/Ground.png");
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground").lock()->SetPosition(Vector3(-700.0f, -500.0f, 0.0f));
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground").lock()->SetScale(Vector3(600.0f, 100.0f, 0.0f));
 
 		//地面右
-		objectmanager.AddObject<GameObject>(GROUND, "Ground3");
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground3").lock()->Init(L"Game/Asset/GameObject/Ground.png");
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground3").lock()->SetPosition(Vector3(350.0f, -500.0f, 0.0f));
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground3").lock()->SetScale(Vector3(1300.0f, 100.0f, 0.0f));
+		objectmanager.AddObject<Object>(GROUND, "Ground3");
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground3").lock()->Init(L"Game/Asset/GameObject/Ground.png");
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground3").lock()->SetPosition(Vector3(350.0f, -500.0f, 0.0f));
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground3").lock()->SetScale(Vector3(1300.0f, 100.0f, 0.0f));
 
 		// 3段目
-		objectmanager.AddObject<GameObject>(GROUND, "Ground2");
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground2").lock()->Init(L"Game/Asset/GameObject/Ground.png");
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground2").lock()->SetPosition(Vector3(-650.0f, -80.0f, 0.0f));
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground2").lock()->SetScale(Vector3(700.0f, 50.0f, 0.0f));
+		objectmanager.AddObject<Object>(GROUND, "Ground2");
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground2").lock()->Init(L"Game/Asset/GameObject/Ground.png");
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground2").lock()->SetPosition(Vector3(-650.0f, -80.0f, 0.0f));
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground2").lock()->SetScale(Vector3(700.0f, 50.0f, 0.0f));
 
 		// パタパタ箱
-		objectmanager.AddObject<GameObject>(GROUND, "Ground4");
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground4").lock()->Init(L"Game/Asset/GameObject/Ground.png");
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground4").lock()->SetPosition(Vector3(-350.0f, -250.0f, 0.0f));
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground4").lock()->SetScale(Vector3(100.0f, 100.0f, 0.0f));
+		objectmanager.AddObject<Object>(GROUND, "Ground4");
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground4").lock()->Init(L"Game/Asset/GameObject/Ground.png");
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground4").lock()->SetPosition(Vector3(-350.0f, -250.0f, 0.0f));
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground4").lock()->SetScale(Vector3(100.0f, 100.0f, 0.0f));
 
 		// パタパタ箱2
-		objectmanager.AddObject<GameObject>(GROUND, "Ground5");
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground5").lock()->Init(L"Game/Asset/GameObject/Ground.png");
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground5").lock()->SetPosition(Vector3(-350.0f, -150.0f, 0.0f));
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground5").lock()->SetScale(Vector3(100.0f, 100.0f, 0.0f));
+		objectmanager.AddObject<Object>(GROUND, "Ground5");
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground5").lock()->Init(L"Game/Asset/GameObject/Ground.png");
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground5").lock()->SetPosition(Vector3(-350.0f, -150.0f, 0.0f));
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground5").lock()->SetScale(Vector3(100.0f, 100.0f, 0.0f));
 
 		// パタパタ箱3
-		objectmanager.AddObject<GameObject>(GROUND, "Ground7");
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground7").lock()->Init(L"Game/Asset/GameObject/Ground.png");
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground7").lock()->SetPosition(Vector3(-350.0f, -350.0f, 0.0f));
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground7").lock()->SetScale(Vector3(100.0f, 100.0f, 0.0f));
+		objectmanager.AddObject<Object>(GROUND, "Ground7");
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground7").lock()->Init(L"Game/Asset/GameObject/Ground.png");
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground7").lock()->SetPosition(Vector3(-350.0f, -350.0f, 0.0f));
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground7").lock()->SetScale(Vector3(100.0f, 100.0f, 0.0f));
 
 		// スライム
 		objectmanager.AddObject<Enemy>(ENEMY, "Slime");
@@ -657,23 +657,23 @@ void Stage1Scene::Init(void) {
 
 
 		//最後の障害物
-		objectmanager.AddObject<GameObject>(GROUND, "Ground8");
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground8").lock()->Init(L"Game/Asset/GameObject/Ground.png");
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground8").lock()->SetPosition(Vector3(450.0f, -280.0f, 0.0f));
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground8").lock()->SetScale(Vector3(100.0f, 350.0f, 0.0f));
+		objectmanager.AddObject<Object>(GROUND, "Ground8");
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground8").lock()->Init(L"Game/Asset/GameObject/Ground.png");
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground8").lock()->SetPosition(Vector3(450.0f, -280.0f, 0.0f));
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground8").lock()->SetScale(Vector3(100.0f, 350.0f, 0.0f));
 
 		// ビリビリであくやつ
-		objectmanager.AddObject<GameObject>(GROUND, "Ground6");
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground6").lock()->Init(L"Game/Asset/GameObject/Ground.png");
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground6").lock()->SetPosition(Vector3(170.0f, -330.0f, 0.0f));
-		objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground6").lock()->SetScale(Vector3(250.0f, 250.0f, 0.0f));
+		objectmanager.AddObject<Object>(GROUND, "Ground6");
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground6").lock()->Init(L"Game/Asset/GameObject/Ground.png");
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground6").lock()->SetPosition(Vector3(170.0f, -330.0f, 0.0f));
+		objectmanager.GetGameObjectPtr<Object>(GROUND, "Ground6").lock()->SetScale(Vector3(250.0f, 250.0f, 0.0f));
 
 
 		// バネ
-		objectmanager.AddObject<GameObject>(OBJECT, "bane");
-		objectmanager.GetGameObjectPtr<GameObject>(OBJECT, "bane").lock()->Init(L"Game/Asset/GameObject/Bane.png", 3, 1);
-		objectmanager.GetGameObjectPtr<GameObject>(OBJECT, "bane").lock()->SetPosition(Vector3(200.0f, -360.0f, 0.0f));
-		objectmanager.GetGameObjectPtr<GameObject>(OBJECT, "bane").lock()->SetScale(Vector3(330.0f, 330.0f, 0.0f));
+		objectmanager.AddObject<Object>(OBJECT, "bane");
+		objectmanager.GetGameObjectPtr<Object>(OBJECT, "bane").lock()->Init(L"Game/Asset/GameObject/Bane.png", 3, 1);
+		objectmanager.GetGameObjectPtr<Object>(OBJECT, "bane").lock()->SetPosition(Vector3(200.0f, -360.0f, 0.0f));
+		objectmanager.GetGameObjectPtr<Object>(OBJECT, "bane").lock()->SetScale(Vector3(330.0f, 330.0f, 0.0f));
 
 
 		// クロスヘア
@@ -698,10 +698,10 @@ void Stage1Scene::Init(void) {
 		//objectmanager.GetGameObjectPtr<BiriBiri>(UI, "Thunder_Effect").lock()->SetColor(Color(1.0f, 1.0f, 1.0f, 1.0f));
 
 		//マガジンの外枠
-		objectmanager.AddObject<GameObject>(UI, "Frame");	// 名前要変更
-		objectmanager.GetGameObjectPtr<GameObject>(UI, "Frame").lock()->Init(L"Game/Asset/UI/Frame.png");
-		objectmanager.GetGameObjectPtr<GameObject>(UI, "Frame").lock()->SetPosition(Vector3(-900.0f, 495.0f, 0.0f));
-		objectmanager.GetGameObjectPtr<GameObject>(UI, "Frame").lock()->SetScale(Vector3(120.0f, 80.0f, 0.0f));
+		objectmanager.AddObject<Object>(UI, "Frame");	// 名前要変更
+		objectmanager.GetGameObjectPtr<Object>(UI, "Frame").lock()->Init(L"Game/Asset/UI/Frame.png");
+		objectmanager.GetGameObjectPtr<Object>(UI, "Frame").lock()->SetPosition(Vector3(-900.0f, 495.0f, 0.0f));
+		objectmanager.GetGameObjectPtr<Object>(UI, "Frame").lock()->SetScale(Vector3(120.0f, 80.0f, 0.0f));
 		break;
 	case FRAME_MAX:
 		break;
@@ -746,7 +746,7 @@ void Stage1Scene::Update(void)
 	// シーン更新に必要な情報を取得
 	//auto playerShared = objectmanager.GetGameObject<Player>(PLAYER, "Player");		// プレイヤー
 	//auto grounds = objectmanager.GetObjects<GameObject>(GROUND);						// 地面(配列)
-	//auto groundShared = objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground");	// 地面1(個別)
+	//auto groundShared = objectmanager.GetGameObjectPtr<XMINT2>(GROUND, "Ground");	// 地面1(個別)
 	//auto groundShared2 = objectmanager.GetGameObjectPtr<GameObject>(GROUND, "Ground2");	// 地面2
 	//auto onopatopoeias = objectmanager.GetObjects<IOnomatopoeia>(ONOMATOPOEIA);			// 擬音(配列)
 	//auto gionShared = objectmanager.GetGameObjectPtr<Poyon>(ONOMATOPOEIA, "Poyon");		// 擬音(個別)

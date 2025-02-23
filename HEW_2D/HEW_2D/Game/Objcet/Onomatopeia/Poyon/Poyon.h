@@ -19,7 +19,7 @@ class Poyon : public IOnomatopoeia
 {
 public:
 
-	Poyon() :IOnomatopoeia() {
+	Poyon(const UINT& _ID, const Tag& _tag, const std::string& _name) :IOnomatopoeia(_ID, _tag, _name) {
 
 	}
 

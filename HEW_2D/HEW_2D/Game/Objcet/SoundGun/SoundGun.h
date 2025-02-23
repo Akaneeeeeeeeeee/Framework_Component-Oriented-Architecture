@@ -19,7 +19,7 @@ class Magazine;
 class SoundGun : public Object
 {
 public:
-	SoundGun() :Object() {
+	SoundGun(const UINT& _ID, const Tag& _tag, const std::string& _name) :Object(_ID, _tag, _name) {
 		IsSuction = false;
 		IsShot = false;
 		m_ShotPower = 25.0f;

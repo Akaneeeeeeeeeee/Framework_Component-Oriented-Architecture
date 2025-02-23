@@ -42,7 +42,7 @@ bool BoxCollider(std::shared_ptr<T> _obj1, std::shared_ptr<U> _obj2)
 }
 
 
-bool ColliderPlayer_Ground(std::shared_ptr<Player>, std::vector<std::shared_ptr<GameObject>>);	//PlayerとGroundの当たり判定関数
+//bool ColliderPlayer_Ground(std::shared_ptr<Player>, std::vector<std::shared_ptr<GameObject>>);	//PlayerとGroundの当たり判定関数
 
 /**
  * @brief 対地面地面の当たり判定
@@ -50,7 +50,7 @@ bool ColliderPlayer_Ground(std::shared_ptr<Player>, std::vector<std::shared_ptr<
  * @param  地面
 */
 template <class T>
-bool Collider_toGround(std::weak_ptr<T> _obj1, std::weak_ptr<GameObject> _obj2)
+bool Collider_toGround(std::weak_ptr<T> _obj1, std::weak_ptr<Object> _obj2)
 {
 	auto obj1 = _obj1.lock();
 	auto obj2 = _obj2.lock();
@@ -114,7 +114,7 @@ bool Collider_Objects_Objects(std::vector<std::shared_ptr<T>>_objects1, std::vec
  * @param _player プレイヤー
  * @param _objects オブジェクトのvector
 */
-bool Collider_to_Object(std::weak_ptr<Player> _player, std::weak_ptr<GameObject> _objects);
+bool Collider_to_Object(std::weak_ptr<Player> _player, std::weak_ptr<Object> _objects);
 
 /**
  * @brief プレイヤーとマガジンの当たり判定
@@ -123,7 +123,7 @@ bool Collider_Player_to_Magazine(std::weak_ptr<Player> obj1, std::weak_ptr<Magaz
 
 
 
-bool ColliderPlayer_Gion(std::shared_ptr<Player>, std::shared_ptr<GameObject>);//Playerと擬音の当たり判定関数
+bool ColliderPlayer_Gion(std::shared_ptr<Player>, std::shared_ptr<Object>);//Playerと擬音の当たり判定関数
 
 // 扇型と擬音の当たり判定関数
 std::pair<std::pair<Tag, std::string>, std::shared_ptr<IOnomatopoeia>> ColliderFan_Gion(std::weak_ptr<Player> fan, std::vector<std::pair<std::pair<Tag, std::string>, std::shared_ptr<IOnomatopoeia>>>);
