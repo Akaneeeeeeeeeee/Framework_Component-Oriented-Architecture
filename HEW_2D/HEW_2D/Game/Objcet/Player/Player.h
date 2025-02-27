@@ -32,14 +32,13 @@
  * →画像(シェーダーリソースビューとか？)を配列にするべきか？
  * 
 */
-
 class Magazine;
 
 class Player :public Character
 {
 public:
 	Player(const UINT& _ID, const Tag& _tag, const std::string& _name) :Character(_ID, _tag, _name) {
-		GetComponent<RigidBody2D>()->AddForce(Vector3(0.0f,0.0f,0.0f),ForceMode2D::VelocityChange);
+		GetComponent<RigidBody2D>()->AddForce(Vector3(0.0f, 0.0f, 0.0f), ForceMode2D::VelocityChange);
 		m_MoveSpeed = 5.0f;
 		m_JumpPower = 10.5f; //7.5
 		IsShot = false;

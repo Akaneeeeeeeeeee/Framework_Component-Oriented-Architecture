@@ -17,8 +17,11 @@ HRESULT ResourceManager::Init(void)
 	std::unordered_map<TextureID, std::wstring> Filepath_Texture = {
 		{TextureID::PLAYER, L"Game/Asset/Character/Player.png"},
 		{TextureID::ENEMY, L"Game/Asset/GameObject/Slime.png"},
-		{TextureID::TITLEBACK, L"Game/Asset/UI/TitleLogo.png"},
-		{TextureID::GAMEBACK, L"Game/Asset/BackGround/TitleBack.png"}
+		{TextureID::TITLELOGO, L"Game/Asset/UI/TitleLogo.png"},
+		{TextureID::GAMEBACK, L"Game/Asset/BackGround/TitleBack.png"},
+		{TextureID::BUTTON_START, L"Game/Asset/UI/StartButton.png"},
+		{TextureID::BUTTON_END, L"Game/Asset/UI/EndButton.png"},
+		{TextureID::CURSOR_CHARACTER, L"Game/Asset/UI/CharacterCursor.png"}
 	};
 
 

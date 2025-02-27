@@ -8,7 +8,7 @@
 #include <io.h>
 #include <stdio.h>
 #include <string.h>
-#include "../../../D3D11/D3D11.h"
+#include "../../../Graphics/Graphics.h"
 #include "../../../DX11Helper/dx11helper.h"
 
 
@@ -40,7 +40,7 @@ void Shader::Init(const std::string& vsFile, const std::string& vsEntryPoint,
 
 	// 各シェーダーをコンパイルして作成(バージョン名は決まってるので引数は使わない(○○_5.0とか))
 	// 頂点シェーダーオブジェクトを生成、同時に頂点レイアウトも生成
-	sts = CreateVertexShader(D3D11::GetInstance().GetDevice(), vsFile.c_str(), vsEntryPoint.c_str(),
+	sts = CreateVertexShader(Graphics::GetInstance().GetDevice(), vsFile.c_str(), vsEntryPoint.c_str(),
 		"vs_5_0", layout, numElements, &m_pVertexShader, &m_pVertexLayout);
 	if (!sts) {
 		MessageBoxA(NULL, "CreateVertexShader error", "error", MB_OK);
@@ -48,7 +48,7 @@ void Shader::Init(const std::string& vsFile, const std::string& vsEntryPoint,
 	}
 
 	// ピクセルシェーダーオブジェクトを生成
-	sts = CreatePixelShader(D3D11::GetInstance().GetDevice(), psFile.c_str(), psEntryPoint.c_str(), "ps_5_0", &m_pPixelShader);
+	sts = CreatePixelShader(Graphics::GetInstance().GetDevice(), psFile.c_str(), psEntryPoint.c_str(), "ps_5_0", &m_pPixelShader);
 	if (!sts) {
 		MessageBoxA(NULL, "CreatePixelShader error", "error", MB_OK);
 		return;
@@ -60,7 +60,7 @@ void Shader::Init(const std::string& vsFile, const std::string& vsEntryPoint,
 void Shader::Update(void)
 {
 	// 描画のための情報をGPUに渡す
-	auto devicecontext = D3D11::GetInstance().GetDeviceContext();
+	auto devicecontext = Graphics::GetInstance().GetDeviceContext();
 	devicecontext->IASetInputLayout(m_pVertexLayout.Get());
 	devicecontext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
 	devicecontext->VSSetShader(m_pVertexShader.Get(), NULL, 0);		// ここで描画に使うシェーダファイルを適用してる

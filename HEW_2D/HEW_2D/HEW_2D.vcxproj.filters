@@ -177,6 +177,9 @@
     <Filter Include="フレームワーク\コンポーネント\描画機能\IRenderer">
       <UniqueIdentifier>{a3ada835-966b-42a6-bc45-7b453eb66b17}</UniqueIdentifier>
     </Filter>
+    <Filter Include="フレームワーク\コンポーネント\当たり判定\ICollider">
+      <UniqueIdentifier>{2ed5c9e9-3fa1-48b2-b126-7dd45a8a1ce8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Framework\Input\Input.cpp">
@@ -317,6 +320,12 @@
     <ClCompile Include="Framework\Component\Renderer\IRenderer\IRenderer.cpp">
       <Filter>フレームワーク\コンポーネント\描画機能\IRenderer</Filter>
     </ClCompile>
+    <ClCompile Include="Framework\Component\Collider\BoxCollider2D\BoxCollider2D.cpp">
+      <Filter>フレームワーク\コンポーネント\当たり判定\BoxCollider2D</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Component\Collider\ICollider\ICollider.cpp">
+      <Filter>フレームワーク\コンポーネント\当たり判定\ICollider</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Framework\Input\Input.h">
@@ -456,6 +465,12 @@
     </ClInclude>
     <ClInclude Include="Framework\Component\Renderer\IRenderer\IRenderer.h">
       <Filter>フレームワーク\コンポーネント\描画機能\IRenderer</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Component\Collider\BoxCollider2D\BoxCollider2D.h">
+      <Filter>フレームワーク\コンポーネント\当たり判定\BoxCollider2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Component\Collider\ICollider\ICollider.h">
+      <Filter>フレームワーク\コンポーネント\当たり判定\ICollider</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

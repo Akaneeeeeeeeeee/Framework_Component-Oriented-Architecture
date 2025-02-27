@@ -1,15 +1,15 @@
 #include "TransformComponent.h"
 
 // セッター
-void TransformComponent::SetPosition(Vector3& const _Position) {
+void TransformComponent::SetPosition(const Vector3& _Position) {
 	m_Transform.m_Position = _Position;
 }
 
-void TransformComponent::SetRotation(Vector3& const _Rotation) {
+void TransformComponent::SetRotation(const Vector3& _Rotation) {
 	m_Transform.m_Rotation = _Rotation;
 }
 
-void TransformComponent::SetScale(Vector3& const _Scale) {
+void TransformComponent::SetScale(const Vector3& _Scale) {
 	m_Transform.m_Scale = _Scale;
 }
 

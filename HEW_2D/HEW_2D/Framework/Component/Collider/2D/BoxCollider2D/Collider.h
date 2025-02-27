@@ -1,5 +1,5 @@
 #pragma once
-#include"../../../../Game/Objcet/BaseObject/Object.h"
+#include "../../../../../Game/Objcet/BaseObject/Object.h"
 
 
 /**
@@ -9,7 +9,7 @@
  * @return 結果
 */
 template <class T, class U>
-bool BoxCollider(std::shared_ptr<T> _obj1, std::shared_ptr<U> _obj2)
+bool BoxCollider(T* _obj1, U* _obj2)
 {
 
 	float Object1_Right_Collider, Object1_Left_Collider, Object1_Top_Collider, Object1_Bottom_Collider;//playerの当たり判定変数
@@ -50,7 +50,7 @@ bool BoxCollider(std::shared_ptr<T> _obj1, std::shared_ptr<U> _obj2)
  * @param  地面
 */
 template <class T>
-bool Collider_toGround(std::weak_ptr<T> _obj1, std::weak_ptr<Object> _obj2)
+bool Collider_toGround(T* _obj1, Object* _obj2)
 {
 	auto obj1 = _obj1.lock();
 	auto obj2 = _obj2.lock();
@@ -82,7 +82,7 @@ bool Collider_toGround(std::weak_ptr<T> _obj1, std::weak_ptr<Object> _obj2)
  * @return
 */
 template <class T, class U>
-bool Collider_Objects_Objects(std::vector<std::shared_ptr<T>>_objects1, std::vector<std::shared_ptr<U>>_objects2)
+bool Collider_Objects_Objects(std::vector<T*>_objects1, std::vector<U*>_objects2)
 {
 	// オブジェクトごとにBoxColliderを回す
 	for (auto& obj2 : _objects2)

@@ -69,9 +69,7 @@ void SpriteRenderer::Update(void)
 	m_ConstantBuffer.matrixTex = DirectX::XMMatrixTranspose(m_ConstantBuffer.matrixTex);
 
 	//頂点カラーのデータを作成
-	m_ConstantBuffer.color = m_Color;
-
-	
+	m_ConstantBuffer.color = m_Color;	
 }
 
 

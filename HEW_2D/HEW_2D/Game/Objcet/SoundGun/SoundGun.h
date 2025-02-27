@@ -1,7 +1,6 @@
 #pragma once
 #include "../BaseObject/Object.h"
 
-
 class Magazine;
 
 /**
@@ -33,8 +32,8 @@ public:
 
 	void SetIsSuction(bool _flg);
 	bool GetIsSuction(void);
-	void Update(void) override;
-	void Draw(void)override;
+	void Update(void);
+	void Draw(void);
 
 private:
 	bool IsSuction;			// ãzÇ¢çûÇ›íÜÇ©ÅH

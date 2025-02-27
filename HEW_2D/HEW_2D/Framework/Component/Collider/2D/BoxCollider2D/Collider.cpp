@@ -12,15 +12,15 @@
 
 //PlayerとGroundの当たり判定(配列)
 //template <class T, class U>
-bool ColliderPlayer_Ground(std::shared_ptr<Player> _player, std::vector<std::shared_ptr<Object>> _objects)
+bool ColliderPlayer_Ground(Player* _player, std::vector<Object*> _objects)
 {
 	// 地面の配列の要素数分ループ
 	for (auto& ground : _objects) {
 		if (BoxCollider(_player, ground))
 		{
 			// 当たったオブジェクトの速度、方向ベクトルをリセットする
-			_player->SetDirection(Vector3({ 0.0f }));
-			_player->AddForce(Vector3({ 0.0f }));
+			_player->GetComponent<RigidBody2D>()->SetDirection(Vector3({ 0.0f }));
+			_player->GetComponent<RigidBody2D>()->AddForce(Vector3({ 0.0f }), ForceMode2D::VelocityChange);
 			std::cout << "地面と触れてます" << std::endl;
 
 			_player->SetOnGround(true);
@@ -46,15 +46,15 @@ bool Collider_Player_to_Magazine(std::weak_ptr<Player> obj1, std::weak_ptr<Magaz
 	float Player_Right_Collider, Player_Left_Collider, Player_Top_Collider, Player_Bottom_Collider;//playerの当たり判定変数
 	float Ground_Right_Collider, Ground_Left_Collider, Ground_Top_Collider, Ground_Bottom_Collider;//groundの当たり判定変数
 
-	Player_Right_Collider = obj1.lock()->GetPosition().x + obj1.lock()->GetScale().x / 2; //プレイヤーの右当たり判定変数
-	Player_Left_Collider = obj1.lock()->GetPosition().x - obj1.lock()->GetScale().x / 2;  //プレイヤーの左当たり判定変数
-	Player_Top_Collider = obj1.lock()->GetPosition().y + obj1.lock()->GetScale().y / 2;    //プレイヤーの上当たり判定変数
-	Player_Bottom_Collider = obj1.lock()->GetPosition().y - obj1.lock()->GetScale().y / 2;//プレイヤーの下当たり判定変数
+	Player_Right_Collider = obj1.()->GetPosition().x + obj1.()->GetScale().x / 2; //プレイヤーの右当たり判定変数
+	Player_Left_Collider = obj1.()->GetPosition().x - obj1.()->GetScale().x / 2;  //プレイヤーの左当たり判定変数
+	Player_Top_Collider = obj1.()->GetPosition().y + obj1.()->GetScale().y / 2;    //プレイヤーの上当たり判定変数
+	Player_Bottom_Collider = obj1.()->GetPosition().y - obj1.()->GetScale().y / 2;//プレイヤーの下当たり判定変数
 
-	Ground_Right_Collider = obj2.lock()->GetPosition().x + obj2.lock()->GetScale().x / 2; //グラウンドの右の当たり判定変数
-	Ground_Left_Collider = obj2.lock()->GetPosition().x - obj2.lock()->GetScale().x / 2;  //グラウンドの左の当たり判定変数
-	Ground_Top_Collider = obj2.lock()->GetPosition().y + obj2.lock()->GetScale().y / 2;    //グラウンドの上の当たり判定変数
-	Ground_Bottom_Collider = obj2.lock()->GetPosition().y - obj2.lock()->vvvGetScale().y / 2;//グラウンドの下の当たり判定変数
+	Ground_Right_Collider = obj2.()->GetPosition().x + obj2.()->GetScale().x / 2; //グラウンドの右の当たり判定変数
+	Ground_Left_Collider = obj2.()->GetPosition().x - obj2.()->GetScale().x / 2;  //グラウンドの左の当たり判定変数
+	Ground_Top_Collider = obj2->GetPosition().y + obj2.()->GetScale().y / 2;    //グラウンドの上の当たり判定変数
+	Ground_Bottom_Collider = obj2->GetPosition().y - obj2.()->GetScale().y / 2;//グラウンドの下の当たり判定変数
 
 	//プレイヤーとマガジンの当たり判定
 	if (Player_Left_Collider < Ground_Right_Collider &&
@@ -79,15 +79,15 @@ bool Collider_to_Object(std::weak_ptr<Player> _player, std::weak_ptr<Object> _ob
 	float Player_Right_Collider, Player_Left_Collider, Player_Top_Collider, Player_Bottom_Collider;//playerの当たり判定変数
 	float Ground_Right_Collider, Ground_Left_Collider, Ground_Top_Collider, Ground_Bottom_Collider;//groundの当たり判定変数
 
-	Player_Right_Collider = _player.lock()->GetPosition().x + _player.lock()->GetScale().x / 2; //プレイヤーの右当たり判定変数
-	Player_Left_Collider = _player.lock()->GetPosition().x - _player.lock()->GetScale().x / 2;  //プレイヤーの左当たり判定変数
-	Player_Top_Collider = _player.lock()->GetPosition().y + _player.lock()->GetScale().y / 2;    //プレイヤーの上当たり判定変数
-	Player_Bottom_Collider = _player.lock()->GetPosition().y - _player.lock()->GetScale().y / 2;//プレイヤーの下当たり判定変数
+	Player_Right_Collider = _player.()->GetPosition().x + _player.()->GetScale().x / 2; //プレイヤーの右当たり判定変数
+	Player_Left_Collider = _player.()->GetPosition().x - _player.()->GetScale().x / 2;  //プレイヤーの左当たり判定変数
+	Player_Top_Collider = _player.()->GetPosition().y + _player.()->GetScale().y / 2;    //プレイヤーの上当たり判定変数
+	Player_Bottom_Collider = _player.()->GetPosition().y - _player.()->GetScale().y / 2;//プレイヤーの下当たり判定変数
 
-	Ground_Right_Collider = _object.lock()->GetPosition().x + _object.lock()->GetScale().x / 2; //グラウンドの右の当たり判定変数
-	Ground_Left_Collider = _object.lock()->GetPosition().x - _object.lock()->GetScale().x / 2;  //グラウンドの左の当たり判定変数
-	Ground_Top_Collider = _object.lock()->GetPosition().y + _object.lock()->GetScale().y / 2;    //グラウンドの上の当たり判定変数
-	Ground_Bottom_Collider = _object.lock()->GetPosition().y - _object.lock()->GetScale().y / 2;//グラウンドの下の当たり判定変数
+	Ground_Right_Collider = _object.()->GetPosition().x + _object.()->GetScale().x / 2; //グラウンドの右の当たり判定変数
+	Ground_Left_Collider = _object.()->GetPosition().x - _object.()->GetScale().x / 2;  //グラウンドの左の当たり判定変数
+	Ground_Top_Collider = _object.()->GetPosition().y + _object.()->GetScale().y / 2;    //グラウンドの上の当たり判定変数
+	Ground_Bottom_Collider = _object.()->GetPosition().y - _object.()->GetScale().y / 2;//グラウンドの下の当たり判定変数
 
 	
 	//// **オブジェクトの上側（Top）で当たった判定**
@@ -95,9 +95,9 @@ bool Collider_to_Object(std::weak_ptr<Player> _player, std::weak_ptr<Object> _ob
 	//	Player_Top_Collider > Ground_Top_Collider &&      // プレイヤーの上端がオブジェクトの上端より上
 	//	Player_Right_Collider > Ground_Left_Collider &&   // 横方向でも重なっている
 	//	Player_Left_Collider < Ground_Right_Collider &&
-	//	_player.lock()->GetVelocity().y <= 0) {                   // 下方向に移動中のみ適用
-	//	_player.lock()->SetOnGround(true);  // 地面の上にいる
-	//	//_player.lock()->SetVelocityY(0);    // 落下を止める
+	//	_player.()->GetVelocity().y <= 0) {                   // 下方向に移動中のみ適用
+	//	_player.()->SetOnGround(true);  // 地面の上にいる
+	//	//_player.()->SetVelocityY(0);    // 落下を止める
 	//	std::cout << "オブジェクトの上側で当たっています" << std::endl;
 	//	return  true;
 	//}
@@ -109,8 +109,8 @@ bool Collider_to_Object(std::weak_ptr<Player> _player, std::weak_ptr<Object> _ob
 		Player_Bottom_Collider <= Ground_Top_Collider &&
 		Player_Left_Collider < Ground_Left_Collider)
 	{
-		_player.lock()->SetMoveRight(false);
-		_player.lock()->SetOnGround(true);  // 地面の上にいる
+		_player.()->SetMoveRight(false);
+		_player.()->SetOnGround(true);  // 地面の上にいる
 
 		std::cout << "右側当たっています" << std::endl;
 		return true;
@@ -119,8 +119,8 @@ bool Collider_to_Object(std::weak_ptr<Player> _player, std::weak_ptr<Object> _ob
 		Player_Bottom_Collider <= Ground_Top_Collider &&
 		Player_Right_Collider > Ground_Right_Collider)
 	{
-		_player.lock()->SetMoveLeft(false);
-		_player.lock()->SetOnGround(true);  // 地面の上にいる
+		_player.()->SetMoveLeft(false);
+		_player.()->SetOnGround(true);  // 地面の上にいる
 
 		std::cout << "左側当たっています" << std::endl;
 		return true;
@@ -141,17 +141,17 @@ bool Collider_to_Object(std::weak_ptr<Player> _player, std::weak_ptr<Object> _ob
 //	float Player_Right_Collider, Player_Left_Collider, Player_Top_Collider, Player_Bottom_Collider;//playerの当たり判定変数
 //	float Ground_Right_Collider, Ground_Left_Collider, Ground_Top_Collider, Ground_Bottom_Collider;//groundの当たり判定変数
 //
-//	Player_Right_Collider = _player.lock()->GetPosition().x + _player.lock()->GetScale().x / 2; //プレイヤーの右当たり判定変数
-//	Player_Left_Collider = _player.lock()->GetPosition().x - _player.lock()->GetScale().x / 2;  //プレイヤーの左当たり判定変数
-//	Player_Top_Collider = _player.lock()->GetPosition().y + _player.lock()->GetScale().y / 2;    //プレイヤーの上当たり判定変数
-//	Player_Bottom_Collider = _player.lock()->GetPosition().y - _player.lock()->GetScale().y / 2;//プレイヤーの下当たり判定変数
+//	Player_Right_Collider = _player.()->GetPosition().x + _player.()->GetScale().x / 2; //プレイヤーの右当たり判定変数
+//	Player_Left_Collider = _player.()->GetPosition().x - _player.()->GetScale().x / 2;  //プレイヤーの左当たり判定変数
+//	Player_Top_Collider = _player.()->GetPosition().y + _player.()->GetScale().y / 2;    //プレイヤーの上当たり判定変数
+//	Player_Bottom_Collider = _player.()->GetPosition().y - _player.()->GetScale().y / 2;//プレイヤーの下当たり判定変数
 //
 //	// vectorのサイズ分ループ
 //	for (auto& obj : _objects) {
-//		Ground_Right_Collider = obj.lock()->GetPosition().x + obj.lock()->GetScale().x / 2; //グラウンドの右の当たり判定変数
-//		Ground_Left_Collider = obj.lock()->GetPosition().x - obj.lock()->GetScale().x / 2;  //グラウンドの左の当たり判定変数
-//		Ground_Top_Collider = obj.lock()->GetPosition().y + obj.lock()->GetScale().y / 2;    //グラウンドの上の当たり判定変数
-//		Ground_Bottom_Collider = obj.lock()->GetPosition().y - obj.lock()->GetScale().y / 2;//グラウンドの下の当たり判定変数
+//		Ground_Right_Collider = obj.()->GetPosition().x + obj.()->GetScale().x / 2; //グラウンドの右の当たり判定変数
+//		Ground_Left_Collider = obj.()->GetPosition().x - obj.()->GetScale().x / 2;  //グラウンドの左の当たり判定変数
+//		Ground_Top_Collider = obj.()->GetPosition().y + obj.()->GetScale().y / 2;    //グラウンドの上の当たり判定変数
+//		Ground_Bottom_Collider = obj.()->GetPosition().y - obj.()->GetScale().y / 2;//グラウンドの下の当たり判定変数
 //
 //		//プレイヤーとオブジェクトの当たり判定
 //		if (Player_Left_Collider < Ground_Right_Collider &&
@@ -160,12 +160,12 @@ bool Collider_to_Object(std::weak_ptr<Player> _player, std::weak_ptr<Object> _ob
 //			Player_Top_Collider > Ground_Bottom_Collider)
 //		{
 //			// 当たったオブジェクトが地面であればの速度、方向ベクトルをリセットする
-//			_player.lock()->SetDirection(Vector3({ 0.0f }));
-//			_player.lock()->AddForce(Vector3({ 0.0f }));
-//			_player.lock()->SetOnGround(true);
+//			_player.()->SetDirection(Vector3({ 0.0f }));
+//			_player.()->AddForce(Vector3({ 0.0f }));
+//			_player.()->SetOnGround(true);
 //		}
 //		else {
-//			_player.lock()->SetOnGround(false);
+//			_player.()->SetOnGround(false);
 //		}
 //	}
 //	
@@ -222,11 +222,11 @@ std::pair<std::pair<Tag, std::string>, std::shared_ptr<IOnomatopoeia>> ColliderF
 	float PI = 3.14159265;
 	float fanAngle = PI / 6;
 	//扇型の情報取得
-	float fanCenterX = fan.lock()->GetPosition().x + 200.0f;	//扇型の中心X座標
-	//float fanCenterX = fan.lock()->GetPosition().x + 200.0f;	//扇型の中心X座標
+	float fanCenterX = fan.()->GetPosition().x + 200.0f;	//扇型の中心X座標
+	//float fanCenterX = fan.()->GetPosition().x + 200.0f;	//扇型の中心X座標
 
-	float fanCenterY = fan.lock()->GetPosition().y;   //扇型の中心Y座標
-	float fanRadius = fan.lock()->GetScale().x / 2;   //扇型の半径（スケールのX方向を使用）
+	float fanCenterY = fan.()->GetPosition().y;   //扇型の中心Y座標
+	float fanRadius = fan.()->GetScale().x / 2;   //扇型の半径（スケールのX方向を使用）
 
 	//扇型の方向ベクトルを右方向に固定
 	float fanDirX = 1.0f;//右方向の成分

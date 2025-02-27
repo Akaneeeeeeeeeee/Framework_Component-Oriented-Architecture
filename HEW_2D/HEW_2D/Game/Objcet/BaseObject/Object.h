@@ -71,7 +71,7 @@ public:
 	 * @return コンポーネントの生ポインタ
 	*/
 	template <class T>
-	T* AddComponent(Object* _Owner)
+	T* AddComponent(Object* _Owner = this)
 	{
 		////! コンポーネントのポインタを生成
 		//auto component = std::make_shared<T>();

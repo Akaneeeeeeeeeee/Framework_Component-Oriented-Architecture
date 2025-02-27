@@ -1,5 +1,5 @@
 #pragma once
-#include "../IComponent/IComponent.h"
+#include "../../IComponent/IComponent.h"
 
 using namespace SimpleMath;
 

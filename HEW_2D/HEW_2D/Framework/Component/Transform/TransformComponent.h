@@ -17,9 +17,9 @@ public:
 	void Update(void) override;
 	void Uninit(void) override;
 
-	void SetPosition(Vector3& const _Position);	// 座標設定
-	void SetRotation(Vector3& const _Rotation);	// 角度設定
-	void SetScale(Vector3& const _Scale);			// 大きさ設定
+	void SetPosition(const Vector3& _Position);	// 座標設定
+	void SetRotation(const Vector3& _Rotation);	// 角度設定
+	void SetScale(const Vector3& _Scale);			// 大きさ設定
 	const Vector3& GetPosition(void);
 	const Vector3& GetRotation(void);
 	const Vector3& GetScale(void);
