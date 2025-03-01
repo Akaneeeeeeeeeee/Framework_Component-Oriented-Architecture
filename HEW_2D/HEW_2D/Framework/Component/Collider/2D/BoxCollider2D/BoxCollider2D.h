@@ -1,10 +1,10 @@
 #pragma once
-#include "../../IComponent/IComponent.h"
+#include "../../2D/Collider2D/Collider2D.h"
 
 /**
  * @brief ” ‚Ì“–‚½‚è”»’è
 */
-class BoxCollider2D :public IComponent
+class BoxCollider2D :public Collider2D
 {
 public:
 	BoxCollider2D();
