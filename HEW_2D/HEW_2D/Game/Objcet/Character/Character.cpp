@@ -1,5 +1,18 @@
 #include "Character.h"
 
+Character::Character(const UINT& _ID, const Tag& _tag, const std::string& _name) :Object(_ID, _tag, _name) {
+	MoveUp = false;
+	MoveDown = false;
+	MoveLeft = false;
+	MoveRight = false;
+	Jump = false;
+	Jumping = false;
+	//OnGround = false;
+	m_JumpPower = 0.0f;
+	m_MoveSpeed = 0.0f;
+}
+
+
 //-------------------------------------------
 //			移動関連のフラグのゲッター
 //-------------------------------------------

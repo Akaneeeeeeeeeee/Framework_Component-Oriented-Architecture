@@ -1,10 +1,10 @@
 #include "BiriBiri.h"
 #include "../../Player/Player.h"
 
-void BiriBiri::Action(std::weak_ptr<Object> player)
+void BiriBiri::Action(Object* player)
 {
-	Vector3 player_pos = player.lock()->GetPosition();
-	Vector3 player_rotation = player.lock()->GetRotation();
+	Vector3 player_pos = player->GetPosition();
+	Vector3 player_rotation = player->GetRotation();
 	//playerをGameObject型→Player型に変更
 	if (Collision_Onomatope) //フラグがTRUEなら（擬音が当たっているか）
 	{

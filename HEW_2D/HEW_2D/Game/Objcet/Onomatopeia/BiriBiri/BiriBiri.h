@@ -10,7 +10,7 @@ public:
 	}
 	~BiriBiri();	//デストラクタ
 	void Action(void) {};
-	void Action(std::weak_ptr<Object>);		//ビリビリ特性の関数
+	void Action(Object*);		//ビリビリ特性の関数
 
 	bool BiriBiri_check;
 	void Set_Onomatope(bool)override;//擬音のAction関数を動かすためのゲッター、セッター

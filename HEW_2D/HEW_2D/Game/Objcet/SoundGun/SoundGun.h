@@ -18,11 +18,8 @@ class Magazine;
 class SoundGun : public Object
 {
 public:
-	SoundGun(const UINT& _ID, const Tag& _tag, const std::string& _name) :Object(_ID, _tag, _name) {
-		IsSuction = false;
-		IsShot = false;
-		m_ShotPower = 25.0f;
-	};
+	SoundGun(const UINT& _ID, const Tag& _tag, const std::string& _name);
+	
 	~SoundGun() {};
 
 	// TODO:2025/01/27 吸い込み関数作りきる→外側でやってるからどうするかも決める、擬音銃が吸い込み中の時だけ画像とアニメーションを回す

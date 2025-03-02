@@ -147,9 +147,6 @@
     <Filter Include="フレームワーク\コンポーネント\当たり判定">
       <UniqueIdentifier>{8581cd84-0bed-47f0-bfcd-0fa06aad79ff}</UniqueIdentifier>
     </Filter>
-    <Filter Include="フレームワーク\コンポーネント\当たり判定\BoxCollider2D">
-      <UniqueIdentifier>{45a0e2f6-9eb8-4a7e-96fc-932c997a35e2}</UniqueIdentifier>
-    </Filter>
     <Filter Include="フレームワーク\コンポーネント\描画系">
       <UniqueIdentifier>{5c89487a-a0f7-46ae-972f-7557f1ecb2a6}</UniqueIdentifier>
     </Filter>
@@ -177,8 +174,20 @@
     <Filter Include="フレームワーク\コンポーネント\描画機能\IRenderer">
       <UniqueIdentifier>{a3ada835-966b-42a6-bc45-7b453eb66b17}</UniqueIdentifier>
     </Filter>
-    <Filter Include="フレームワーク\コンポーネント\当たり判定\ICollider">
+    <Filter Include="フレームワーク\コンポーネント\当たり判定\2D">
+      <UniqueIdentifier>{e8fc5aa7-4c04-43ba-bbb1-cca641f8f73f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="フレームワーク\コンポーネント\当たり判定\2D\BoxCollider2D">
+      <UniqueIdentifier>{45a0e2f6-9eb8-4a7e-96fc-932c997a35e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="フレームワーク\コンポーネント\当たり判定\2D\Collider2D">
       <UniqueIdentifier>{2ed5c9e9-3fa1-48b2-b126-7dd45a8a1ce8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="フレームワーク\コンポーネント\当たり判定\3D">
+      <UniqueIdentifier>{9e76facb-b612-4489-9645-5c57f6820dd8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="フレームワーク\コンポーネント\Physic（物理）\RigidBody">
+      <UniqueIdentifier>{4a572aef-f97e-4bb0-a650-4a22107ea945}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -230,9 +239,6 @@
     <ClCompile Include="Game\Objcet\SoundGun\SoundGun.cpp">
       <Filter>ゲーム\オブジェクト\擬音銃</Filter>
     </ClCompile>
-    <ClCompile Include="Framework\Component\RigitBody\RigitBody2D.cpp">
-      <Filter>フレームワーク\コンポーネント\Physic（物理）</Filter>
-    </ClCompile>
     <ClCompile Include="Game\Objcet\SoundGun\Magazine.cpp">
       <Filter>ゲーム\オブジェクト\擬音銃\マガジン</Filter>
     </ClCompile>
@@ -244,9 +250,6 @@
     </ClCompile>
     <ClCompile Include="Game\Objcet\Character\Character.cpp">
       <Filter>ゲーム\オブジェクト\キャラクター基本クラス</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\Component\Collider\BoxCollider2D\Collider.cpp">
-      <Filter>フレームワーク\コンポーネント\当たり判定\BoxCollider2D</Filter>
     </ClCompile>
     <ClCompile Include="Framework\Component\RigitBody\Gravity.cpp">
       <Filter>フレームワーク\コンポーネント\Physic（物理）</Filter>
@@ -321,10 +324,16 @@
       <Filter>フレームワーク\コンポーネント\描画機能\IRenderer</Filter>
     </ClCompile>
     <ClCompile Include="Framework\Component\Collider\BoxCollider2D\BoxCollider2D.cpp">
-      <Filter>フレームワーク\コンポーネント\当たり判定\BoxCollider2D</Filter>
+      <Filter>フレームワーク\コンポーネント\当たり判定\2D\BoxCollider2D</Filter>
     </ClCompile>
-    <ClCompile Include="Framework\Component\Collider\ICollider\ICollider.cpp">
-      <Filter>フレームワーク\コンポーネント\当たり判定\ICollider</Filter>
+    <ClCompile Include="Framework\Component\Collider\ICollider\Collider2D.cpp">
+      <Filter>フレームワーク\コンポーネント\当たり判定\2D\Collider2D</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Component\Collider\2D\BoxCollider2D\Collider.cpp">
+      <Filter>フレームワーク\コンポーネント\当たり判定\2D\Collider2D</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Component\Physic\RigidBody2D\RigitBody2D.cpp">
+      <Filter>フレームワーク\コンポーネント\Physic（物理）\RigidBody</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -379,9 +388,6 @@
     <ClInclude Include="Game\Objcet\SoundGun\SoundGun.h">
       <Filter>ゲーム\オブジェクト\擬音銃</Filter>
     </ClInclude>
-    <ClInclude Include="Framework\Component\RigitBody\RigitBody2D.h">
-      <Filter>フレームワーク\コンポーネント\Physic（物理）</Filter>
-    </ClInclude>
     <ClInclude Include="Game\Objcet\SoundGun\Magazine.h">
       <Filter>ゲーム\オブジェクト\擬音銃\マガジン</Filter>
     </ClInclude>
@@ -396,9 +402,6 @@
     </ClInclude>
     <ClInclude Include="Game\EntryPoint\main.h">
       <Filter>ゲーム\エントリーポイント</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\Component\Collider\BoxCollider2D\Collider.h">
-      <Filter>フレームワーク\コンポーネント\当たり判定\BoxCollider2D</Filter>
     </ClInclude>
     <ClInclude Include="Framework\Component\RigitBody\Gravity.h">
       <Filter>フレームワーク\コンポーネント\Physic（物理）</Filter>
@@ -467,10 +470,16 @@
       <Filter>フレームワーク\コンポーネント\描画機能\IRenderer</Filter>
     </ClInclude>
     <ClInclude Include="Framework\Component\Collider\BoxCollider2D\BoxCollider2D.h">
-      <Filter>フレームワーク\コンポーネント\当たり判定\BoxCollider2D</Filter>
+      <Filter>フレームワーク\コンポーネント\当たり判定\2D\BoxCollider2D</Filter>
     </ClInclude>
-    <ClInclude Include="Framework\Component\Collider\ICollider\ICollider.h">
-      <Filter>フレームワーク\コンポーネント\当たり判定\ICollider</Filter>
+    <ClInclude Include="Framework\Component\Collider\ICollider\Collider2D.h">
+      <Filter>フレームワーク\コンポーネント\当たり判定\2D\Collider2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Component\Collider\2D\BoxCollider2D\Collider.h">
+      <Filter>フレームワーク\コンポーネント\当たり判定\2D\Collider2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Component\Physic\RigidBody2D\RigitBody2D.h">
+      <Filter>フレームワーク\コンポーネント\Physic（物理）\RigidBody</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

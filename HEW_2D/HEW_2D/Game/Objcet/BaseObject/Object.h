@@ -2,7 +2,7 @@
 #include "../../../Framework/ComponentManager/ComponentManager.h"
 #include "../../ObjectManager/ObjectManager.h"
 #include "../../../Framework/Component/Transform/TransformComponent.h"
-#include "../../../Framework/Component/RigitBody/RigitBody2D.h"
+#include "../../../Framework/Component/Physic/RigidBody2D/RigitBody2D.h"
 
 /**
  * @brief オブジェクト管理タグ

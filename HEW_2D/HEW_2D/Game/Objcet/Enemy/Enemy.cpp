@@ -2,7 +2,7 @@
 
 void Enemy::Update()
 {
-	m_Direction = { 0.0f };
+	GetComponent<RigidBody2D>()->m_Direction = { 0.0f };
 	Vector3 enemy_pos = transform.GetPosition();
 
 	// •ûŒüƒxƒNƒgƒ‹‚ğ‡¬

@@ -1,5 +1,20 @@
 #include "Camera.h"
+#include "../../../Framework/Component/Physic/RigidBody2D/RigitBody2D.h"
 
+Camera::Camera() {
+	//! カメラの移動スピード
+	GetComponent<RigidBody2D>()->AddForce(Vector3(20.0f, 0.0f, 0.0f), ForceMode2D::VelocityChange);
+	Vector3 scale = { 1920.0f, 1080.0f, 0.0f };
+	GetComponent<TransformComponent>()->SetScale(scale);
+	Vector3 pos = { 0.0f,0.0f,0.0f };
+	GetComponent<TransformComponent>()->SetPosition(pos);
+	//cameraSpeed = StageSize / 100;	//!ステージの移動スピード
+
+	// 最初はフェードインから始めたいのでフェードのフラグのみを設定しておく
+	OnFade = true;
+	FadeIn = true;
+	IsMoving = false;
+}
 
 void Camera::Update(void)
 {

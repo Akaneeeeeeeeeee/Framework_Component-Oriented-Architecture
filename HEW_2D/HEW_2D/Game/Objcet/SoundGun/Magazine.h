@@ -27,22 +27,9 @@
 class Magazine : public Object
 {
 public:
-	Magazine(const UINT& _ID, const Tag& _tag, const std::string& _name) :Object(_ID, _tag, _name) {
-		// 最初はマガジンにはどの擬音も入っていない
-		m_Onomatopoeia = nullptr;
-		//OnGround = false;
-		IsFlying = false;
-	}
-
-	~Magazine() {
-		// 擬音が装填されていれば
-		if (m_Onomatopoeia)
-		{
-			// 擬音の解放
-			m_Onomatopoeia->Uninit();
-		}
-		m_Onomatopoeia.reset();
-	};
+	Magazine(const UINT& _ID, const Tag& _tag, const std::string& _name);
+	
+	~Magazine();
 
 	void Update(void);		// 擬音の状態などをこっちで管理するためにオーバーライド
 	void Draw(void);		// 擬音装填したときにそれも描画するのでオーバーライド

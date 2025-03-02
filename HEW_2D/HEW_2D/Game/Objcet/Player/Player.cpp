@@ -1,6 +1,23 @@
 #include "Player.h"
 #include "../../../Framework/Input/Input.h"
+#include "../../../Framework/Component/Physic/RigidBody2D/RigitBody2D.h"
 
+Player::Player(const UINT& _ID, const Tag& _tag, const std::string& _name) :Character(_ID, _tag, _name)
+{
+	GetComponent<RigidBody2D>()->AddForce(Vector3(0.0f, 0.0f, 0.0f), ForceMode2D::VelocityChange);
+	m_MoveSpeed = 5.0f;
+	m_JumpPower = 10.5f; //7.5
+	IsShot = false;
+	//IsSuction = false;
+	m_Soundgun = nullptr;
+	m_Magazines.clear();
+	UseMagNumber = 1;		// 0番目のマガジンはドォン専用なので1番目からスタート
+	BombCount = 0;
+};
+
+Player::~Player(){
+	Uninit();
+};
 
 /**
  * @brief 更新

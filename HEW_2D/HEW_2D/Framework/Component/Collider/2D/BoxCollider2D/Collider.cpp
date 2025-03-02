@@ -40,13 +40,13 @@ bool ColliderPlayer_Ground(Player* _player, std::vector<Object*> _objects)
  * 
  * 今はこっち使わない
 */
-bool Collider_Player_to_Magazine(std::weak_ptr<Player> obj1, std::weak_ptr<Magazine> obj2)
+bool Collider_Player_to_Magazine(Player* obj1, Magazine* obj2)
 {
 	// ---------------------ここ使いまわせるな？？？？？？？？？？？？？？？？
 	float Player_Right_Collider, Player_Left_Collider, Player_Top_Collider, Player_Bottom_Collider;//playerの当たり判定変数
 	float Ground_Right_Collider, Ground_Left_Collider, Ground_Top_Collider, Ground_Bottom_Collider;//groundの当たり判定変数
 
-	Player_Right_Collider = obj1.()->GetPosition().x + obj1.()->GetScale().x / 2; //プレイヤーの右当たり判定変数
+	Player_Right_Collider = obj1->GetComponent<TransformComponent>().GetPosition().x + obj1()->GetComponent<TransformComponent>().GetScale().x / 2; //プレイヤーの右当たり判定変数
 	Player_Left_Collider = obj1.()->GetPosition().x - obj1.()->GetScale().x / 2;  //プレイヤーの左当たり判定変数
 	Player_Top_Collider = obj1.()->GetPosition().y + obj1.()->GetScale().y / 2;    //プレイヤーの上当たり判定変数
 	Player_Bottom_Collider = obj1.()->GetPosition().y - obj1.()->GetScale().y / 2;//プレイヤーの下当たり判定変数
@@ -109,8 +109,8 @@ bool Collider_to_Object(std::weak_ptr<Player> _player, std::weak_ptr<Object> _ob
 		Player_Bottom_Collider <= Ground_Top_Collider &&
 		Player_Left_Collider < Ground_Left_Collider)
 	{
-		_player.()->SetMoveRight(false);
-		_player.()->SetOnGround(true);  // 地面の上にいる
+		_player()->SetMoveRight(false);
+		_player()->SetOnGround(true);  // 地面の上にいる
 
 		std::cout << "右側当たっています" << std::endl;
 		return true;
@@ -119,8 +119,8 @@ bool Collider_to_Object(std::weak_ptr<Player> _player, std::weak_ptr<Object> _ob
 		Player_Bottom_Collider <= Ground_Top_Collider &&
 		Player_Right_Collider > Ground_Right_Collider)
 	{
-		_player.()->SetMoveLeft(false);
-		_player.()->SetOnGround(true);  // 地面の上にいる
+		_player()->SetMoveLeft(false);
+		_player()->SetOnGround(true);  // 地面の上にいる
 
 		std::cout << "左側当たっています" << std::endl;
 		return true;

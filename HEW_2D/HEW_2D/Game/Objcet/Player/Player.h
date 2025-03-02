@@ -37,24 +37,12 @@ class Magazine;
 class Player :public Character
 {
 public:
-	Player(const UINT& _ID, const Tag& _tag, const std::string& _name) :Character(_ID, _tag, _name) {
-		GetComponent<RigidBody2D>()->AddForce(Vector3(0.0f, 0.0f, 0.0f), ForceMode2D::VelocityChange);
-		m_MoveSpeed = 5.0f;
-		m_JumpPower = 10.5f; //7.5
-		IsShot = false;
-		//IsSuction = false;
-		m_Soundgun = nullptr;
-		m_Magazines.clear();
-		UseMagNumber = 1;		// 0番目のマガジンはドォン専用なので1番目からスタート
-		BombCount = 0;
-	};
+	Player(const UINT& _ID, const Tag& _tag, const std::string& _name);
 
 	/**
 	 * @brief デストラクタ
 	*/
-	~Player() {
-		Uninit();
-	};
+	~Player();
 	
 	void Update(void);		// プレイヤー固有の入力はここで取得する
 	void Draw(void);		// 擬音使用で描画方法変更があった場合用に宣言

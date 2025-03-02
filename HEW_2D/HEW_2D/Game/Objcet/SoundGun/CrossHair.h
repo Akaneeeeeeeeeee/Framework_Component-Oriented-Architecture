@@ -9,13 +9,8 @@
 class CrossHair :public Object
 {
 public:
-	CrossHair(const UINT& _ID, const Tag& _tag, const std::string& _name):Object(_ID, _tag, _name) {
-		MoveLeft = false;
-		MoveRight = false;
-		MoveUp = false;
-		MoveDown = false;
-		GetComponent<RigidBody2D>()->AddForce(Vector3(10.0f, 0.0f, 0.0f), ForceMode2D::VelocityChange);	// クロスヘアの移動速度
-	}
+	CrossHair(const UINT& _ID, const Tag& _tag, const std::string& _name);
+	
 
 	~CrossHair() {};
 	void Update(void);

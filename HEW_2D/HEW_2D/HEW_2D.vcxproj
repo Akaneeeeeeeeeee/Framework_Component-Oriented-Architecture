@@ -144,16 +144,16 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="Framework\Component\Collider\2D\BoxCollider2D\Collider.cpp" />
     <ClCompile Include="Framework\Component\Collider\BoxCollider2D\BoxCollider2D.cpp" />
-    <ClCompile Include="Framework\Component\Collider\BoxCollider2D\Collider.cpp" />
-    <ClCompile Include="Framework\Component\Collider\ICollider\ICollider.cpp" />
+    <ClCompile Include="Framework\Component\Collider\ICollider\Collider2D.cpp" />
     <ClCompile Include="Framework\Component\IComponent\IComponent.cpp" />
+    <ClCompile Include="Framework\Component\Physic\RigidBody2D\RigitBody2D.cpp" />
     <ClCompile Include="Framework\Component\Renderer\Canvas\Canvas.cpp" />
     <ClCompile Include="Framework\Component\Renderer\IRenderer\IRenderer.cpp" />
     <ClCompile Include="Framework\Component\Renderer\Shader\Shader.cpp" />
     <ClCompile Include="Framework\Component\Renderer\SpriteRenderer\SpriteRenderer.cpp" />
     <ClCompile Include="Framework\Component\RigitBody\Gravity.cpp" />
-    <ClCompile Include="Framework\Component\RigitBody\RigitBody2D.cpp" />
     <ClCompile Include="Framework\Component\TransForm\Transform.cpp" />
     <ClCompile Include="Framework\Component\Transform\TransformComponent.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
@@ -186,10 +186,22 @@
     </ClCompile>
     <ClCompile Include="Game\Objcet\Character\Character.cpp" />
     <ClCompile Include="Game\Objcet\Enemy\Enemy.cpp" />
-    <ClCompile Include="Game\Objcet\Onomatopeia\BiriBiri\BiriBiri.cpp" />
-    <ClCompile Include="Game\Objcet\Onomatopeia\IOnomatopoeia\IOnomatopoeia.cpp" />
-    <ClCompile Include="Game\Objcet\Onomatopeia\PataPata\PataPata.cpp" />
-    <ClCompile Include="Game\Objcet\Onomatopeia\Poyon\Poyon.cpp" />
+    <ClCompile Include="Game\Objcet\Onomatopeia\BiriBiri\BiriBiri.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Game\Objcet\Onomatopeia\IOnomatopoeia\IOnomatopoeia.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Game\Objcet\Onomatopeia\PataPata\PataPata.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Game\Objcet\Onomatopeia\Poyon\Poyon.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="Game\Objcet\Player\Player.cpp" />
     <ClCompile Include="Game\Objcet\SoundGun\CrossHair.cpp" />
     <ClCompile Include="Game\Objcet\SoundGun\Magazine.cpp" />
@@ -220,16 +232,16 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="Framework\Component\Collider\2D\BoxCollider2D\Collider.h" />
     <ClInclude Include="Framework\Component\Collider\BoxCollider2D\BoxCollider2D.h" />
-    <ClInclude Include="Framework\Component\Collider\BoxCollider2D\Collider.h" />
-    <ClInclude Include="Framework\Component\Collider\ICollider\ICollider.h" />
+    <ClInclude Include="Framework\Component\Collider\ICollider\Collider2D.h" />
     <ClInclude Include="Framework\Component\IComponent\IComponent.h" />
+    <ClInclude Include="Framework\Component\Physic\RigidBody2D\RigitBody2D.h" />
     <ClInclude Include="Framework\Component\Renderer\Canvas\Canvas.h" />
     <ClInclude Include="Framework\Component\Renderer\IRenderer\IRenderer.h" />
     <ClInclude Include="Framework\Component\Renderer\Shader\Shader.h" />
     <ClInclude Include="Framework\Component\Renderer\SpriteRenderer\SpriteRenderer.h" />
     <ClInclude Include="Framework\Component\RigitBody\Gravity.h" />
-    <ClInclude Include="Framework\Component\RigitBody\RigitBody2D.h" />
     <ClInclude Include="Framework\Component\TransForm\Transform.h" />
     <ClInclude Include="Framework\Component\Transform\TransformComponent.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
@@ -262,10 +274,22 @@
     </ClInclude>
     <ClInclude Include="Game\Objcet\Character\Character.h" />
     <ClInclude Include="Game\Objcet\Enemy\Enemy.h" />
-    <ClInclude Include="Game\Objcet\Onomatopeia\BiriBiri\BiriBiri.h" />
-    <ClInclude Include="Game\Objcet\Onomatopeia\IOnomatopoeia\IOnomatopoeia.h" />
-    <ClInclude Include="Game\Objcet\Onomatopeia\PataPata\PataPata.h" />
-    <ClInclude Include="Game\Objcet\Onomatopeia\Poyon\Poyon.h" />
+    <ClInclude Include="Game\Objcet\Onomatopeia\BiriBiri\BiriBiri.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="Game\Objcet\Onomatopeia\IOnomatopoeia\IOnomatopoeia.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="Game\Objcet\Onomatopeia\PataPata\PataPata.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="Game\Objcet\Onomatopeia\Poyon\Poyon.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="Game\Objcet\Player\Player.h" />
     <ClInclude Include="Game\Objcet\SoundGun\CrossHair.h" />
     <ClInclude Include="Game\Objcet\SoundGun\Magazine.h" />

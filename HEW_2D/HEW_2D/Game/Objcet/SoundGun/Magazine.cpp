@@ -13,6 +13,22 @@
 //
 //}
 
+Magazine::Magazine(const UINT& _ID, const Tag& _tag, const std::string& _name) : Object(_ID, _tag, _name) {
+	// Å‰‚Íƒ}ƒKƒWƒ“‚É‚Í‚Ç‚Ì‹[‰¹‚à“ü‚Á‚Ä‚¢‚È‚¢
+	m_Onomatopoeia = nullptr;
+	//OnGround = false;
+	IsFlying = false;
+}
+
+Magazine::~Magazine() {
+	// ‹[‰¹‚ª‘•“U‚³‚ê‚Ä‚¢‚ê‚Î
+	if (m_Onomatopoeia)
+	{
+		// ‹[‰¹‚Ì‰ğ•ú
+		m_Onomatopoeia->Uninit();
+	}
+	m_Onomatopoeia.reset();
+};
 
 /**
  * @brief XV

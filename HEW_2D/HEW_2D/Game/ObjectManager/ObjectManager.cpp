@@ -1,5 +1,5 @@
 #include "ObjectManager.h"
-#include "../../Framework/Component/Collider/BoxCollider2D/Collider.h"
+#include "../../Framework/Component/Collider/2D/BoxCollider2D/BoxCollider2D.h"
 #include "../../Framework/Component/Renderer/SpriteRenderer/SpriteRenderer.h"
 
 
@@ -217,15 +217,15 @@ void ObjectManager::Uninit(void) {
  * @brief 全てのオブジェクトを取得
  * @return
 */
-std::vector<std::pair<std::pair<Tag, std::string>, std::shared_ptr<GameObject>>> ObjectManager::GetAllObjects(void)
-{
-	std::vector<std::pair<std::pair<Tag, std::string>, std::shared_ptr<GameObject>>> ret;
-	for (auto& obj : Objects)
-	{
-		ret.emplace_back(obj);
-	}
-	return ret;
-}
+//std::vector<std::pair<std::pair<Tag, std::string>, std::shared_ptr<Object>>> ObjectManager::GetAllObjects(void)
+//{
+//	std::vector<std::pair<std::pair<Tag, std::string>, std::shared_ptr<Object>>> ret;
+//	for (auto& obj : Objects)
+//	{
+//		ret.emplace_back(obj);
+//	}
+//	return ret;
+//}
 
 
 /**
