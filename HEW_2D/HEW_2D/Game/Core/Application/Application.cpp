@@ -89,5 +89,5 @@ void Application::Uninit(void)
 	//background.Uninit();	// プレイヤーを終了
 	Window::GetInstance().Uninit();	// ウィンドウを終了
 	m_Game.Uninit();		// ゲームを終了
-	m_D3d11.Release();		// DirectXを終了
+	Graphics::GetInstance().Release();		// DirectXを終了
 }
