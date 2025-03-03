@@ -42,7 +42,7 @@ public:
 		// ID(完全一意のものを設定)
 		static UINT id = 0;
 		// コンパイル時チェック
-		static_assert(std::is_base_of<T, Object>, "このオブジェクトはObjectを継承していません");
+		static_assert(std::is_base_of<Object, T>::value, "このオブジェクトはObjectを継承していません");
 		// オブジェクト生成
 		auto obj = std::make_unique<T>(++id, _Tag, _Name);
 		// コンテナに追加

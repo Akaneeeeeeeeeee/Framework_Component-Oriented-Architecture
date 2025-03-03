@@ -144,7 +144,10 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="Framework\Component\Collider\2D\BoxCollider2D\Collider.cpp" />
+    <ClCompile Include="Framework\Component\Collider\2D\BoxCollider2D\Collider.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="Framework\Component\Collider\BoxCollider2D\BoxCollider2D.cpp" />
     <ClCompile Include="Framework\Component\Collider\ICollider\Collider2D.cpp" />
     <ClCompile Include="Framework\Component\IComponent\IComponent.cpp" />
@@ -232,7 +235,10 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="Framework\Component\Collider\2D\BoxCollider2D\Collider.h" />
+    <ClInclude Include="Framework\Component\Collider\2D\BoxCollider2D\Collider.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="Framework\Component\Collider\BoxCollider2D\BoxCollider2D.h" />
     <ClInclude Include="Framework\Component\Collider\ICollider\Collider2D.h" />
     <ClInclude Include="Framework\Component\IComponent\IComponent.h" />

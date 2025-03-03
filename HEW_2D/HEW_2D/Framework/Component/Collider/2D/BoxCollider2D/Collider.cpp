@@ -46,15 +46,18 @@ bool Collider_Player_to_Magazine(Player* obj1, Magazine* obj2)
 	float Player_Right_Collider, Player_Left_Collider, Player_Top_Collider, Player_Bottom_Collider;//playerの当たり判定変数
 	float Ground_Right_Collider, Ground_Left_Collider, Ground_Top_Collider, Ground_Bottom_Collider;//groundの当たり判定変数
 
-	Player_Right_Collider = obj1->GetComponent<TransformComponent>().GetPosition().x + obj1()->GetComponent<TransformComponent>().GetScale().x / 2; //プレイヤーの右当たり判定変数
-	Player_Left_Collider = obj1.()->GetPosition().x - obj1.()->GetScale().x / 2;  //プレイヤーの左当たり判定変数
-	Player_Top_Collider = obj1.()->GetPosition().y + obj1.()->GetScale().y / 2;    //プレイヤーの上当たり判定変数
-	Player_Bottom_Collider = obj1.()->GetPosition().y - obj1.()->GetScale().y / 2;//プレイヤーの下当たり判定変数
+	TransformComponent* player_tf = obj1->GetComponent<TransformComponent>();
+	TransformComponent* ground_tf = obj2->GetComponent<TransformComponent>();
 
-	Ground_Right_Collider = obj2.()->GetPosition().x + obj2.()->GetScale().x / 2; //グラウンドの右の当たり判定変数
-	Ground_Left_Collider = obj2.()->GetPosition().x - obj2.()->GetScale().x / 2;  //グラウンドの左の当たり判定変数
-	Ground_Top_Collider = obj2->GetPosition().y + obj2.()->GetScale().y / 2;    //グラウンドの上の当たり判定変数
-	Ground_Bottom_Collider = obj2->GetPosition().y - obj2.()->GetScale().y / 2;//グラウンドの下の当たり判定変数
+	Player_Right_Collider = player_tf->GetPosition().x + player_tf->GetScale().x / 2; //プレイヤーの右当たり判定変数
+	Player_Left_Collider = player_tf->GetPosition().x - player_tf->GetScale().x / 2;  //プレイヤーの左当たり判定変数
+	Player_Top_Collider = player_tf->GetPosition().y + player_tf->GetScale().y / 2;    //プレイヤーの上当たり判定変数
+	Player_Bottom_Collider = player_tf->GetPosition().y - player_tf->GetScale().y / 2;//プレイヤーの下当たり判定変数
+
+	Ground_Right_Collider = ground_tf->GetPosition().x + ground_tf->GetScale().x / 2; //グラウンドの右の当たり判定変数
+	Ground_Left_Collider = ground_tf->GetPosition().x - ground_tf->GetScale().x / 2;  //グラウンドの左の当たり判定変数
+	Ground_Top_Collider = ground_tf->GetPosition().y + ground_tf->GetScale().y / 2;    //グラウンドの上の当たり判定変数
+	Ground_Bottom_Collider = ground_tf->GetPosition().y - ground_tf->GetScale().y / 2;//グラウンドの下の当たり判定変数
 
 	//プレイヤーとマガジンの当たり判定
 	if (Player_Left_Collider < Ground_Right_Collider &&
@@ -75,19 +78,23 @@ bool Collider_Player_to_Magazine(Player* obj1, Magazine* obj2)
  * @brief プレイヤーとオブジェクトの当たり判定
  * @return 結果
 */
-bool Collider_to_Object(std::weak_ptr<Player> _player, std::weak_ptr<Object> _object) {
+bool Collider_to_Object(Player* _player, Object* _object) {
 	float Player_Right_Collider, Player_Left_Collider, Player_Top_Collider, Player_Bottom_Collider;//playerの当たり判定変数
 	float Ground_Right_Collider, Ground_Left_Collider, Ground_Top_Collider, Ground_Bottom_Collider;//groundの当たり判定変数
 
-	Player_Right_Collider = _player.()->GetPosition().x + _player.()->GetScale().x / 2; //プレイヤーの右当たり判定変数
-	Player_Left_Collider = _player.()->GetPosition().x - _player.()->GetScale().x / 2;  //プレイヤーの左当たり判定変数
-	Player_Top_Collider = _player.()->GetPosition().y + _player.()->GetScale().y / 2;    //プレイヤーの上当たり判定変数
-	Player_Bottom_Collider = _player.()->GetPosition().y - _player.()->GetScale().y / 2;//プレイヤーの下当たり判定変数
+	TransformComponent* player_tf = _player->GetComponent<TransformComponent>();
+	TransformComponent* ground_tf = _object->GetComponent<TransformComponent>();
 
-	Ground_Right_Collider = _object.()->GetPosition().x + _object.()->GetScale().x / 2; //グラウンドの右の当たり判定変数
-	Ground_Left_Collider = _object.()->GetPosition().x - _object.()->GetScale().x / 2;  //グラウンドの左の当たり判定変数
-	Ground_Top_Collider = _object.()->GetPosition().y + _object.()->GetScale().y / 2;    //グラウンドの上の当たり判定変数
-	Ground_Bottom_Collider = _object.()->GetPosition().y - _object.()->GetScale().y / 2;//グラウンドの下の当たり判定変数
+	Player_Right_Collider = player_tf->GetPosition().x + player_tf->GetScale().x / 2; //プレイヤーの右当たり判定変数
+	Player_Left_Collider = player_tf->GetPosition().x - player_tf->GetScale().x / 2;  //プレイヤーの左当たり判定変数
+	Player_Top_Collider = player_tf->GetPosition().y + player_tf->GetScale().y / 2;    //プレイヤーの上当たり判定変数
+	Player_Bottom_Collider = player_tf->GetPosition().y - player_tf->GetScale().y / 2;//プレイヤーの下当たり判定変数
+
+	Ground_Right_Collider = ground_tf->GetPosition().x + ground_tf->GetScale().x / 2; //グラウンドの右の当たり判定変数
+	Ground_Left_Collider = ground_tf->GetPosition().x - ground_tf->GetScale().x / 2;  //グラウンドの左の当たり判定変数
+	Ground_Top_Collider = ground_tf->GetPosition().y + ground_tf->GetScale().y / 2;    //グラウンドの上の当たり判定変数
+	Ground_Bottom_Collider = ground_tf->GetPosition().y - ground_tf->GetScale().y / 2;//グラウンドの下の当たり判定変数
+
 
 	
 	//// **オブジェクトの上側（Top）で当たった判定**
@@ -109,7 +116,7 @@ bool Collider_to_Object(std::weak_ptr<Player> _player, std::weak_ptr<Object> _ob
 		Player_Bottom_Collider <= Ground_Top_Collider &&
 		Player_Left_Collider < Ground_Left_Collider)
 	{
-		_player()->SetMoveRight(false);
+		_player->GetComponent<RigidBody2D>()->SetMoveRight(false);
 		_player()->SetOnGround(true);  // 地面の上にいる
 
 		std::cout << "右側当たっています" << std::endl;
@@ -129,9 +136,6 @@ bool Collider_to_Object(std::weak_ptr<Player> _player, std::weak_ptr<Object> _ob
 	
 
 }
-
-
-
 
 
 /**
@@ -173,23 +177,24 @@ bool Collider_to_Object(std::weak_ptr<Player> _player, std::weak_ptr<Object> _ob
 
 
 
-
-
 //PlayerとGionの当たり判定
-bool ColliderPlayer_Gion(std::shared_ptr<Player> player, std::shared_ptr<Object> gion)
+bool ColliderPlayer_Gion(Player* _player, Object* _gion)
 {
+	TransformComponent* player_tf = _player->GetComponent<TransformComponent>();
+	TransformComponent* gion_tf = _gion->GetComponent<TransformComponent>();
+
 	float Player_Right_Collider, Player_Left_Collider, Player_Up_Collider, Player_Bottom_Collider;//playerの当たり判定変数
 	float Gion_Right_Collider, Gion_Left_Collider, Gion_Up_Collider, Gion_Bottom_Collider;        //gionの当たり判定変数
 
-	Player_Right_Collider = player->GetPosition().x + player->GetScale().x / 2; //プレイヤーの右当たり判定変数
-	Player_Left_Collider = player->GetPosition().x - player->GetScale().x / 2;  //プレイヤーの左当たり判定変数
-	Player_Up_Collider = player->GetPosition().y + player->GetScale().y / 2;    //プレイヤーの上当たり判定変数
-	Player_Bottom_Collider = player->GetPosition().y - player->GetScale().y / 2;//プレイヤーの下当たり判定変数
+	Player_Right_Collider = player_tf->GetPosition().x + player_tf->GetScale().x / 2; //プレイヤーの右当たり判定変数
+	Player_Left_Collider = player_tf->GetPosition().x - player_tf->GetScale().x / 2;  //プレイヤーの左当たり判定変数
+	Player_Up_Collider = player_tf->GetPosition().y + player_tf->GetScale().y / 2;    //プレイヤーの上当たり判定変数
+	Player_Bottom_Collider = player_tf->GetPosition().y - player_tf->GetScale().y / 2;//プレイヤーの下当たり判定変数
 
-	Gion_Right_Collider = gion->GetPosition().x + gion->GetScale().x / 2;   //擬音の右当たり判定
-	Gion_Left_Collider = gion->GetPosition().x - gion->GetScale().x / 2;    //擬音の左当たり判定
-	Gion_Up_Collider = gion->GetPosition().y + gion->GetScale().y / 2;      //擬音の上当たり判定
-	Gion_Bottom_Collider = gion->GetPosition().y - gion->GetScale().y / 2;	//擬音の下当たり判定
+	Gion_Right_Collider = gion_tf->GetPosition().x + gion_tf->GetScale().x / 2;   //擬音の右当たり判定
+	Gion_Left_Collider = gion_tf->GetPosition().x - gion_tf->GetScale().x / 2;    //擬音の左当たり判定
+	Gion_Up_Collider = gion_tf->GetPosition().y + gion_tf->GetScale().y / 2;      //擬音の上当たり判定
+	Gion_Bottom_Collider = gion_tf->GetPosition().y - gion_tf->GetScale().y / 2;	//擬音の下当たり判定
 
 	//Playerと擬音の当たり判定
 	if (Player_Right_Collider>Gion_Left_Collider&&
@@ -222,7 +227,7 @@ std::pair<std::pair<Tag, std::string>, std::shared_ptr<IOnomatopoeia>> ColliderF
 	float PI = 3.14159265;
 	float fanAngle = PI / 6;
 	//扇型の情報取得
-	float fanCenterX = fan.()->GetPosition().x + 200.0f;	//扇型の中心X座標
+	float fanCenterX = fan->GetPosition().x + 200.0f;	//扇型の中心X座標
 	//float fanCenterX = fan.()->GetPosition().x + 200.0f;	//扇型の中心X座標
 
 	float fanCenterY = fan.()->GetPosition().y;   //扇型の中心Y座標

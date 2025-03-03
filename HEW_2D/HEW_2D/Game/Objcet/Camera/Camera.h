@@ -29,4 +29,3 @@ private:
 	bool FadeIn;	// フェードイン/アウト判定
 	bool IsMoving;	// 移動中か判定
 };
-
