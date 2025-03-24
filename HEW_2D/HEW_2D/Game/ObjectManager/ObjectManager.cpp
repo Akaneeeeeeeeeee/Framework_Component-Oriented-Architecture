@@ -27,13 +27,13 @@ void ObjectManager::Collider_Player_to_Object(void)
 	auto playerobj = GetGameObjectPtr<Player>(PLAYER, "Player");
 
 	// 変更予定のオブジェクトを記録するリスト
-	std::vector<std::pair<std::pair<Tag, std::string>, std::shared_ptr<GameObject>>> toBeUpdated;
+	std::vector<std::pair<std::pair<Tag, std::string>, std::shared_ptr<Object>>> toBeUpdated;
 
 
 	// プレイヤーと当たったオブジェクトを確認
 	for (auto& obj : Objects) {
 		// タグが地面、オブジェクト、敵のものだけ当たり判定を取る
-		switch (obj.first.first)
+		switch (obj.get()->GetTag())
 		{
 			// オブジェクトが地面なら
 		case BACKGROUND:

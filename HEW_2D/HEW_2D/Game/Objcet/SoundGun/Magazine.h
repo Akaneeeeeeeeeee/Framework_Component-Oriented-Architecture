@@ -1,6 +1,5 @@
 #pragma once
 #include "../Onomatopeia/IOnomatopoeia/IOnomatopoeia.h"
-#include "../../ObjectManager/ObjectManager.h"
 
 /**
  * @brief 擬音銃に使うマガジンクラス

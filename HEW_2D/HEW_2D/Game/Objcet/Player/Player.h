@@ -1,11 +1,11 @@
 #pragma once
-#include "../SoundGun/SoundGun.h"
 #include "../Character/Character.h"
-#include "../SoundGun/Magazine.h"
-#include "../SoundGun/CrossHair.h"
 
 
-
+class Magazine;
+class SoundGun;
+class CrossHair;
+class IOnomatopoeia;
 /**
  * @brief プレイヤークラス
  * 
@@ -21,7 +21,7 @@
  * 
  * マガジン→取ったら画像出現→以降は擬音が入っていなくても画像が見える用にする
  * 
- * アニメーション問題：キャラごとにステート（状態）を持たせておき、その状態に応じたアニメーションを動かす
+ * アニメーション問題：キャラごとにステート（状態）を持たせておき、その状態に応じたアニメーショ	ンを動かす
  * 
  * アニメーション
  * アクション実行中の場合毎フレームスプライト切り替えたい
@@ -32,8 +32,6 @@
  * →画像(シェーダーリソースビューとか？)を配列にするべきか？
  * 
 */
-class Magazine;
-
 class Player :public Character
 {
 public:
@@ -88,4 +86,3 @@ private:
 	std::vector<std::shared_ptr<Magazine>> m_Magazines;	// マガジン（可変長）,0番目はドォン専用にして、その後はカウントを増やしてドォンを管理する？
 	std::shared_ptr<CrossHair> m_CrossHair;		// クロスヘア
 };
-

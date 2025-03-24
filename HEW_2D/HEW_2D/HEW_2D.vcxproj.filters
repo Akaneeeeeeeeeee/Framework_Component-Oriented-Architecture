@@ -326,14 +326,14 @@
     <ClCompile Include="Framework\Component\Collider\BoxCollider2D\BoxCollider2D.cpp">
       <Filter>フレームワーク\コンポーネント\当たり判定\2D\BoxCollider2D</Filter>
     </ClCompile>
-    <ClCompile Include="Framework\Component\Collider\ICollider\Collider2D.cpp">
-      <Filter>フレームワーク\コンポーネント\当たり判定\2D\Collider2D</Filter>
-    </ClCompile>
     <ClCompile Include="Framework\Component\Collider\2D\BoxCollider2D\Collider.cpp">
       <Filter>フレームワーク\コンポーネント\当たり判定\2D\Collider2D</Filter>
     </ClCompile>
     <ClCompile Include="Framework\Component\Physic\RigidBody2D\RigitBody2D.cpp">
       <Filter>フレームワーク\コンポーネント\Physic（物理）\RigidBody</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Component\Collider\2D\Collider2D\Collider2D.cpp">
+      <Filter>フレームワーク\コンポーネント\当たり判定\2D\Collider2D</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -472,14 +472,14 @@
     <ClInclude Include="Framework\Component\Collider\BoxCollider2D\BoxCollider2D.h">
       <Filter>フレームワーク\コンポーネント\当たり判定\2D\BoxCollider2D</Filter>
     </ClInclude>
-    <ClInclude Include="Framework\Component\Collider\ICollider\Collider2D.h">
-      <Filter>フレームワーク\コンポーネント\当たり判定\2D\Collider2D</Filter>
-    </ClInclude>
     <ClInclude Include="Framework\Component\Collider\2D\BoxCollider2D\Collider.h">
       <Filter>フレームワーク\コンポーネント\当たり判定\2D\Collider2D</Filter>
     </ClInclude>
     <ClInclude Include="Framework\Component\Physic\RigidBody2D\RigitBody2D.h">
       <Filter>フレームワーク\コンポーネント\Physic（物理）\RigidBody</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Component\Collider\2D\Collider2D\Collider2D.h">
+      <Filter>フレームワーク\コンポーネント\当たり判定\2D\Collider2D</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

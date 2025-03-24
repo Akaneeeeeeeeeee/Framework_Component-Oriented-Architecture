@@ -1,8 +1,6 @@
 #pragma once
 #include "../../BaseObject/Object.h"
 
-
-
 /**
  * @brief 擬音クラス（基底クラス）
  *
@@ -32,9 +30,7 @@ public:
 protected:
 	// コンストラクタをprotectedにすると派生クラスからしかコンストラクタを動かせない
 	// →このクラスの親クラスのGameObjectクラスは実体を作れるが、このクラスを継承した擬音クラス達はIOnomatopoeiaとして実体を持つことはできなくなる
-	IOnomatopoeia(const UINT& _ID, const Tag& _tag, const std::string& _name) :Object(_ID, _tag, _name) {
-
-	};
+	IOnomatopoeia(const UINT& _ID, const Tag& _tag, const std::string& _name);
 	// 擬音が付与されているオブジェクトはGameObjectクラスのm_pParentで判断する
 	std::string m_Name;				// 擬音の名前
 	bool fade_check = false;

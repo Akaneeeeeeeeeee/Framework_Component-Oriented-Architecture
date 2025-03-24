@@ -1,7 +1,6 @@
 #include "CrossHair.h"
 
 
-
 CrossHair::CrossHair(const UINT& _ID, const Tag& _tag, const std::string& _name) : Object(_ID, _tag, _name) {
 	MoveLeft = false;
 	MoveRight = false;
@@ -22,24 +21,21 @@ void CrossHair::Update(void)
 	if (MoveLeft)
 	{
 		newpos.x -= m_Velocity.x;
-		transform.SetPosition(newpos);
 	}
 	// âEà⁄ìÆ
 	if (MoveRight)
 	{
 		newpos.x += m_Velocity.x;
-		transform.SetPosition(newpos);
 	}
 	// è„à⁄ìÆ
 	if (MoveUp)
 	{
 		newpos.y += m_Velocity.y;
-		transform.SetPosition(newpos);
 	}
 	// â∫à⁄ìÆ
 	if (MoveDown)
 	{
 		newpos.y -= m_Velocity.y;
-		transform.SetPosition(newpos);
 	}
+	transform.SetPosition(newpos);
 }

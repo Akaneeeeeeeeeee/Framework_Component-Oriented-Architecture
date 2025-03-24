@@ -54,7 +54,6 @@ void Magazine::Update(void)
 		}
 	}
 
-
 	// 移動処理
 	Vector3 newpos = transform.GetPosition();
 	newpos += m_Velocity;		// 方向ベクトルとX成分の移動速度を掛けた値の分だけ毎フレーム進む

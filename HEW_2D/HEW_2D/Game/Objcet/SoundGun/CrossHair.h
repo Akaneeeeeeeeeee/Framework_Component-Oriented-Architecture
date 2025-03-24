@@ -1,6 +1,5 @@
 #pragma once
 #include "../BaseObject/Object.h"
-
 /**
  * @brief クロスヘアクラス
  * 
@@ -10,7 +9,6 @@ class CrossHair :public Object
 {
 public:
 	CrossHair(const UINT& _ID, const Tag& _tag, const std::string& _name);
-	
 
 	~CrossHair() {};
 	void Update(void);

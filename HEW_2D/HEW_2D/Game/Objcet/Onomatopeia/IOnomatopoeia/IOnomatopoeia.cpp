@@ -1,7 +1,10 @@
 #include "../IOnomatopoeia/IOnomatopoeia.h"
-#include "../../BaseObject/GameObject.h"
+#include "../../BaseObject/Object.h"
 
 
+IOnomatopoeia::IOnomatopoeia(const UINT& _ID, const Tag& _tag, const std::string& _name) :Object(_ID, _tag, _name) {
+
+};
 
 /**
  * @brief フェードイン/フェードアウト（時間経過で取るか検討中）

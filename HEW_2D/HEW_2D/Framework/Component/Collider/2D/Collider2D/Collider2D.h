@@ -4,20 +4,20 @@
 /**
  * @brief “–‚½‚è”»’è
 */
-class ICollider :public IComponent
+class Collider2D :public IComponent
 {
 public:
-	ICollider();
-	~ICollider();
+	Collider2D();
+	~Collider2D();
 
 private:
 
 };
 
-ICollider::ICollider()
+Collider2D::Collider2D()
 {
 }
 
-ICollider::~ICollider()
+Collider2D::~Collider2D()
 {
 }

@@ -3,7 +3,6 @@
 
 using namespace SimpleMath;
 
-
 /**
  * @brief 力の加え方
  * 
@@ -18,9 +17,8 @@ enum class ForceMode2D {
     Force,              // 質量を考慮して継続的な力を加える(デフォルトはこれ)
     // Acceleration,       // 質量を"無視"して加速度を加える
     Impulse,            // 質量を考慮して瞬間的な力を加える
-    VelocityChange     // 質量を"無視"して速度を直接変更する
+    VelocityChange      // 質量を"無視"して速度を直接変更する
 };
-
 
 /**
  * @brief 物理演算
@@ -109,9 +107,7 @@ public:
     
     // 力を加える
     void AddForce(Vector3 _force, ForceMode2D _mode);
-
 	
-
 private:
     // 速度(これは毎フレーム変化する値)
     Vector3 m_Velocity;

@@ -71,7 +71,7 @@ public:
 	 * @return コンポーネントの生ポインタ
 	*/
 	template <class T>
-	T* AddComponent(Object* _Owner = this)
+	T* AddComponent(Object* _Owner)
 	{
 		////! コンポーネントのポインタを生成
 		//auto component = std::make_shared<T>();
@@ -132,20 +132,6 @@ public:
 		std::cerr << typeid(T).name() << " を保持していません" << std::endl;
 		return nullptr;  // コンポーネントが見つからなければ nullptr を返す
 	}
-
-	/**
-	 * @brief "全"コンポーネントを取得する関数
-	 * @tparam T 
-	 * @param  
-	 * @return 
-	 * 
-	 * →この機能使う場面が想像できないので作るの一旦止めとく。必要になったら作る！
-	*/
-	/*template <class T>
-	std::vector<IComponent> GetComponents(void)
-	{
-
-	}*/
 
 
 	//----------------------------

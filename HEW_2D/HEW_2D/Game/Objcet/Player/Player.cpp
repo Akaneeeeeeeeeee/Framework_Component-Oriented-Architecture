@@ -1,6 +1,9 @@
 #include "Player.h"
 #include "../../../Framework/Input/Input.h"
 #include "../../../Framework/Component/Physic/RigidBody2D/RigitBody2D.h"
+#include "../SoundGun/SoundGun.h"
+#include "../SoundGun/Magazine.h"
+#include "../SoundGun/CrossHair.h"
 
 Player::Player(const UINT& _ID, const Tag& _tag, const std::string& _name) :Character(_ID, _tag, _name)
 {
