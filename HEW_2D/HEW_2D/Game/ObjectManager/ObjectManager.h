@@ -3,6 +3,7 @@
 #include "../Objcet/Player/Player.h"
 #include "../Objcet/SoundGun/SoundGun.h"
 #include "../Objcet/Camera/Camera.h"
+#include "../Objcet/BaseObject/Object.h"
 
 //TODO: いちいちダウンキャストするのめんどくさいから関数にしちゃって、指定した型にダウンキャストしたポインタを返す関数作ったほうがいい
 
@@ -37,10 +38,10 @@ public:
 	 * ID設定、タグ設定、名前設定を行ってコンテナに追加
 	*/
 	template <typename T>
-	void AddObject(const Tag& _Tag, const std::string _Name)
+	void AddObject(const Tag& _Tag, const std::string& _Name)
 	{
 		// ID(完全一意のものを設定)
-		static UINT id = 0;
+		UINT id = 0;
 		// コンパイル時チェック
 		static_assert(std::is_base_of<Object, T>::value, "このオブジェクトはObjectを継承していません");
 		// オブジェクト生成

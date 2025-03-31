@@ -1,5 +1,27 @@
 #include "TransformComponent.h"
 
+TransformComponent::TransformComponent(Object* _Owner) :IComponent(_Owner) {
+
+}
+
+TransformComponent::~TransformComponent() {
+
+}
+
+void TransformComponent::Init(void) {
+	m_Transform.m_Position = Vector3(0.0f, 0.0f, 0.0f);
+	m_Transform.m_Rotation = Vector3(0.0f, 0.0f, 0.0f);
+	m_Transform.m_Scale = Vector3(1.0f, 1.0f, 1.0f);
+}
+
+void TransformComponent::Update(void) {
+
+}
+
+void TransformComponent::Uninit(void) {
+
+}
+
 // セッター
 void TransformComponent::SetPosition(const Vector3& _Position) {
 	m_Transform.m_Position = _Position;

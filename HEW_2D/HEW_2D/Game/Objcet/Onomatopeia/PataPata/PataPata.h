@@ -19,14 +19,14 @@ class Player;
 class PataPata :public IOnomatopoeia
 {
 public:
-	PataPata() :IOnomatopoeia() {
+	PataPata(const UINT& _ID, const Tag& _tag, const std::string& _name) :IOnomatopoeia(_ID, _tag, _name) {
 		Max_altitude = 300.0f;		// 限界高度仮設定(Y:+400)
 		Collider_check = false;
 	}
 	~PataPata();	//デストラクタ
 	void Update(void) override;
 	void Action(void) override;		// 付与されたオブジェクトに効果を与える
-	void Action(std::weak_ptr<GameObject>, std::weak_ptr<Player>);	//オーバーロード
+	void Action(std::weak_ptr<Object>, std::weak_ptr<Player>);	//オーバーロード
 	void Set_Onomatope(bool)override; //擬音のAction関数を動かすためのゲッター、セッター
 	bool Get_Onomatope(void)override;
 	void Set_gion(bool)override;

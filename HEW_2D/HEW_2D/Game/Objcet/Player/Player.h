@@ -46,7 +46,7 @@ public:
 	void Draw(void);		// 擬音使用で描画方法変更があった場合用に宣言
 	void Uninit(void);		// 解放
 
-	void Animation(STATE _Anim_Name);	// プレイヤー個別のアニメーション関数
+	//void Animation(STATE _Anim_Name);	// プレイヤー個別のアニメーション関数
 
 	void SetChild(const std::shared_ptr<Object> _child);
 

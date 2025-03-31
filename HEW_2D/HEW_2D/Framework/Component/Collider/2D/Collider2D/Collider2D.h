@@ -7,17 +7,10 @@
 class Collider2D :public IComponent
 {
 public:
-	Collider2D();
+	Collider2D(Object* _Owner);
 	~Collider2D();
 
 private:
 
 };
 
-Collider2D::Collider2D()
-{
-}
-
-Collider2D::~Collider2D()
-{
-}

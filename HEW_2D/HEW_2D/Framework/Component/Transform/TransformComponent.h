@@ -9,9 +9,9 @@
 class TransformComponent :public IComponent
 {
 public:
-	TransformComponent(Object* _Owner) :IComponent(_Owner) {};
+	TransformComponent(Object* _Owner);
 
-	~TransformComponent(){}
+	~TransformComponent();
 
 	void Init(void) override;
 	void Update(void) override;

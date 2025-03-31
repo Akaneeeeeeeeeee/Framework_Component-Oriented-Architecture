@@ -1,13 +1,12 @@
 #pragma once
 #include "../../../Framework/ComponentManager/ComponentManager.h"
-#include "../../ObjectManager/ObjectManager.h"
 #include "../../../Framework/Component/Transform/TransformComponent.h"
 #include "../../../Framework/Component/Physic/RigidBody2D/RigitBody2D.h"
 
 /**
  * @brief オブジェクト管理タグ
 */
-enum Tag {
+enum class Tag {
 	NONE = -1,		// デフォルト値
 	BACKGROUND,
 	IMAGE,
@@ -125,7 +124,7 @@ public:
 		if (it != m_Components.end())
 		{
 			// 目的の型にキャストして返す
-			return dynamic_cast<T>(it->second.get());
+			return dynamic_cast<T*>(it->second.get());
 		}
 
 		// なければエラー出力
@@ -155,7 +154,7 @@ protected:
 
 	UINT m_ID;
 	std::string m_Name = "GameObject";
-	Tag m_Tag = NONE;
+	Tag m_Tag = Tag::NONE;
 	
 	// これいらなくね？ゲームオブジェクトの中のコンポーネントマネージャからじゃないとaddcomponentできない→オブジェクトがmapで管理しとくほうがいい
 	//ComponentManager m_ComponentManager;

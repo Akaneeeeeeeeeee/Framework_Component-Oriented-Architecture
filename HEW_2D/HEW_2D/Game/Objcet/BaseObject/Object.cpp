@@ -28,5 +28,5 @@ void Object::Draw(void)
 
 void Object::Uninit(void)
 {
-	m_Components.clear()
+	m_Components.clear();
 }

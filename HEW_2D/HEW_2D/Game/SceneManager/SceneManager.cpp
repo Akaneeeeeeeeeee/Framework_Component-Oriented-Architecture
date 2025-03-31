@@ -13,9 +13,9 @@
 void SceneManager::Init(void) 
 {
 	//! タイトルシーンを生成してコンテナに追加
-	Scenes.emplace(TITLE, std::make_unique<TitleScene>());
+	Scenes.emplace(TITLE, std::make_unique<TestScene>());
 	//Scenes現在シーンをタイトルシーンに設定
-	CurrentScene = TITLE;
+	CurrentScene = TEST;
 	Scenes[CurrentScene]->Init();
 }
 

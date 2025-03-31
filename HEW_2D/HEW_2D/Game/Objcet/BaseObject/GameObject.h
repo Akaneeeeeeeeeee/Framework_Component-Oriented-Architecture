@@ -92,7 +92,7 @@ protected:
 	Int2 m_Number = { 0,0 };
 
 	// アニメーション用状態管理変数
-	STATE m_State = {};
+	//STATE m_State = {};
 
 	// アニメーション管理フラグ
 	bool IsAnimation = false;
@@ -144,7 +144,7 @@ public:
 	virtual void SetRotation(Vector3 _Rot);			// 角度をセット
 	virtual void SetColor(const Color _Color);	// 色をセット
 	virtual void SetUV(const Int2 _UV);			// UV座標をセット
-	virtual void Animation(STATE,std::weak_ptr<GameObject>);		// アニメーション
+	//virtual void Animation(STATE,std::weak_ptr<GameObject>);		// アニメーション
 	// TODO:2025/01/24 赤根:プレイヤーに親子関係を持たせる際の関数の引数にタグと名前を入れるように変更する→プレイヤー側でオーバーライドして、タグがマガジンであればタグを変更、にしようと思ったが、それだとオブジェクトマネージャの管理外での処理が発生するかも→オブジェクトにはオブジェクトのポインタだけを持たせたほうが良いかも
 	virtual void SetParent(const std::weak_ptr<GameObject> _Parent);	// 親オブジェクトをセット
 	virtual void AddForce(const Vector3 _Vel);		// 速度をセット(ここでは即座に値を加算する方法だけ作る→unityのforcemode.impulseみたいなやつ)

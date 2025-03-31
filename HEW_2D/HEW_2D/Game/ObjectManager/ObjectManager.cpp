@@ -1,6 +1,7 @@
 #include "ObjectManager.h"
 #include "../../Framework/Component/Collider/2D/BoxCollider2D/BoxCollider2D.h"
 #include "../../Framework/Component/Renderer/SpriteRenderer/SpriteRenderer.h"
+#include "../Objcet/BaseObject/Object.h"
 
 
 /**
@@ -21,64 +22,64 @@ void ObjectManager::DeleteObject(Tag _ObjName) {
  *
  *
 */
-void ObjectManager::Collider_Player_to_Object(void)
-{
-	// プレイヤー取得
-	auto playerobj = GetGameObjectPtr<Player>(PLAYER, "Player");
-
-	// 変更予定のオブジェクトを記録するリスト
-	std::vector<std::pair<std::pair<Tag, std::string>, std::shared_ptr<Object>>> toBeUpdated;
-
-
-	// プレイヤーと当たったオブジェクトを確認
-	for (auto& obj : Objects) {
-		// タグが地面、オブジェクト、敵のものだけ当たり判定を取る
-		switch (obj.get()->GetTag())
-		{
-			// オブジェクトが地面なら
-		case BACKGROUND:
-			// 地面との当たり判定を取る
-			Collider_toGround(playerobj, obj.second);
-			break;
-			// 画像は当たり判定を取らない
-		case IMAGE:
-			break;
-			// UIも判定を取らない
-		case UI:
-			break;
-			// ゲームオブジェクトなら判定を取る
-		case OBJECT:
-			// ここはマガジンの判定を取っている
-			if (Collider_to_Object(playerobj, obj.second))
-			{
-				toBeUpdated.push_back(obj); // 変更対象を記録
-			}
-			break;
-		case GROUND:
-			break;
-		case PLAYER:
-			break;
-		case ENEMY:
-			break;
-		default:
-			break;
-		}
-
-	}
-
-	// 記録した変更対象を処理(マガジン用だが、中身を変えればオブジェクトの削除も可能)
-	for (auto& it : toBeUpdated) {
-		auto mag = std::dynamic_pointer_cast<Magazine>(it.second);
-		if (mag) {
-			// マガジンのタグを変更
-			ChangeTag(it.first.first, it.first.second, UI);
-			// プレイヤーの子オブジェクトに設定
-			playerobj.lock()->SetChild(mag);
-			mag->SetScale(Vector3(50.0f, 50.0f, 0.0f));
-			mag->SetPosition(Vector3(-800.0f, -500.0f, 0.0f));
-		}
-	}
-}
+//void ObjectManager::Collider_Player_to_Object(void)
+//{
+//	// プレイヤー取得
+//	auto playerobj = GetGameObjectPtr<Player>(PLAYER, "Player");
+//
+//	// 変更予定のオブジェクトを記録するリスト
+//	std::vector<std::pair<std::pair<Tag, std::string>, std::shared_ptr<Object>>> toBeUpdated;
+//
+//
+//	// プレイヤーと当たったオブジェクトを確認
+//	for (auto& obj : Objects) {
+//		// タグが地面、オブジェクト、敵のものだけ当たり判定を取る
+//		switch (obj.get()->GetTag())
+//		{
+//			// オブジェクトが地面なら
+//		case BACKGROUND:
+//			// 地面との当たり判定を取る
+//			Collider_toGround(playerobj, obj.second);
+//			break;
+//			// 画像は当たり判定を取らない
+//		case IMAGE:
+//			break;
+//			// UIも判定を取らない
+//		case UI:
+//			break;
+//			// ゲームオブジェクトなら判定を取る
+//		case OBJECT:
+//			// ここはマガジンの判定を取っている
+//			if (Collider_to_Object(playerobj, obj.second))
+//			{
+//				toBeUpdated.push_back(obj); // 変更対象を記録
+//			}
+//			break;
+//		case GROUND:
+//			break;
+//		case PLAYER:
+//			break;
+//		case ENEMY:
+//			break;
+//		default:
+//			break;
+//		}
+//
+//	}
+//
+//	// 記録した変更対象を処理(マガジン用だが、中身を変えればオブジェクトの削除も可能)
+//	for (auto& it : toBeUpdated) {
+//		auto mag = std::dynamic_pointer_cast<Magazine>(it.second);
+//		if (mag) {
+//			// マガジンのタグを変更
+//			ChangeTag(it.first.first, it.first.second, UI);
+//			// プレイヤーの子オブジェクトに設定
+//			playerobj.lock()->SetChild(mag);
+//			mag->SetScale(Vector3(50.0f, 50.0f, 0.0f));
+//			mag->SetPosition(Vector3(-800.0f, -500.0f, 0.0f));
+//		}
+//	}
+//}
 
 
 /**
@@ -171,7 +172,7 @@ void ObjectManager::Draw(void) {
 	// 先に背景から描画
 	for (auto& obj : Objects)
 	{
-		if (obj.get()->GetTag() == BACKGROUND)
+		if (obj.get()->GetTag() == Tag::BACKGROUND)
 		{
 			// firstがキー（ObjectName）,secondがオブジェクト本体
 			obj->Draw();
@@ -181,7 +182,7 @@ void ObjectManager::Draw(void) {
 	// 背景とUI以外を描画
 	for (auto& obj : Objects)
 	{
-		if (obj.get()->GetTag() != BACKGROUND && obj.get()->GetTag() != UI)
+		if (obj.get()->GetTag() != Tag::BACKGROUND && obj.get()->GetTag() != Tag::UI)
 		{
 			obj->Draw();
 		}
@@ -190,7 +191,7 @@ void ObjectManager::Draw(void) {
 	// 最後にUIを描画
 	for (auto& obj : Objects)
 	{
-		if (obj.get()->GetTag() == UI)
+		if (obj.get()->GetTag() == Tag::UI)
 		{
 			obj->Draw();
 		}

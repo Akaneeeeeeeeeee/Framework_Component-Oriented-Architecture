@@ -251,9 +251,6 @@
     <ClCompile Include="Game\Objcet\Character\Character.cpp">
       <Filter>ゲーム\オブジェクト\キャラクター基本クラス</Filter>
     </ClCompile>
-    <ClCompile Include="Framework\Component\RigitBody\Gravity.cpp">
-      <Filter>フレームワーク\コンポーネント\Physic（物理）</Filter>
-    </ClCompile>
     <ClCompile Include="Game\Objcet\Camera\Camera.cpp">
       <Filter>ゲーム\オブジェクト\カメラ</Filter>
     </ClCompile>
@@ -323,9 +320,6 @@
     <ClCompile Include="Framework\Component\Renderer\IRenderer\IRenderer.cpp">
       <Filter>フレームワーク\コンポーネント\描画機能\IRenderer</Filter>
     </ClCompile>
-    <ClCompile Include="Framework\Component\Collider\BoxCollider2D\BoxCollider2D.cpp">
-      <Filter>フレームワーク\コンポーネント\当たり判定\2D\BoxCollider2D</Filter>
-    </ClCompile>
     <ClCompile Include="Framework\Component\Collider\2D\BoxCollider2D\Collider.cpp">
       <Filter>フレームワーク\コンポーネント\当たり判定\2D\Collider2D</Filter>
     </ClCompile>
@@ -334,6 +328,12 @@
     </ClCompile>
     <ClCompile Include="Framework\Component\Collider\2D\Collider2D\Collider2D.cpp">
       <Filter>フレームワーク\コンポーネント\当たり判定\2D\Collider2D</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Component\Collider\2D\BoxCollider2D\BoxCollider2D.cpp">
+      <Filter>フレームワーク\コンポーネント\当たり判定\2D\BoxCollider2D</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Component\Physic\Gravity.cpp">
+      <Filter>フレームワーク\コンポーネント\Physic（物理）</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -367,9 +367,6 @@
     <ClInclude Include="Framework\Window\Window.h">
       <Filter>フレームワーク\ウィンドウ</Filter>
     </ClInclude>
-    <ClInclude Include="Game\SceneManager\SceneManager.h">
-      <Filter>ゲーム\シーン管理</Filter>
-    </ClInclude>
     <ClInclude Include="Game\ObjectManager\ObjectManager.h">
       <Filter>ゲーム\オブジェクト管理</Filter>
     </ClInclude>
@@ -402,9 +399,6 @@
     </ClInclude>
     <ClInclude Include="Game\EntryPoint\main.h">
       <Filter>ゲーム\エントリーポイント</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\Component\RigitBody\Gravity.h">
-      <Filter>フレームワーク\コンポーネント\Physic（物理）</Filter>
     </ClInclude>
     <ClInclude Include="Game\Objcet\Camera\Camera.h">
       <Filter>ゲーム\オブジェクト\カメラ</Filter>
@@ -469,9 +463,6 @@
     <ClInclude Include="Framework\Component\Renderer\IRenderer\IRenderer.h">
       <Filter>フレームワーク\コンポーネント\描画機能\IRenderer</Filter>
     </ClInclude>
-    <ClInclude Include="Framework\Component\Collider\BoxCollider2D\BoxCollider2D.h">
-      <Filter>フレームワーク\コンポーネント\当たり判定\2D\BoxCollider2D</Filter>
-    </ClInclude>
     <ClInclude Include="Framework\Component\Collider\2D\BoxCollider2D\Collider.h">
       <Filter>フレームワーク\コンポーネント\当たり判定\2D\Collider2D</Filter>
     </ClInclude>
@@ -480,6 +471,15 @@
     </ClInclude>
     <ClInclude Include="Framework\Component\Collider\2D\Collider2D\Collider2D.h">
       <Filter>フレームワーク\コンポーネント\当たり判定\2D\Collider2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Component\Collider\2D\BoxCollider2D\BoxCollider2D.h">
+      <Filter>フレームワーク\コンポーネント\当たり判定\2D\BoxCollider2D</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Component\Physic\Gravity.h">
+      <Filter>フレームワーク\コンポーネント\Physic（物理）</Filter>
+    </ClInclude>
+    <ClInclude Include="Game\SceneManager\SceneManager.h">
+      <Filter>ゲーム\シーン管理</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
