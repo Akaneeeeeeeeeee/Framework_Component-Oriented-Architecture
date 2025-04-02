@@ -5,7 +5,6 @@
 #include "../../Game/Objcet/Onomatopeia/Poyon/Poyon.h"
 #include "../../Game/Objcet/Onomatopeia/PataPata/PataPata.h"
 #include "../../Game/Objcet/Onomatopeia/BiriBiri/BiriBiri.h"
-#include "../../Framework/Component/Collider/BoxCollider2D/Collider.h"
 
 
 /**

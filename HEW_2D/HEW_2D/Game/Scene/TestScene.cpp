@@ -24,6 +24,7 @@ void TestScene::Init(void) {
 	objectmanager.Init();
 	//sound.Init();
 
+	objectmanager.AddObject<Object>(Tag::OBJECT, "Object1");
 
 	//-----------------------
 	//-----オブジェクト追加-----

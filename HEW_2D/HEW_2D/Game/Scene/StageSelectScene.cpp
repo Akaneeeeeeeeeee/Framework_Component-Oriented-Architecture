@@ -51,82 +51,82 @@ void StageSelectScene::Update(void) {
 
 	// スタートボタン入力取得
 	// (デバッグ用)エンターキー入力取得
-	if (Input::GetInstance().GetButtonTrigger(XINPUT_GAMEPAD_START) || Input::GetInstance().GetKeyTrigger(VK_RETURN))
-	{
-		// カーソル位置が上の場合
-		if (Cursor_pos.y == -10.0f)
-		{
-			// 遷移先シーンをステージに設定
-			m_RequestNext = TEST;
-		}
-		
-		// カーソル位置が下の場合
-		if (Cursor_pos.y == -300.0f)
-		{
-			// 遷移先をステージ2に設定
-			m_RequestNext = TEST;
-		}
-		// シーン遷移フラグを立てる
-		SetChangeScene(true);
-		// BGM停止
-		Sound::GetInstance().Stop(BGM_STAGESELECT);
-	}
-	else
-	{
-		// シーン遷移フラグを立てる
-		SetChangeScene(false);
-	}
+	//if (Input::GetInstance().GetButtonTrigger(XINPUT_GAMEPAD_START) || Input::GetInstance().GetKeyTrigger(VK_RETURN))
+	//{
+	//	// カーソル位置が上の場合
+	//	if (Cursor_pos.y == -10.0f)
+	//	{
+	//		// 遷移先シーンをステージに設定
+	//		m_RequestNext = TEST;
+	//	}
+	//	
+	//	// カーソル位置が下の場合
+	//	if (Cursor_pos.y == -300.0f)
+	//	{
+	//		// 遷移先をステージ2に設定
+	//		m_RequestNext = TEST;
+	//	}
+	//	// シーン遷移フラグを立てる
+	//	SetChangeScene(true);
+	//	// BGM停止
+	//	Sound::GetInstance().Stop(BGM_STAGESELECT);
+	//}
+	//else
+	//{
+	//	// シーン遷移フラグを立てる
+	//	SetChangeScene(false);
+	//}
 
 
-	
-	
-	//////////////////////////////////
-	//			カーソル移動
-	//////////////////////////////////
-	
-	// 下ボタン入力確認
-	if (Input::GetInstance().GetButtonTrigger(XINPUT_GAMEPAD_DPAD_DOWN) || Input::GetInstance().GetKeyPress(VK_DOWN))
-	{
-		Cursor_pos.y -= 300.0f;
-		if (Cursor_pos.y < -300.0f)
-		{
-			Cursor_pos.y = -300.0f;
-		}
-		objectmanager.GetGameObjectPtr<Object>(UI, "Cursol").lock()->SetPosition(Cursor_pos);
-		// SE再生
-		Sound::GetInstance().Play(SE_CLICK);
-	}
+	//
+	//
+	////////////////////////////////////
+	////			カーソル移動
+	////////////////////////////////////
+	//
+	//// 下ボタン入力確認
+	//if (Input::GetInstance().GetButtonTrigger(XINPUT_GAMEPAD_DPAD_DOWN) || Input::GetInstance().GetKeyPress(VK_DOWN))
+	//{
+	//	Cursor_pos.y -= 300.0f;
+	//	if (Cursor_pos.y < -300.0f)
+	//	{
+	//		Cursor_pos.y = -300.0f;
+	//	}
+	//	objectmanager.GetGameObjectPtr<Object>(UI, "Cursol").lock()->SetPosition(Cursor_pos);
+	//	// SE再生
+	//	Sound::GetInstance().Play(SE_CLICK);
+	//}
 
-	// 上ボタン入力確認
-	if (Input::GetInstance().GetButtonTrigger(XINPUT_GAMEPAD_DPAD_UP) || Input::GetInstance().GetKeyPress(VK_UP))
-	{
-		Cursor_pos.y += 300.0f;
-		if (Cursor_pos.y > -10.0f)
-		{
-			Cursor_pos.y = -10.0f;
-		}
-		objectmanager.GetGameObjectPtr<Object>(UI, "Cursol").lock()->SetPosition(Cursor_pos);
-		// SE再生
-		Sound::GetInstance().Play(SE_CLICK);
-	}
-	
-	// カーソル座標によってボタンの色を変化
-	// ステージ1選択中の場合
-	if (Cursor_pos.y == 0.0f)
-	{
-		// ステージ1ボタンの画像を変化
-		Stage1Button_UV.x = 1;	// ステージ1を選択中に
-		Stage2Button_UV.x = 0;	// ステージ2を通常時に
-	}
-	// ステージ2選択中の場合
-	else if (Cursor_pos.y == -300.0f)
-	{
-		// ステージ1ボタンの画像を変化
-		Stage1Button_UV.x = 0;	// ステージ1を通常時に
-		Stage2Button_UV.x = 1;	// ステージ2を選択中に
-	}
-	objectmanager.GetGameObjectPtr<Object>(UI, "STAGE1").lock()->SetUV(Stage1Button_UV);
-	objectmanager.GetGameObjectPtr<Object>(UI, "STAGE2").lock()->SetUV(Stage2Button_UV);
+	//// 上ボタン入力確認
+	//if (Input::GetInstance().GetButtonTrigger(XINPUT_GAMEPAD_DPAD_UP) || Input::GetInstance().GetKeyPress(VK_UP))
+	//{
+	//	Cursor_pos.y += 300.0f;
+	//	if (Cursor_pos.y > -10.0f)
+	//	{
+	//		Cursor_pos.y = -10.0f;
+	//	}
+	//	objectmanager.GetGameObjectPtr<Object>(UI, "Cursol").lock()->SetPosition(Cursor_pos);
+	//	// SE再生
+	//	Sound::GetInstance().Play(SE_CLICK);
+	//}
+	//
+	//// カーソル座標によってボタンの色を変化
+	//// ステージ1選択中の場合
+	//if (Cursor_pos.y == 0.0f)
+	//{
+	//	// ステージ1ボタンの画像を変化
+	//	Stage1Button_UV.x = 1;	// ステージ1を選択中に
+	//	Stage2Button_UV.x = 0;	// ステージ2を通常時に
+	//}
+	//// ステージ2選択中の場合
+	//else if (Cursor_pos.y == -300.0f)
+	//{
+	//	// ステージ1ボタンの画像を変化
+	//	Stage1Button_UV.x = 0;	// ステージ1を通常時に
+	//	Stage2Button_UV.x = 1;	// ステージ2を選択中に
+	//}
+	//objectmanager.GetGameObjectPtr<Object>(UI, "STAGE1").lock()->SetUV(Stage1Button_UV);
+	//objectmanager.GetGameObjectPtr<Object>(UI, "STAGE2").lock()->SetUV(Stage2Button_UV);
 }
 
 

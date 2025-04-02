@@ -38,7 +38,7 @@ public:
 	 * ID設定、タグ設定、名前設定を行ってコンテナに追加
 	*/
 	template <typename T>
-	void AddObject(const Tag& _Tag, const std::string& _Name)
+	T* AddObject(const Tag& _Tag, const std::string& _Name)
 	{
 		// ID(完全一意のものを設定)
 		UINT id = 0;
@@ -48,6 +48,8 @@ public:
 		auto obj = std::make_unique<T>(++id, _Tag, _Name);
 		// コンテナに追加
 		Objects.push_back(std::move(obj));
+
+		return obj.get();
 	}
 
 

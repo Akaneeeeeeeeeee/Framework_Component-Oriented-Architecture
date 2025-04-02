@@ -16,7 +16,7 @@ enum FRAME {
 };
 
 enum SceneName {
-	TITLE,			// タイトル
+	//TITLE,			// タイトル
 	STAGESELECT,	// ステージ選択
 	TEST,
 	STAGE1,			// ステージ2

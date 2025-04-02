@@ -13,7 +13,7 @@
 void SceneManager::Init(void) 
 {
 	//! タイトルシーンを生成してコンテナに追加
-	Scenes.emplace(TITLE, std::make_unique<TestScene>());
+	Scenes.emplace(TEST, std::make_unique<TestScene>());
 	//Scenes現在シーンをタイトルシーンに設定
 	CurrentScene = TEST;
 	Scenes[CurrentScene]->Init();
@@ -100,16 +100,16 @@ void SceneManager::ChangeScene(SceneName _Nextscene) {
 		// シーンを生成してmapに追加
 		switch (_Nextscene)
 		{
-		case TITLE:
+		/*case TITLE:
 			CreateScene<TitleScene>(TITLE);
-			break;
+			break;*/
 		case STAGESELECT:
 			CreateScene<StageSelectScene>(STAGESELECT);
 			break;
 		case TEST:
 			CreateScene<TestScene>(TEST);
 			break;
-		case STAGE1:
+		/*case STAGE1:
 			CreateScene<Stage1Scene>(STAGE1);
 			break;
 		case STAGE2:
@@ -117,7 +117,7 @@ void SceneManager::ChangeScene(SceneName _Nextscene) {
 			break;
 		case RESULT:
 			CreateScene<ResultScene>(RESULT);
-			break;
+			break;*/
 		// ゲーム終了が選択された場合はシーン遷移処理はしないので何も書かない
 		case QUIT:
 			break;
